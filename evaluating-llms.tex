@@ -1,0 +1,131 @@
+\chapter{Evaluating LLMs} \label{sec:evaluating LLMS}
+\section{Methodology}
+
+% This section describes our proposed methodology, incorporating best practices from the previous sections.
+
+% \begin{itemize}
+%     \item Carefully defining terms (like ``trustworthyAI'') %and providing those definitions to the LLMs
+%     \item Carefully crafting prompts or comparing outputs %across multiple prompts
+%     \item Measuring consistency across multiple LLM- and %human-made categorizations (the latter at least on a sub-%sample of papers), perhaps using Krippendorff's alpha
+%     \item The list of papers is curated by us, not by the %LLM (e.g. a reference dump from past several AAAI %proceedings)
+
+%     List of sources:
+%     \begin{itemize}
+%         \item AAAI proceedings
+%         \item AEIS proceedings (AI Ethics and Society, organized by AAAI/ACM, more policy-oriented)
+%         \item Others on aitopics.org?
+%     \end{itemize}
+%     \item We will save all papers and PDFs and links in a big repository in case NSA staff need our help validating a reference later (Tyson mentioned this)
+%     \item The LLM only processes the abstracts/executive summaries, which are the authors’ own summaries of their work (or at least, we compare abstract-only LLM categorizations with full-paper categorizations)
+%     \item The LLM only categorizes the papers into our pre-defined categories (entries in the ISO matrix), it does not summarize them
+% \end{itemize}
+
+Our survey gathered documents that detail the approaches suggested by Government, Industry, and Academia for the trustworthiness of AI. To evaluate these documents, we developed a matrix that categorized the data based on the NIST 800-37 organizational levels of control vs the system engineering technical processes identified in NIST 800-160 Volume 1 Revision 1 Engineering Trustworthy Secure Systems. Our rubric used definitions provided by these foundational, authoritative documents to develop a set of questions to enable accurate, reliable classification of the documents to illustrate literature coverage across the spectrum of the framework.  We started our survey with 100 documents that our team read and reviewed, testing the results of our rubric manually. We then fed an additional 4000 documents through several comparable Large Language Models by directing each to follow the same rubric.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/Rubric.png}
+    \caption{NIST 800-160 Based AI Literature Review Rubric}
+    \label{fig:placeholder}
+\end{figure}
+\newpage
+
+\subsection{Rubric Axis Descriptions:}
+
+\subsubsection{Vertical axis:} 
+NIST has published a separate AI RMF, NIST AI 100-1 Artificial Intelligence Risk Management Framework (AI RMF 1.0).  The AI RMF does not use the three level framework used in SP 800-37 and 800-39. Rather than organizing risk management around levels, the AI RMF is organized around a set of four core functions: Govern, Map, Measure, and Manage.  However, the four core functions can be mapped informally to the levels depicted in Table 1.
+
+\begin{table}
+    \centering
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{0.45\linewidth}|>{\raggedright\arraybackslash}p{0.45\linewidth}|}\hline
+         \textbf{NIST 800-37, 800-39 LEVEL}& \textbf{AI RMF CORE FUNCTION}\\\hline
+         Level 1 : Organization& emphasize GOVERN (policies, roles, culture) "Have AI"\\\hline
+         Level 2: Mission / Business& GOVERN + MAP/MEASURE planning across business processes\\\hline
+         Level 3: System& "Use AI for"\\ \hline
+    \end{tabular}
+    \caption{Vertical Rubric Axis Four Core Functions}
+    \label{tab:placeholder}
+\end{table}
+
+
+\begin{enumerate}
+  \item \textbf{LEVEL 1: Organizational Level:} Focuses on enterprise-wide risk management strategies, governance, policies, and broad objectives. This level emphasizes senior leadership's role in setting the "tone at the top" for risk management.  The level is where risk framing occurs.  Context is established by senior leaders based on the organizations overall mission and business goals.  Level 1 provides the strategies guiding prioritization decisions based on functions necessary for the organization to succeed.  The strategies provide the context and key decisions that direct where AI should be used as well as measures of success necessary to guide the work and decisions at level 2.
+  \item \textbf{LEVEL 2: Mission/Business Process Level:}  Translates the organizational strategy into specific mission or business functions, including identifying and prioritizing security and privacy requirements and allocating them appropriately It links enterprise architecture with security and privacy architectures.
+  \item \textbf{LEVEL 3: System Level:} Addresses risk from the perspective of individual information systems, guided by higher-level organizational and mission/business process decisions. This includes the selection, implementation, assessment, and continuous monitoring of controls for specific technical, operational and managerial systems.
+\end{enumerate}
+
+\subsubsection{Horizontal Axis:}
+The horizontal axis complements the vertical axis by aligning the various organizational efforts to manage information system related risks with a temporal view of when they occur within the lifecycle of system and software development.  ISO/IEC/IEEE 15288:23 System and Software Engineering Lifecycle Processes provides a widely used, global standard identifying the lifecycle processes necessary to create any system.  NIST 800-160 Engineering Trustworthy Secure Systems uses the ISO/IEC/IEEE processes as a starting point and adds amplifying details believed sufficient to engineer a secure and trustworthy system.  NIST SP 800-160 follows the same processes in the same chronological order.  As a result, we selected the 800-160 (and 15288 processes) as the foundation for the horizontal axis.  outlines the system life cycle processes, which serve as the secure systems engineering steps and the rows of our table. These are:
+
+\begin{enumerate}
+    \item \textbf{Business and Mission Analysis:} The first technical process involves analyzing the business or mission strategy (typically the operational design in military operations) to identify gaps and opportunities.  
+    \item \textbf{Stakeholder Needs and Requirements Definition:} Identifying and defining the needs, concerns, priorities, and constraints of all relevant stakeholders to establish system protection needs.
+    \item \textbf{System Requirements Definition: }Transforming stakeholder protection needs into specific, verifiable system security requirements and defining security-driven performance measures.
+    \item \textbf{Architecture Definition:} Developing security views and viewpoints of the system architecture and identifying necessary enabling systems to achieve security objectives.
+    \item \textbf{Design Definition: }Providing sufficient data and information about the system and its elements to realize the solution in accordance with system requirements and architecture.
+    \item \textbf{System Analysis: }Producing a rigorous basis of data and information for the technical understanding of security aspects to aid decision-making and technical assessments across the life cycle.
+    \item \textbf{Implementation: }The process of realizing a specified system element. In this context, it involves implementing security and privacy controls using secure engineering methodologies.
+    \item \textbf{Integration: }Combining system elements to produce a whole, ensuring that these combinations function securely.
+    \item \textbf{Verification:} Confirmation through objective evidence that specified requirements have been fulfilled, typically focusing on whether the system \textit{meets its design and trustworthiness requirements}.
+    \item \textbf{Validation: }Confirmation by examination and provision of objective evidence that the requirements for a specific intended use or application have been fulfilled, ensuring the system works as intended \textit{in the real world} and produces desired outcomes.
+\end{enumerate}
+\textbf{Transition: }The process of making a system available for operational use.
+
+
+\subsubsection{Rubric Questions}
+The following questions are designed to guide the investigator / AI in categorizing the research in the chart. First we ask the following three questions to identify what level of control the Given a particular paper or article. This reduces the matrix to a single row. Please analyze the provided documents and categorize the content based on how each document addresses the following three dimensions of AI security. For each document, evaluate and provide specific examples from the text that demonstrate how it covers each category:
+
+\textbf{Level 1: Organizational Level }Does the document emphasize \textit{governance exclusively} without regard to specific implementation details? Are policies, roles, and culture addressed? Does the document address the managerial processes or approaches to define trust of AI? Look for content related to:
+
+\begin{itemize}
+    \item Organizational structures and roles for AI security oversight
+    \item Decision-making frameworks and accountability mechanisms
+    \item Risk management processes and governance structures
+    \item Leadership responsibilities and strategic planning
+    \item Compliance frameworks and regulatory approaches
+    \item Clear definitions for trust
+    \item Guidance on what constitutes a suitable project to evaluate AI for use in
+    \item Board-level or executive oversight of AI security initiatives
+    \item How the organization will measure ROI for AI
+\end{itemize}
+
+\textbf{Level 2: Mission / Business Process Level: }Does the document address governance in combination with aspects of mapping and/or measuring, how the approach will be implemented in the organization beyond the technical details of the AI components? Look for content related to:
+
+\begin{itemize}
+    \item Implementation strategies and operational procedures beyond the AI
+    \item How will humans interact with the AI
+    \item What decisions should be made by humans and what decisions should be made by the AI
+    \item Policy frameworks and standard operating procedures
+    \item Workflow processes and operational guidelines
+    \item Training and awareness programs
+    \item Incident response and operational protocols
+    \item Performance monitoring and evaluation processes
+\end{itemize}
+
+\textbf{Level 3: System Level:} Does the document address to map, measure and manage a specific AI system? How or what tools will be used to secure AI? Look for content related to:
+
+\begin{itemize}
+    \item Technical security solutions and software tools
+    \item Monitoring and detection technologies
+    \item Assessment and testing methodologies
+    \item Infrastructure and architectural approaches
+    \item Automation tools and technical frameworks
+    \item Specific technologies, platforms, or technical standards
+    \item Measures of performance
+\end{itemize}
+Once the categorization of the levels have been identified the following questions must be asked to assess what part or parts of the systems engineering lifecycle the document addresses:
+
+\begin{enumerate}
+    \item \textbf{Business and Mission Analysis}: Does the document describe how choices will be made?  Does the document provide guidance for selecting which projects might be most suitable for AI? Does the document suggest a hypothesis for generating and measuring the ROI for the AI project?  Does the document prescribe a business or mission problem the AI is expected to address? Does the document outline success criteria for the AI initiative?
+    \item \textbf{Stakeholder Needs and Requirements Definition:} Does the document describe how to identify stakeholders and their security needs? Does it provide methods for gathering and defining protection requirements from different stakeholder perspectives?
+    \item \textbf{System Requirements Definition:} Does the document explain how to convert stakeholder needs into measurable security requirements? Does it address how to define security performance metrics and verification criteria?
+    \item \textbf{Architecture Definition:} Does the document provide guidance on developing security architectures? Does it address how to identify and integrate security-enabling systems and components?
+    \item \textbf{Design Definition:} Does the document specify how to create detailed security designs? Does it provide sufficient technical detail for implementation teams to build secure systems?
+    \item \textbf{System Analysis:} Does the document describe analytical methods for understanding security risks and trade-offs? Does it provide frameworks for technical security assessments throughout the lifecycle?
+    \item \textbf{Implementation:} Does the document address secure coding practices and implementation methodologies? Does it provide guidance on how to actually build and deploy security controls?
+    \item \textbf{Integration:} Does the document explain how to securely combine system components? Does it address security considerations when integrating multiple systems or subsystems?
+    \item \textbf{Verification:} Does the document describe methods for testing and confirming that security requirements are met? Does it provide approaches for validating security controls against design specifications?
+    \item \textbf{Validation:} Does the document explain how to confirm the system works securely in real-world operational environments? Does it address testing effectiveness against actual threats and use cases?
+    \item \textbf{Transition:} Does the document provide guidance on securely deploying systems into production? Does it address operational security considerations for system handover and go-live processes?
+\end{enumerate}

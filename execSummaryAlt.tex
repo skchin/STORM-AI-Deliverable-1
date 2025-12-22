@@ -1,0 +1,58 @@
+\chapter{Executive Summary} \label{cha:alt-executive-summary}
+
+%\vspace{-0.3in}
+% \fbox{%
+%   \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+%     \textbf{Summary of Main Points Bottom Line Up Front (BLUF)}
+%     \begin{itemize}
+%       \item When we say \emph{trustworthy artificial intelligence} we mean \textbf{trustworthy systems with AI as a subsystem}
+%       \item This definition is consistent with the following standards
+%         \begin{itemize}
+%           \item NIST SP 800-160v1r1, Engineering Secure Trustworthy Systems, \cite{NIST800-160}
+%           \item ISO/IEC/IEEE 15288, Systems and software engineering — System life cycle processes, \cite{ISO15288}
+%         \end{itemize}
+%     \end{itemize}
+%   \end{minipage}%
+% }
+
+
+%vspace{-1.5em}
+\section{Our Findings}
+
+Only 9,183 AI papers out of 54,628 AI papers examined dealt with any aspect of AI trustworthiness, reliability, or security. Virtually all AI papers related to trustworthiness, reliability, or security were at the lowest level of abstraction, namely the \emph{systems and operations} level. The vast majority of these papers dealt with AI models, AI implementations, and performance of AI algorithms and code. Few or none addressed problem requirements or provided evidence of trustworthiness. Few or none addressed larger concerns at the mission or business process level or at the organization and governance structure level.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.0\linewidth]{STORM-AI Deliverable-1/Figures/Paper-Classification-Results.jpg}
+    \caption{\it Results of searching and classifying 54,628 AI papers: fewer than 17\% address AI Trustworthiness, Reliability, or Security; few or none of those address organizational or mission requirements. \textbf{Mission Assurance is completely neglected.}}
+    \label{fig:heatmapAlt}
+\end{figure}
+
+\section{Mission Assurance is Completely Neglected by AI Research}
+
+\textbf{Mission Assurance} \cite{DoD3020-40-MA} \emph{is a process to protect or ensure the continued function and resilience of capabilities and assets, including personnel, equipment, facilities, networks, information and information systems, infrastructure, and supply chains, critical to the execution of DoD mission-essential functions in any operating environment or condition}\footnote{Definition of Mission Assurance in DoD Directive 3020.40 Mission Assurance, September 2018}, where \textbf{Mission-Essential Functions} \cite{DoD3020-26-Continuity-MEF} \emph{are select functions directly related to accomplishing the Department's mission. Failure to perform or sustain these functions, which directly support PMEF, would significantly affect the Department of Defense's ability to provide vital services or exercise authority, direction, and
+control}\footnote{Definition of Mission Essential Functions in DoD Directive 3020.26 DoD Continuity Policy, February 2018}. 
+
+Our findings, illustrated in Figure~\ref{fig:heatmapAlt} show that existing AI research is disconnected from organization and mission requirements, and trustworthiness, with no systematic processes for guaranteeing mission essential functions in systems using AI. Developing  \textbf{mission-assurance processes for systems using AI must be a top priority}.
+
+% -- Comments below are at the very end of component files --
+% -- pointing to the main file --
+% ---- this points LaTeX to STORM-AI-Deliverable-1.tex ---- 
+% Local Variables: 
+% TeX-master: "STORM-AI-Deliverable-1"
+% End:
+
+\section{Recommendations}
+
+Addressing the documented gap in early-lifecycle mission context and requirements requires a disciplined, systems-level approach. Therefore, we recommend using the System-Theoretic and Technical Operational Risk Management (STORM) methodology \cite{STORM}, with particular emphasis on its STPA-SEC component \cite{STPA-SEC}. STPA-SEC is specifically designed to perform the essential tasks that are currently missing: generating mission objectives, identifying unacceptable losses and hazards, and defining the constraints that must govern system behavior. In doing so, it aligns policy intent with technical implementation and frames security as a mission-focused issue rather than just a technical challenge.
+%\noindent\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{%
+%\begin{center}
+%\textbf{There is a clear opportunity to strengthen mission context, %early requirements definition, and downstream verification and %validation in AI trustworthiness research.}
+%\end{center}
+%}}
+%\newline
+\begin{tcolorbox}
+ \textbf{There is a clear opportunity to strengthen mission context, early requirements definition, and downstream verification and validation in AI trustworthiness research.} 
+\end{tcolorbox}
+
+Once these mission requirements and constraints are established, STORM's Certified Security by Design (CSBD) component \cite{CSBD-IOT} \cite{CSBD-Education} enables formal verification that the system design satisfies them. CSBD provides evidence---not assumptions---that the implemented Concepts of Operation (CONOPS) enforce complete mediation, ensuring actions occur only if they are authorized and authenticated under the defined policy. This closes the loop between mission intent, system design, and verification, and delivers the kind of demonstrable trustworthiness and mission assurance required by NIST SP 800-160v1r1 \cite{nist_sp800_160v1}.

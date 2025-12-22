@@ -1,0 +1,108 @@
+\chapter{Organization of the Report and Overview of Methodology}
+% \label{chap:description}
+% \fbox{%
+%   \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+%     \textbf{Summary of Main Points Bottom Line Up Front (BLUF)}
+%     \begin{itemize}
+%       \item
+%     \end{itemize}
+%   \end{minipage}%
+% }
+
+\section{Introduction}
+
+This chapter outlines the structure of this report and describes our approach to surveying and classifying research articles, reports, and standards related to AI trustworthiness. Understanding how current research and industry efforts are organized across organizational tiers and systems engineering lifecycle phases is essential for identifying gaps and directing future efforts toward mission-secure, trustworthy AI systems for defense applications.
+
+A key challenge in AI trustworthiness research is the lack of agreement within the community on what defines ''trust'' and ''trustworthiness.'' Different organizations, researchers, and practitioners use these terms inconsistently, leading to fragmented approaches and making it difficult to compare or combine different efforts. Some see trust as a technical property of systems, while others view it as a subjective judgment by stakeholders. This definitional ambiguity hampers the field's ability to make systematic progress.
+
+
+To address this lack of agreement, we base our work on established standards and frameworks. For this deliverable, we categorize articles, reports, and standards using ISO/IEC/IEEE 15288~\cite{ISO15288} (systems and software engineering lifecycle processes) and NIST SP 800-39~\cite{nist_sp800_39} (risk management strategy for organizational tiers). We also consider NIST SP 800-160v1~\cite{nist_sp800_160v1} (systems security engineering), SP 800-37~\cite{nist_sp800_37} (risk management framework), and the AI Risk Management Framework (AI RMF 1.0)~\cite{nist_ai_rmf_2023} to develop best practices. By aligning our analysis with these standards, we ensure that our work has a consistent, authoritative basis that others in the defense and AI security communities can reference and build upon.
+
+\section{Report Organization}
+
+This report is organized to provide a comprehensive analysis of the current state of AI trustworthiness research and practice, culminating in our proposed STORM-AI framework. Each chapter has a specific role in helping us understand, design, and develop trustworthy, mission-secure systems for defense applications.\\
+
+%\subsection{Road map of the Document Onward}
+
+\noindent\textbf{Chapter 2: Organization of the Report and Methodology} (this chapter describes the overall structure of the report and our approach to the survey of articles, reports, and standards. It outlines the two-dimensional categorization framework using NIST SP 800-39 organizational tiers \cite{nist_sp800_39} and ISO/IEC/IEEE 15288  lifecycle phases \cite{ISO15288}.\\
+
+\noindent\textbf{Chapter 3: Methodology for Survey of Articles and Reports and Their Categorization} provides comprehensive documentation of our systematic approach to collecting, categorizing, and validating the articles and reports. This chapter integrates three critical components:
+
+\begin{itemize}[noitemsep]
+    \item \textbf{Article and Report Sources and Collection} — Documents the government, academic, and industry sources surveyed, along with our automated collection methodology for processing 9,000+ papers efficiently
+    
+    \item \textbf{Two-Dimensional Categorization Framework} — Presents the detailed rubric based on NIST SP 800-39 organizational tiers and NIST SP 800-160/ISO 15288 lifecycle phases, including the complete set of questions used to categorize each document
+    
+    \item \textbf{LLM-Assisted Analysis with Human Validation} — Describes our three-stage hybrid approach that combines keyword filtering, multi-LLM categorization, and human validation to ensure reliability while enabling large-scale analysis
+\end{itemize}
+
+This chapter outlines our approach to ensuring reliability by following established meta-analysis best practices, including keyword-based inclusion criteria and inter-rater reliability measures such as percent agreement, Krippendorff's $\alpha$ \cite{hayes_krippendorff}, and Gwet's AC1 \cite{gwet_irr}. It reviews existing work on ensuring reliable outputs from LLMs and conducting systematic reviews of articles and reports, including PRISMA guidelines \cite{prisma2020} and recent studies on using LLMs for abstract screening. This methodological rigor is crucial for establishing the credibility of our findings and allowing other researchers to replicate our work. Code and data to reproduce our results are available in a private repository.
+\footnote{For access, contact \texttt{gkatz01@syr.edu}.  The repository URL (only accessible after approval) is 
+\url{https://drive.google.com/drive/folders/1wD__MxpJl9w_BoUalxbpZFoPehgvgHZh?usp=sharing}.}\\
+
+
+\noindent\textbf{Chapter 4: Categorization Results} presents the visual representation of how existing work maps to our two-dimensional framework. These visualizations immediately reveal where research is concentrated and where critical gaps exist across organizational tiers and lifecycle phases.\\
+
+\noindent\textbf{Chapter 5: Gaps and Recommendations} synthesizes the survey results to clearly identify deficiencies in current approaches. This chapter shows that while many organizations concentrate on tools and techniques during the implementation phase, the essential systems engineering work needed for mission-secure systems—especially in early lifecycle phases such as business and mission analysis, stakeholder needs definition, and system requirements definition—remains critically underdeveloped. The recommendations offer practical guidance for funding agencies, research institutions, and defense organizations.
+
+\section{Scope and Methodology of Survey of Articles and Reports}
+
+Our survey of articles and reports encompasses three primary domains: government publications and standards, academic research, and private industry efforts. We focused on work published between 2021 and 2025, capturing the recent surge in AI trustworthiness research while ensuring relevance to current technological capabilities and operational contexts.
+
+Government sources include publications from NIST~\cite{nist_sp800_39,nist_sp800_160v1,nist_sp800_37,nist_ai_rmf_2023}, DoD~\cite{dod_ai_ethics}, DARPA~\cite{darpa_assured_autonomy}, and other defense and standards organizations. Publications by academic and industry research labs span peer-reviewed journals and conference proceedings in AI, security, systems engineering, and related fields. %Industry sources include white papers, technical reports, and frameworks from major technology companies and defense contractors.
+We developed Python scripts to automate the download and extraction of abstracts from these sources, enabling efficient processing of large-scale academic articles and reports while maintaining data quality and consistency. The complete list of venues is presented in Chapter 3.
+
+\subsection{Automated Abstract Collection}
+
+Our automated collection pipeline performs the following operations:
+
+\begin{enumerate}[noitemsep]
+  \item \textbf{Paper Identification} --- Systematically crawls conference proceedings and journal archives to identify relevant papers published between 2021 and 2025
+  
+  \item \textbf{Metadata Extraction} --- Extracts title, authors, publication venue, year, and DOI/URL for each paper
+  
+  \item \textbf{Abstract Download} --- Retrieves abstracts through official APIs and reference export functions (where available) or structured web scraping %while respecting robots.txt protocols
+  
+  \item \textbf{Data Filtering and Validation} --- Verifies completeness of extracted data, filters based on trust-related keywords, and flags papers requiring manual review
+  
+  \item \textbf{Standardization} --- Formats all abstracts into a consistent structure for subsequent categorization
+\end{enumerate}
+
+This automated approach enabled us to process  54,628 papers (before keyword filtering) efficiently and consistently, maintain reproducibility by documenting all data sources and collection methods, reduce human error, support periodic updates, and focus human effort on the more cognitively demanding tasks of categorization and analysis.
+
+\noindent\textbf{Government and Industry Sources.} We manually collected and processed government publications from NIST~\cite{nist_sp800_39,nist_sp800_160v1,nist_ai_rmf_2023}, DoD~\cite{dod_ai_ethics}, and DARPA~\cite{darpa_assured_autonomy}. These sources typically do not provide abstracts in a format amenable to automated collection. Industrial research labs of leading technology companies regularly publish at top conferences and are well-represented in our automatically-collected abstract dataset. For example, the seminal paper on transformers was co-authored by several Google research scientists and published at NeurIPS \cite{vaswani2017attention}.
+
+\subsection{Two-Dimensional Categorization Framework} \label{sec:2D-X-Y}
+
+All collected paper abstracts are categorized according to our two-dimensional framework. The X-axis represents 11 Systems Engineering Lifecycle Phases from ISO/IEC/IEEE 15288~\cite{ISO15288}. This lifecycle view is critical because trustworthiness properties must be established early and maintained throughout development. For mission-secure defense systems, deficiencies in early phases (particularly mission analysis and requirements definition) cannot be adequately compensated for in later phases.
+
+The Y-axis represents the three Organizational Tiers defined in NIST SP 800-39~\cite{nist_sp800_39}. This tiered structure is essential for defense applications because trustworthiness must be maintained at all levels---from strategic organizational policies down to individual system implementations. Gaps at any tier can undermine mission security.
+
+Each paper is assigned to one cell in this organizational tier $\times$ lifecycle phase matrix, enabling us to map the complete landscape of AI trustworthiness research and identify critical gaps in coverage.
+
+\subsection{Importance of the Matrix View}
+
+Understanding the complete landscape of AI trustworthiness research and practice is essential for:
+
+\begin{itemize}[noitemsep]
+\item\textbf{Identifying Critical Gaps.} By mapping all contributions across our two-dimensional framework, we can immediately identify where the community has concentrated its efforts and where significant gaps remain. For defense applications, understanding these gaps is crucial for risk management~\cite{nist_sp800_39,iso31000} and resource allocation.
+
+\item\textbf{Avoiding Redundant Efforts.} A comprehensive landscape view prevents researchers from duplicating existing work, allowing them to focus on genuinely underserved areas. In resource-constrained defense environments, this efficiency is particularly valuable.
+
+\item\textbf{Enabling Systematic Progress.} Rather than pursuing isolated improvements, the landscape view enables the community to systematically address the entire problem space. This is essential for achieving truly trustworthy systems, as vulnerabilities or gaps in any lifecycle phase or organizational tier can compromise overall mission security~\cite{nist_sp800_160v1,amodei2016concrete}.
+
+\item\textbf{Guiding Future Research Priorities.} By revealing where foundational work is lacking, our analysis helps funding agencies, research institutions, and defense organizations prioritize investments in areas that will have the greatest impact on achieving trustworthy mission-secure AI systems~\cite{nist_ai_rmf_2023,ai_alignment}.
+
+\item\textbf{Facilitating Integration and Interoperability.} Understanding how different efforts relate across tiers and lifecycle phases enables better integration of tools, methods, and frameworks. For complex defense systems involving multiple organizations and contractors, this integration capability is essential~\cite{nist_sp800_37,ISO15288}.
+\end{itemize}
+
+\section{Summary}
+
+This chapter has outlined our systematic approach to surveying and categorizing articles and reports on AI trustworthiness, reliability, and security. Our two-dimensional framework---spanning organizational tiers and systems engineering lifecycle phases---provides the analytical structure necessary to identify where current efforts fall short of what is needed for mission-secure defense systems. The following chapters present our methodological rigor in using LLMs for analysis~\cite{li_llm_screening,dai_llm_literature}, survey results, and ultimately reveal critical gaps in current AI trustworthiness research and practice.
+
+% -- Comments below are at the very end of component files
+% -- pointing to the main file
+% ---- this points LaTeX to STORM-AI-Deliverable-1.tex ---- 
+% Local Variables: 
+% TeX-master: "STORM-AI-Deliverable-1"
+% End:

@@ -1,0 +1,353 @@
+\chapter{Pitfalls and Best Practices for using Large Language Models for Literature Survey}
+\label{cha:LLM_lit}
+
+
+% This LaTeX file requires the enumitem package for [nosep] option
+% Add to your preamble: \usepackage{enumitem}
+% Add to your preamble: \usepackage{cite} or \usepackage{natbib}
+% Include bibliography: \bibliography{chapter6_references}
+
+
+
+\section{Purpose and Motivation}
+
+We are planning to use Large Language Models (LLMs) for our literature survey and meta-analysis of AI trustworthiness research. While LLMs offer tremendous potential for accelerating literature review processes—enabling analysis of thousands of documents that would be impractical to review manually—they also introduce risks that must be carefully managed.
+
+As emphasized in our discussions with the NSA technical director, critical errors in literature characterization could jeopardize the entire project. Specifically, two types of errors are unacceptable: hallucinated references (citing non-existent papers, fabricated authors, or invented findings) and inaccurate characterization (misrepresenting what existing papers actually say or claim). Either error type would undermine the credibility of our findings and damage our relationship with project sponsors. Therefore, we must clearly and transparently explain and justify our methodology, ensuring that it avoids common pitfalls and aligns with current best practices in both LLM usage and systematic literature review.
+
+\subsection{Our Quality Assurance Approach}
+
+To ensure the reliability of our LLM-assisted analysis, we implement multiple layers of verification. We will manually review a substantial sample of papers to validate LLM categorizations against actual source documents, and apply the same prompts across multiple LLMs to compare outputs, using disagreement as a signal for human review. We establish a human-reviewed baseline of 100 papers before scaling to LLM-assisted analysis, maintain ongoing random sampling for human verification throughout the scaled analysis of 10,000 papers, and verify claims against actual papers when LLMs make specific assertions about paper content. This multi-layered approach ensures that any systematic errors or hallucinations will be detected and corrected before they compromise the project's integrity.
+
+\subsection{Objectives of This Chapter}
+
+This chapter serves multiple complementary purposes:
+
+\begin{enumerate}
+\item \textbf{Methodological Transparency}: Document our approach so that others can evaluate and replicate our methods
+\item \textbf{Risk Mitigation}: Identify potential failure modes and our strategies to prevent them
+\item \textbf{Quality Assurance}: Establish validation procedures to detect and correct errors
+\item \textbf{Best Practice Alignment}: Demonstrate that our approach follows established standards from both computer science and meta-analysis literature
+\item \textbf{Stakeholder Confidence}: Provide evidence that our LLM-assisted analysis is rigorous and reliable
+\end{enumerate}
+
+\subsection{Scope and Applicability}
+
+While this chapter focuses on our specific application—surveying AI trustworthiness literature—the principles and practices described are broadly applicable to systematic literature reviews in any technical domain, meta-analyses requiring categorization of large document sets, research synthesis projects where manual review is impractical, and any application of LLMs requiring high reliability and verifiability.
+
+\section{Background: Foundations and Prior Work}
+
+This section covers existing work on pitfalls and best practices across two complementary areas: ensuring reliable output from LLMs, and conducting rigorous meta-analyses and literature surveys.
+
+\subsection{Reliable Output from Large Language Models}
+
+Large Language Models have demonstrated remarkable capabilities in text understanding and generation, but they also exhibit well-documented failure modes that are particularly problematic for literature review applications.
+
+\subsubsection{Known LLM Failure Modes}
+
+\noindent\textbf{Hallucination.} LLMs can generate plausible-sounding but factually incorrect information, including non-existent citations with realistic-looking authors, titles, journals, and DOIs; fabricated findings or claims attributed to real papers; blended information from multiple sources incorrectly attributed to a single source; and confident assertions about topics beyond their training data.
+
+\noindent\textbf{Inconsistency.} The same LLM can produce different outputs for identical or similar inputs due to temperature/sampling parameters introducing randomness, context window limitations affecting what information is considered, prompt sensitivity where small wording changes produce different results, and model updates or API changes affecting behavior over time.
+
+\noindent\textbf{Bias and Overconfidence.} LLMs may favor certain types of sources (e.g., open access papers more prominent in training data), reflect biases in their training corpus, express unwarranted confidence in uncertain categorizations, and struggle with nuanced distinctions requiring domain expertise.
+
+\subsubsection{Strategies for Improving LLM Reliability}
+
+Effective strategies for improving LLM reliability include structured prompting with clear, explicit instructions and few-shot examples; multi-model consensus using multiple LLMs and requiring agreement; calibration by requesting confidence scores to identify uncertain classifications; temperature control with lower settings to reduce randomness for deterministic tasks; verification by cross-checking outputs against source documents; and iterative refinement through testing and improving prompts based on error analysis.
+
+
+
+
+\subsection{Using LLMs for Literature Review}
+
+Recent research investigates LLMs specifically for literature screening tasks. Li et al. \cite{li_llm_screening} evaluated LLMs for abstract screening with key findings showing that overall accuracy was high across multiple LLM models, though precision/recall/sensitivity/specificity sometimes reached only approximately 90\%, LLMs can reduce workload while maintaining reasonable accuracy, and human oversight remains essential for borderline cases. Additional recent studies provide complementary evidence: Dai et al. \cite{dai_llm} provide additional evidence on LLM accuracy for literature screening; Luo et al. \cite{luo_llm} identify multiple roles LLMs can play in systematic reviews; Cai et al. \cite{cai_llm} show workload reduction while maintaining recall; and Ahad et al. \cite{ahad_llm} explore sophisticated synthesis tasks.\\
+
+
+\noindent\textbf{Key lessons from prior work include:}
+
+\begin{itemize}
+\item \textbf{LLMs as Assistants, Not Replacements}: Human oversight remains critical
+\item \textbf{Clear Criteria Essential}: Well-defined categorization criteria improve performance
+\item \textbf{Multi-Model Approaches}: Multiple LLMs with consensus improves reliability
+\item \textbf{Validation Critical}: Systematic comparison against human judgments necessary
+\item \textbf{Workload Benefits Real}: LLMs enable analysis at impractical scales for manual review
+\item \textbf{Quality Control Non-Negotiable}: Error detection and correction mechanisms essential
+\end{itemize}
+
+\section{Our Methodology: A Hybrid Human-LLM Approach}
+
+We designed a systematic methodology that combines keyword-based filtering with LLM-assisted categorization and human validation. Our approach ensures comprehensive coverage of AI trustworthiness literature while maintaining rigorous quality control through human oversight and cross-validation. Our methodology consists of three primary stages:
+
+\begin{enumerate}
+  \item \textbf{Keyword-Based Abstract Filtering} --- Pre-screening abstracts using carefully selected keywords related to trust and security
+  
+  \item \textbf{Multi-LLM Categorization} --- Processing filtered abstracts through three independent LLMs to categorize papers in our two-dimensional framework
+  
+  \item \textbf{Human Validation and Comparison} --- Creating a human-indexed matrix for a subset of papers and comparing results to assess reliability and draw conclusions
+\end{enumerate}
+
+\subsection{Stage 1: Keyword-Based Abstract Filtering}
+
+To ensure our survey focuses on relevant AI trustworthiness literature, we first apply keyword-based filtering to the collected abstracts. This pre-screening step reduces the corpus to papers explicitly addressing trust, security, or related properties.
+
+\subsubsection{Keyword Selection}
+
+We developed a comprehensive set of keywords covering multiple dimensions of AI trustworthiness:
+
+\begin{itemize}
+  \item \textbf{Trust and Assurance:} ``trust'', ``reliab'', ``assurance'', ``assured''
+  
+  \item \textbf{Explainability and Interpretability:} ``explainab'', ``xai'', ``interpretab'', ``accountab''
+  
+  \item \textbf{Security and Robustness:} ``secure'', ``security'', ``adversar'', ``resilien'', ``vulnerab''
+  
+  \item \textbf{Specific Threats:} ``prompt injection''
+\end{itemize}
+
+\noindent The complete keyword string used for filtering is:
+
+\texttt{keystrings = ["trust", "explainab", "xai", "interpretab", "accountab", \\
+"reliab", "secure", "security", "adversar", "resilien", "assurance", \\
+"assured", "prompt injection", "vulnerab"]}
+
+\subsubsection{Filtering Process}
+
+For each collected abstract, we perform case-insensitive substring matching against the keyword list. Papers containing at least one keyword in their title or abstract are retained for further analysis. This filtering approach:
+
+\begin{itemize}
+  \item Uses truncated keywords (e.g., ``explainab'' matches ``explainable'', ``explainability'') to capture morphological variations
+  \item Ensures comprehensive coverage of trustworthiness-related literature
+  \item Reduces the corpus to a manageable size while maintaining high recall
+  \item Enables reproducible paper selection based on objective criteria
+\end{itemize}
+
+\subsection{Stage 2: Multi-LLM Categorization}
+
+After keyword filtering, we process the pre-screened abstracts through three independent Large Language Models to categorize each paper according to our two-dimensional framework (organizational tiers × lifecycle phases).
+
+\subsubsection{Categorization Framework}
+
+Our framework maps papers to a two-dimensional matrix combining organizational perspective with systems engineering lifecycle. The Y-axis represents Organizational Tiers from NIST SP 800-39~\cite{nist_sp800_39}:
+
+\begin{itemize}
+  \item \textbf{Tier 1:} Organization (strategic governance)
+  \item \textbf{Tier 2:} Mission/Business Process (operational)
+  \item \textbf{Tier 3:} Information System (technical implementation)
+\end{itemize}
+
+\noindent The X-axis represents Systems Engineering Lifecycle Phases from ISO/IEC/IEEE 15288~\cite{iso15288} and NIST SP 800-160~\cite{nist_sp800_160v1}:
+
+\begin{itemize}
+  \item Business \& Mission Analysis
+  \item Stakeholder Needs \& Requirements Definition
+  \item System Requirements Definition
+  \item Architecture Definition
+  \item Design Definition
+  \item System Analysis
+  \item Implementation
+  \item Integration
+  \item Verification
+  \item Validation
+  \item Transition
+\end{itemize}
+
+\noindent This creates a $3 \times 11 = 33$-cell matrix enabling systematic mapping of literature to specific organizational levels and development phases.
+
+\subsubsection{LLM Selection and Configuration}
+
+We employ three state-of-the-art Large Language Models to independently categorize each abstract:
+
+\begin{enumerate}
+  \item \textbf{LLM 1:} google/gemma-3-27b
+  \item \textbf{LLM 2:} openai/gpt-5.1-chat
+  \item \textbf{LLM 3:} openai/gpt-oss-20b
+\end{enumerate}
+
+Each LLM receives:
+\begin{itemize}
+  \item The complete rubric with detailed descriptions of each tier and lifecycle phase (see Chapter~\ref{ch:evaluating-llms})
+  \item The paper's title and abstract
+  \item Structured prompt requesting categorization
+  \item Instructions to assign papers the best match for each row and column of the matrix
+\end{itemize}
+
+\subsubsection{Categorization Process}
+
+For each pre-screened abstract, we:
+
+\begin{enumerate}
+  \item Feed the abstract independently to all three LLMs
+  \item Collect categorization results including:
+  \begin{itemize}
+    \item Primary organizational tier(s)
+    \item Primary lifecycle phase(s)
+    \item Supporting rationale 
+  \end{itemize}
+  \item Record all results without cross-contamination between models
+  \item Flag papers where LLMs disagree significantly for potential human review
+\end{enumerate}
+
+\subsection{Stage 3: Human Validation and Matrix Comparison}
+
+To validate the reliability of LLM categorization and assess potential biases or systematic errors, we create an independent human-indexed matrix for comparison.
+
+\subsubsection{Human Indexing Process}
+
+We select a representative sample of papers for manual human categorization:
+
+\begin{enumerate}
+  \item \textbf{Sample Selection:} Stratified random sampling ensuring coverage across:
+  \begin{itemize}
+    \item All publication venues
+    \item Different years (2021-2025)
+    \item Various paper types (conference, journal, technical report)
+    \item Papers with high and low LLM consensus
+  \end{itemize}
+  
+  \item \textbf{Manual Review:} Multiple human reviewers independently read full abstracts and categorize papers using the same rubric
+  
+  \item \textbf{Consensus Building:} Reviewers discuss disagreements and establish consensus categorizations
+  
+  \item \textbf{Gold Standard Creation:} Finalized human categorizations serve as ground truth for validation
+\end{enumerate}
+
+\subsubsection{Matrix Comparison and Analysis}
+
+We conduct comprehensive comparison between:
+\begin{itemize}
+  \item Three LLM-generated matrices
+  \item Human-indexed matrix (ground truth)
+\end{itemize}
+
+\noindent \textbf{Comparison Metrics:}
+
+\begin{enumerate}
+  \item \textbf{Inter-Rater Reliability:}
+  \begin{itemize}
+    \item Krippendorff's alpha~\cite{krippendorff_alpha,hayes_krippendorff} between each LLM and human indexing
+    \item Krippendorff's alpha among the three LLMs
+    \item Target: $\alpha \geq 0.800$ for acceptable reliability
+  \end{itemize}
+  
+  \item \textbf{Classification Performance:}
+  \begin{itemize}
+    \item Accuracy, precision, recall, and F1 score for each LLM
+    \item Category-specific performance (which tiers/phases are easiest/hardest)
+    \item Confusion matrices showing common misclassifications
+  \end{itemize}
+  
+  \item \textbf{Consensus Analysis:}
+  \begin{itemize}
+    \item Percentage of papers where all three LLMs agree
+    \item Percentage where majority (2 of 3) agree
+    \item Characteristics of papers with low consensus
+  \end{itemize}
+  
+  \item \textbf{Error Pattern Analysis:}
+  \begin{itemize}
+    \item Systematic biases (e.g., over-assignment to certain categories)
+    \item Types of papers most prone to misclassifications
+    \item Common failure modes across LLMs
+  \end{itemize}
+\end{enumerate}
+
+\subsection{Drawing Conclusions and Recommendations}
+
+Based on the matrix comparison, we will:
+
+\begin{enumerate}
+  \item \textbf{Assess LLM Reliability:} Determine whether LLM categorization achieves sufficient agreement with human judgment ($\alpha \geq 0.800$) to justify using LLM results for the full corpus
+  
+  \item \textbf{Identify Limitations:} Document specific scenarios where LLMs struggle and require human oversight
+  
+  \item \textbf{Refine Methodology:} If reliability is insufficient, iterate on:
+  \begin{itemize}
+    \item Prompt engineering to improve clarity
+    \item Rubric refinement to reduce ambiguity
+    \item Hybrid approaches (LLM for initial categorization, human review for uncertain cases)
+  \end{itemize}
+  
+  \item \textbf{Generate Final Landscape:} Produce the complete literature landscape matrix by:
+  \begin{itemize}
+    \item Using high-confidence LLM categorizations where all three models agree
+    \item Applying human review to disputed or low-confidence cases
+    \item Documenting confidence levels for different regions of the matrix
+  \end{itemize}
+  
+  \item \textbf{Identify Research Gaps:} Analyze the final matrix to identify:
+  \begin{itemize}
+    \item Underserved cells (few or no papers)
+    \item Concentration areas (many papers)
+    \item Critical gaps in early lifecycle phases
+    \item Missing coverage at specific organizational tiers
+  \end{itemize}
+  
+  \item \textbf{Provide Actionable Recommendations:} Guide future research investments based on identified gaps
+\end{enumerate}
+
+\subsection{Quality Assurance Measures}
+
+Throughout the process, we implement multiple quality controls:
+
+\begin{itemize}
+  \item \textbf{Version Control:} All prompts, rubrics, and model configurations are versioned and documented
+  
+  \item \textbf{Reproducibility:} Complete data and code will be made available for replication
+  
+  \item \textbf{Transparency:} We report not just final results but also disagreements, confidence levels, and limitations
+  
+  \item \textbf{Error Prevention:} LLMs never generate citations (only categorize existing papers) to prevent hallucination
+  
+  \item \textbf{Conservative Approach:} When in doubt, we flag for human review rather than accepting uncertain categorizations
+\end{itemize}
+
+This methodology enables us to leverage LLM capabilities for efficient large-scale analysis while maintaining scientific rigor through human validation and cross-model comparison. The resulting literature landscape provides an authoritative foundation for identifying gaps and directing future AI trustworthiness research.
+\section{Validation and Reporting}
+
+\subsection{Validation Approach}
+
+Our validation strategy operates at three levels. Internal validation includes Stage 1 human IRR demonstrating human agreement, Stage 2 human-LLM agreement demonstrating LLM reliability, and Stage 3 spot-checks demonstrating scaled reliability. External validation includes subject matter expert review of samples, comparison with other published surveys where available, and stakeholder review of results. Statistical validation includes Krippendorff's alpha with confidence intervals, confusion matrices showing categorization patterns, category-specific metrics identifying strengths and weaknesses, and temporal stability testing to ensure consistency over time.
+
+\subsection{Reporting Standards}
+
+We commit to comprehensive reporting across multiple dimensions. The methodology section will include complete framework description, full rubric with definitions, LLM models with versions and parameters, prompt engineering details, and quality control procedures. The results section will include corpus descriptive statistics, inter-rater reliability statistics, categorization distribution across the framework, and identified literature gaps. The validation section will include performance metrics, error analysis with examples, spot-check results, and acknowledged limitations. Supplementary materials will include the complete categorized paper list, raw data for replication, rubric versions, and example prompts and outputs.
+
+\subsection{Transparency and Reproducibility}
+
+To enable reproducibility, we provide data availability through the full paper list with DOIs, categorization assignments, and rubric versions. We provide code availability through scripts for LLM API calls, data processing, and IRR computation. We maintain documentation including decision logs, rubric evolution, and error patterns. We use version control for all artifacts with timestamps and audit trails, enabling full traceability of our process.
+
+\section{Limitations and Mitigation Strategies}
+
+\noindent\textbf{Acknowledged Limitations:}
+We recognize several limitations in our approach. Context window constraints mean some papers may be too long for LLMs to process in full; we mitigate this by focusing on abstracts plus key sections and conducting manual review for critical papers. LLM training data cutoffs mean models may not have seen recent papers; we mitigate this by providing full text rather than relying on prior knowledge. Categorization ambiguity exists as some papers span multiple categories; we mitigate this by allowing multiple assignments and documenting ambiguous cases. Selection bias may occur as our search strategy could miss relevant papers; we mitigate this by documenting search terms and acknowledging scope limitations. Resource constraints mean we cannot manually review all 4000+ papers; we mitigate this through strategic sampling and multi-model consensus.\\
+
+\noindent\textbf{Threats to Validity:}
+We address several threats to validity. For internal validity, human raters may be influenced by prior knowledge; we mitigate through blind review where feasible and independent categorization. For external validity, our framework is specific to our research questions; we mitigate by clearly documenting rationale and scope. For construct validity, categories may not perfectly capture all distinctions; we mitigate by grounding in established standards and seeking stakeholder validation. For reliability, LLM performance may degrade on unfamiliar papers; we mitigate through continuous monitoring and willingness to expand review if degradation is detected.
+
+\section{Ethical Considerations}
+
+\noindent\textbf{Attribution and Credit:}
+We ensure all papers are properly cited with full attribution, avoid any fabricated citations, and maintain clear distinction between paper claims and our interpretations. Proper attribution respects intellectual property and enables readers to verify our characterizations.\\
+
+\noindent\textbf{Bias and Fairness}
+We acknowledge potential biases in LLM training data, commit to reporting performance across different source types (journals, conferences, preprints), and consider whether certain work may be under-represented in our corpus or analysis. Awareness of bias enables us to interpret results appropriately.\\
+
+\noindent\textbf{Responsible AI Use}
+We maintain that LLMs augment human judgment rather than replace it, human accountability is maintained throughout the process, and we are transparent about LLM involvement in our methodology. This responsible approach ensures AI serves human goals rather than introducing unaccountable automation.
+
+\section{Summary and Key Takeaways}
+
+Our methodology embodies eight key principles that enable reliable LLM-assisted literature review:
+
+\begin{enumerate}
+\item \textbf{Human-LLM Hybrid}: LLMs accelerate analysis; humans maintain oversight and accountability
+\item \textbf{Validation-First}: Establish reliability on controlled subset before scaling
+\item \textbf{Multi-Model Consensus}: Agreement across models improves reliability
+\item \textbf{Statistical Rigor}: IRR metrics quantify consistency objectively
+\item \textbf{Error Prevention}: Multiple safeguards against hallucination and mischaracterization
+\item \textbf{Transparency}: Full methodological documentation enables scrutiny and replication
+\item \textbf{Continuous Monitoring}: Quality control maintained throughout scaled application
+\item \textbf{Conservative Approach}: Flag for review when uncertain rather than accept questionable categorizations
+\end{enumerate}
+
+We expect this methodology to produce reliable categorization of 4000+ papers with quantified reliability ($\alpha \geq 0.800$), provide comprehensive literature landscape mapping, contribute methodological insights for LLM-assisted research, and build stakeholder confidence through rigorous validation. By combining established meta-analysis best practices with emerging LLM capabilities, we demonstrate that AI can be used reliably to study AI—with careful methodology, rigorous validation, and appropriate human oversight.

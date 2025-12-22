@@ -1,0 +1,62 @@
+\chapter{Executive Summary}
+\label{cha:executive-summary}
+
+\vspace{-0.3in}
+% \fbox{%
+%   \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+%     \textbf{Summary of Main Points Bottom Line Up Front (BLUF)}
+%     \begin{itemize}
+%       \item When we say \emph{trustworthy artificial intelligence} we mean \textbf{trustworthy systems with AI as a subsystem}
+%       \item This definition is consistent with the following standards
+%         \begin{itemize}
+%           \item NIST SP 800-160v1r1, Engineering Secure Trustworthy Systems, \cite{NIST800-160}
+%           \item ISO/IEC/IEEE 15288, Systems and software engineering — System life cycle processes, \cite{ISO15288}
+%         \end{itemize}
+%     \end{itemize}
+%   \end{minipage}%
+% }
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{Figures/heatmap.png}
+    \caption{\it Typical visualization of AI trustworthiness research distribution from analysis of over 50,000 papers. This experiment is typical of all conducted experiments. Papers are categorized across Organization, Business, and System Level and Problem, Solution, and Trustworthiness context. Color gradient from red to green indicates research concentration, revealing severe gaps in organizational governance and trustworthiness validation.}
+    \label{fig:heatmap}
+\end{figure}
+
+
+
+\noindent\textbf{What We Found.} Analysis of over 50,000 AI trustworthiness papers reveals a critical structural imbalance threatening national security and military AI deployment. More than 95\% of work concentrates at the technical System Level, while organizational governance receives less than 1\% and operational process integration barely 3\%. This leaves organizations with technically sophisticated AI systems but no frameworks for trustworthiness for commanding them, integrating them into operations, or validating their performance under combat conditions.\\
+
+%Figure~\ref{fig:heatmap} illustrates this distribution across organizational levels and lifecycle contexts, revealing extreme concentration in technical implementation with negligible research addressing foundational requirements for deployment.
+
+\noindent\textbf{The Problem: Building Solutions Before Defining Problems.} The field builds technical solutions before establishing mission context, governance frameworks, and validation methods necessary for trustworthy systems. This contradicts NIST SP 800-160, which explicitly states that trustworthiness begins with stakeholder needs and protection requirements carried throughout the lifecycle. Less than 3\% of the research addresses Business and Mission Analysis or definition of stakeholder needs and requirements, the phases where purpose, constraints, and success criteria should be established. With virtually no research at the Organizational Level (Tier 1), commanders lack frameworks for chain-of-command accountability, doctrine integration, or coordinating AI across joint operations. Only 2--3\% of the work examines operational workflows, Rules of Engagement, or tactical procedures. Sparse research on verification (802 papers) and validation (276 papers) provides insufficient methods for proving that systems meet trustworthiness objectives in operational settings.\\
+
+\noindent\textbf{Why This Matters.} Solution-first thinking produces suboptimal tools without rigorously defining the problems they should solve. Industry data shows that 95\% of custom enterprise AI solutions fail to reach production due to brittle workflows, lack of context, and poor alignment with operational needs--the same issues plaguing national security applications.
+
+This creates a threefold risk: \textbf{the governance risk} from unclear accountability in AI-assisted decisions; \textbf{operational risk} when poorly integrated AI disrupts processes during time-critical missions; and \textbf{performance risk} when laboratory-validated systems fail under operational stress. A technically perfect AI targeting system provides no value if commanders lack authorization frameworks, operators lack integration procedures, or testers lack validation methods for adaptive adversaries.\\
+
+\noindent\textbf{The Path Forward.} Addressing these gaps requires redirecting research from technical optimization toward organizational and operational foundations:
+
+\begin{itemize}[noitemsep]
+    \item \textbf{Establish organizational governance frameworks} defining AI risk management structures compatible with national security and military command hierarchies, specifying accountability for AI-assisted decisions, and aligning capabilities with strategic objectives.
+
+    \item \textbf{Develop process integration methodologies} detailing how AI fits into operational workflows, including doctrine development, human-AI teaming protocols for tactical environments, and training frameworks for AI-enabled units.
+
+    \item \textbf{Create multi-level validation approaches} spanning system testing through operational war gaming to strategic policy validation, with methods for continuous monitoring during deployment and performance assessment under adversarial conditions.
+
+    \item \textbf{Apply disciplined systems engineering methodologies} like STORM (System-Theoretic and Technical Operational Risk Management), which explicitly addresses the missing work: eliciting mission objectives, identifying unacceptable losses and hazards, and defining constraints governing system behavior. STORM's STPA-SEC component aligns policy intent with technical implementation, while its Certified Security by Design (CSBD) component provides formal verification that designs satisfy mission requirements---delivering demonstrable trustworthiness rather than assumptions.
+\end{itemize}
+
+\noindent\textbf{Conclusion.} Without immediate research investment in organizational, process, and validation domains, the gap between AI capability and deployable systems will continue widening. The path to mission-secure AI requires doing the hard early work: explicit mission elicitation, clear organizational risk framing, and well-defined stakeholder requirements. Only then can security and trustworthiness be demonstrated rather than assumed. This shift is not merely academic---it is a prerequisite for developing mission-secure, trustworthy AI systems that commanders can confidently employ in defense of national security.
+
+%In this first deliverable of our ongoing project, we survey government, academic, and private industry efforts in AI trustworthiness and summarize our findings. We developed a matrix to categorize the literature along two dimensions: the three organizational tiers from NIST SP 800-39 (Tier 1: Organization, Tier 2: Mission/Business Process, and Tier 3: Information System) on the Y-axis, and systems engineering lifecycle phases on the X-axis---including Business \& Mission Analysis, Stakeholder Needs \& Requirements Definition, System Requirements Definition, Architecture Definition, Design Definition, System Analysis, Implementation, Integration, Verification, Validation, and Transition. This two-dimensional framework enables us to identify where current AI trustworthiness efforts are concentrated and, more importantly, which areas lack sufficient contributions from the research and practitioner communities.
+
+%Understanding this landscape is essential for advancing AI security and trustworthy systems research. By systematically mapping existing work, we can direct future research efforts toward the most critical gaps, avoid duplicating existing solutions, and ensure that AI trustworthiness initiatives are comprehensive rather than fragmented. This holistic view helps researchers, policymakers, and practitioners prioritize investments and align their efforts with the areas of greatest need, ultimately accelerating progress toward truly trustworthy AI systems.
+
+
+% -- Comments below are at the very end of component files --
+% -- pointing to the main file --
+% ---- this points LaTeX to STORM-AI-Deliverable-1.tex ---- 
+% Local Variables: 
+% TeX-master: "STORM-AI-Deliverable-1"
+% End:

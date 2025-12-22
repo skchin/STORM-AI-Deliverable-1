@@ -1,0 +1,616 @@
+\chapter{Methodology for Surveying and Categorizing Articles and Reports}
+\label{cha:methodology}
+
+% This LaTeX file requires the enumitem package for [nosep] option
+% Add to your preamble: \usepackage{enumitem}
+% Add to your preamble: \usepackage{cite} or \usepackage{natbib}
+% Include bibliography: \bibliography{chapter6_references}
+
+\section{Overview and Motivation}
+
+We use Large Language Models (LLMs) for our survey and meta-analysis of AI trustworthiness research articles and reports. Although LLMs offer tremendous potential to accelerate review processes---enabling the analysis of thousands of documents that would be impractical to review manually---they also introduce risks that must be carefully managed.
+
+As emphasized in our discussions with the NSA technical director, critical errors in research article and report characterization could jeopardize the entire project. Specifically, two types of errors are unacceptable: hallucinated references (citing non-existent papers, fabricated authors, or invented findings) and inaccurate characterization (misrepresenting what existing papers actually say or claim). Either error type would undermine the credibility of our findings and damage our relationship with project sponsors. Therefore, we must clearly and transparently explain and justify our methodology, ensuring that it avoids common pitfalls and aligns with current best practices in both LLM usage and systematic review of articles and reports.
+
+\subsection{Quality Assurance Approach}
+
+To ensure the reliability of our LLM-assisted analysis, we implement multiple layers of verification. First, we write traditional scripts (without LLMs) to download all 54K abstracts from pre-determined, well-established publication venues.  This ensures that all surveyed papers are real, high quality, and accompanied by official working web links.  Next, we use traditional keyword-based filtering (without LLMs) to identify a subset of 9K abstracts relevant to trustworthy and secure systems with AI.  Finally, we use multiple LLMs and feed each of the 9K abstracts to each LLM, with the same detailed and carefully crafted prompt, using independent API calls for each abstract.  Furthermore, we validate LLM outputs against manual human categorization on a uniform random sample of 50 abstracts. This multi-layered approach ensures that any systematic errors or hallucinations will be quantified and corrected before they compromise the project's integrity.
+
+\subsection{Objectives of This Chapter}
+
+This chapter serves multiple complementary purposes:
+
+\begin{enumerate}
+\item \textbf{Methodological Transparency}: Document our approach so that others can evaluate and replicate our methods
+\item \textbf{Risk Mitigation}: Identify potential failure modes and our strategies to prevent them
+\item \textbf{Quality Assurance}: Establish validation procedures to detect and correct errors
+\item \textbf{Best Practice Alignment}: Demonstrate that our approach follows established standards from both computer science and meta-analysis articles and practices
+\item \textbf{Stakeholder Confidence}: Provide evidence that our LLM-assisted analysis is rigorous and reliable
+\end{enumerate}
+
+\subsection{Scope and Applicability}
+
+While this chapter focuses on our specific application---surveying AI trustworthiness articles and reports---the principles and practices described are broadly applicable to systematic reviews of articles and reports in any technical domain, meta-analyses requiring categorization of large document sets, research synthesis projects where manual review is impractical, and any application of LLMs requiring high reliability and verifiability.
+
+\section{Sources and Collection of Articles and Reports}
+
+Our survey of articles and reports encompasses three primary domains: government publications and standards, academic research, and private industry efforts. We focused on work published between 2021 and 2025, capturing the recent five years of surge in AI trustworthiness research while ensuring relevance to current technological capabilities and operational contexts.
+
+% \subsection{Government Sources}
+
+% Government sources include publications from:
+% \begin{itemize}
+%     \item National Institute of Standards and Technology (NIST) – including SP 800-39, SP 800-160 Vol. 1 Rev. 1, SP 800-37 Rev. 2, and AI Risk Management Framework (AI RMF 1.0)
+%     \item Department of Defense (DoD) – AI ethics principles and policy documents
+%     \item Defense Advanced Research Projects Agency (DARPA) – program descriptions and technical reports
+%     \item Other defense and standards organizations
+% \end{itemize}
+
+% \subsection{Academic Sources}
+
+\subsection{Publication Sources}
+
+To ensure comprehensive coverage of AI trustworthiness research across academia, industry, and government, we systematically collected articles and reports from multiple high-quality sources. Our academic articles and reports collection encompasses the following premier venues in artificial intelligence, machine learning, and related fields:
+
+\begin{itemize}
+    \item \textbf{AI and Society Journal} — \url{https://link.springer.com/journal/146}
+    \begin{itemize}
+        \item Springer journal focusing on societal implications of AI development and deployment
+    \end{itemize}
+    
+    \item \textbf{AAAI/ACM Conference on AI, Ethics, and Society (AIES)} — \url{https://www.aies-conference.com/2025/}
+    \begin{itemize}
+        \item Premier conference on responsible AI, fairness, and societal impacts
+    \end{itemize}
+    
+    \item \textbf{ACM International Conference on Hybrid Systems: Computation and Control (HSCC)} — \url{https://hscc.acm.org/2025/}
+    \begin{itemize}
+        \item Conference on safety-critical cyber-physical systems and formal methods
+    \end{itemize}
+    
+    \item \textbf{Annual AAAI Conference on Artificial Intelligence} — \url{https://aaai.org/conference/aaai/}
+    \begin{itemize}
+        %\item Association for the Advancement of Artificial Intelligence publications, including AI Magazine
+        \item Top conference covering a broad spectrum of AI research including trustworthiness and security
+    \end{itemize}
+    
+    \item \textbf{ACM SIGKDD} — \url{https://kdd.org/conferences}
+    \begin{itemize}
+        \item Knowledge Discovery and Data Mining conference proceedings
+        \item Addresses privacy, fairness, and robustness in machine learning
+    \end{itemize}
+    
+    \item \textbf{International Conference on Machine Learning (ICML)} — \url{https://icml.cc/}
+    \begin{itemize}
+        \item Leading venue for machine learning research including robustness and safety
+    \end{itemize}
+    
+    \item \textbf{Conference on Neural Information Processing Systems (NeurIPS)} — \url{https://neurips.cc/}
+    \begin{itemize}
+        \item Premier conference featuring work on AI safety, alignment, and robustness
+    \end{itemize}
+    
+    \item \textbf{North American Chapter of the Association for Computational Linguistics (NAACL)} — \url{https://naacl.org/}
+    \begin{itemize}
+        \item Natural language processing research including bias and fairness in language models
+    \end{itemize}
+    
+    \item \textbf{IEEE/CVF Computer Vision Conferences} — \url{https://cvpr.thecvf.com/}
+    \begin{itemize}
+        \item Computer vision research including adversarial robustness and fairness
+    \end{itemize}
+    
+    \item \textbf{International Conference on Autonomous Agents and Multiagent Systems (AAMAS)} — \url{https://aamas2025.org/} or \url{https://dl.acm.org/conference/aamas}
+    \begin{itemize}
+        \item Research on autonomous systems, multi-agent coordination, and safety
+    \end{itemize}
+\end{itemize}
+
+% \subsection{Industry Sources}
+
+% Industry sources include white papers, technical reports, and frameworks from major technology companies and defense contractors that address AI trustworthiness, security, and responsible AI development practices.
+
+\subsection{Automated Abstract Collection}
+
+We developed custom Python scripts to automate the collection and processing of abstracts from publications and proceedings above. Our automated collection pipeline performs the following operations:
+
+\begin{enumerate}
+    \item \textbf{Paper Identification} — Systematically crawls online conference proceedings and journal archives to identify all papers published between 2021 and 2025
+    
+    \item \textbf{Metadata Extraction} — Extracts title, authors, publication venue, year, and DOI/URL for each paper
+    
+    \item \textbf{Abstract Download} — Retrieves abstracts through official APIs and bulk reference export features (where available) or structured web scraping %while respecting robots.txt protocols
+    
+    \item \textbf{Data Validation} — Computes statistics like abstract length and paper counts to flag outliers and weed out any parsing errors
+    
+    \item \textbf{Standardization} — Formats all abstracts into a consistent structure for subsequent categorization
+
+    \item \textbf{Keyword Filtering} — Filters abstracts to only those that contain a pre-specified list of keywords related to trustworthiness and security (given in Section \ref{KeywordFiltering})
+\end{enumerate}
+
+This automated approach enables us to:
+\begin{itemize}
+    \item Process  54,628 papers (before keyword filtering) efficiently and consistently
+    \item Maintain reproducibility by documenting all data sources and collection methods
+    \item Reduce human error in data collection
+    \item Enable periodic updates to incorporate newly published work
+    \item Focus human effort on the more cognitively demanding tasks of categorization and analysis
+\end{itemize}
+
+Government sources, which typically do not provide abstracts in a format amenable to automated collection, were processed manually while applying the same categorization framework.
+
+\section{Two-Dimensional Categorization Framework}
+
+Our survey gathered documents that detail the approaches suggested by Government, Industry, and Academia for the trustworthiness of AI. To evaluate these documents, we developed a matrix that categorizes the data based on the NIST SP 800-37 and 800-39 organizational levels of control (Y-axis) versus the systems engineering technical processes identified in NIST SP 800-160 Volume 1 Revision 1 and ISO/IEC/IEEE 15288 (X-axis). Our rubric uses definitions provided by these foundational, authoritative documents to develop a set of questions enabling accurate, reliable classification of documents to illustrate the coverage of articles and reports across the spectrum of the framework.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/Rubric.png}
+    \caption{NIST 800-160 Based Review of AI Articles and Reports Rubric}
+    \label{fig:rubric}
+\end{figure}
+
+\subsection{Y-Axis: Organizational Tiers (NIST SP 800-39)}
+
+The vertical axis represents the three organizational tiers defined in NIST SP 800-39, which can be mapped to the AI Risk Management Framework (AI RMF 1.0) core functions as shown in Table~\ref{tab:vertical_axis}.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|>{\raggedright\arraybackslash}p{0.45\linewidth}|>{\raggedright\arraybackslash}p{0.45\linewidth}|}\hline
+         \textbf{NIST 800-37, 800-39 LEVEL}& \textbf{AI RMF CORE FUNCTION}\\\hline
+         Level 1 : Organization& emphasize GOVERN (policies, roles, culture) ``Have AI''\\\hline
+         Level 2: Mission / Business& GOVERN + MAP/MEASURE planning across business processes\\\hline
+         Level 3: System& ``Use AI for''\\ \hline
+    \end{tabular}
+    \caption{Vertical Rubric Axis: Organizational Tiers and AI RMF Core Functions}
+    \label{tab:vertical_axis}
+\end{table}
+
+\begin{enumerate}
+  \item \textbf{LEVEL 1: Organizational Level} — Focuses on enterprise-wide risk management strategies, governance, policies, and broad objectives. This level emphasizes senior leadership's role in setting the ``tone at the top'' for risk management. The level is where risk framing occurs. Context is established by senior leaders based on the organization's overall mission and business goals. Level 1 provides the strategies guiding prioritization decisions based on functions necessary for the organization to succeed. The strategies provide the context and key decisions that direct where AI should be used as well as measures of success necessary to guide the work and decisions at level 2.
+  
+  \item \textbf{LEVEL 2: Mission/Business Process Level} — Translates the organizational strategy into specific mission or business functions, including identifying and prioritizing security and privacy requirements and allocating them appropriately. It links enterprise architecture with security and privacy architectures.
+  
+  \item \textbf{LEVEL 3: System Level} — Addresses risk from the perspective of individual information systems, guided by higher-level organizational and mission/business process decisions. This includes the selection, implementation, assessment, and continuous monitoring of controls for specific technical, operational and managerial systems.
+\end{enumerate}
+
+This tiered structure is essential for defense applications because trustworthiness must be maintained at all levels—from strategic organizational policies down to individual system implementations. Gaps at any tier can undermine mission security.
+
+\subsection{X-Axis: Systems Engineering Lifecycle Phases}
+
+The horizontal axis complements the vertical axis by aligning the various organizational efforts to manage information system-related risks with a temporal view of when they occur within the lifecycle of system and software development. ISO/IEC/IEEE 15288:2023 System and Software Engineering Lifecycle Processes provides a widely used, global standard identifying the lifecycle processes necessary to create any system. NIST SP 800-160 Engineering Trustworthy Secure Systems uses the ISO/IEC/IEEE processes as a starting point and adds amplifying details believed sufficient to engineer a secure and trustworthy system. NIST SP 800-160 follows the same processes in the same chronological order. As a result, we selected the 800-160 (and 15288 processes) as the foundation for the horizontal axis.
+
+The systems engineering lifecycle phases are:
+
+\begin{enumerate}
+    \item \textbf{Business and Mission Analysis} — The first technical process involves analyzing the business or mission strategy (typically the operational design in military operations) to identify gaps and opportunities.
+    
+    \item \textbf{Stakeholder Needs and Requirements Definition} — Identifying and defining the needs, concerns, priorities, and constraints of all relevant stakeholders to establish system protection needs.
+    
+    \item \textbf{System Requirements Definition} — Transforming stakeholder protection needs into specific, verifiable system security requirements and defining security-driven performance measures.
+    
+    \item \textbf{Architecture Definition} — Developing security views and viewpoints of the system architecture and identifying necessary enabling systems to achieve security objectives.
+    
+    \item \textbf{Design Definition} — Providing sufficient data and information about the system and its elements to realize the solution in accordance with system requirements and architecture.
+    
+    \item \textbf{System Analysis} — Producing a rigorous basis of data and information for the technical understanding of security aspects to aid decision-making and technical assessments across the life cycle.
+    
+    \item \textbf{Implementation} — The process of realizing a specified system element. In this context, it involves implementing security and privacy controls using secure engineering methodologies.
+    
+    \item \textbf{Integration} — Combining system elements to produce a whole, ensuring that these combinations function securely.
+    
+    \item \textbf{Verification} — Confirmation through objective evidence that specified requirements have been fulfilled, typically focusing on whether the system \textit{meets its design and trustworthiness requirements}.
+    
+    \item \textbf{Validation} — Confirmation by examination and provision of objective evidence that the requirements for a specific intended use or application have been fulfilled, ensuring the system works as intended \textit{in the real world} and produces desired outcomes.
+    
+    \item \textbf{Transition} — The process of making a system available for operational use.
+\end{enumerate}
+
+This lifecycle view is critical because trustworthiness properties must be established early and maintained throughout development. For mission-secure defense systems, deficiencies in early phases (particularly mission analysis and requirements definition) cannot be adequately compensated for in later phases.
+
+\subsubsection{Lifecycle Contexts}
+
+It also proved useful to group the 11 lifecycle stages into 3 contexts:
+\begin{enumerate}
+\item \textbf{Problem Context} — Stages 1-3, related to problem definition
+\item \textbf{Solution Context} — Stages 4-8, related to developing candidate solutions
+\item \textbf{Trustworthiness Context} — Stages 9-11, related to assuring that the proposed solutions actually solve the originally defined problems
+\end{enumerate}
+These contexts provide a ``lower-resolution'' or more ``coarse-grained'' X axis, which helps identify broader trends and reduce noise (i.e., papers addressing nearby but distinct stages, or multiple stages, within the same context).
+
+\subsection{Importance of the Matrix Framework}
+
+This two-dimensional framework creates a ($3 \times 11 =$) 33-cell matrix enabling systematic mapping of articles and reports to specific organizational levels and development phases. Understanding the complete landscape of AI trustworthiness research and practice is essential for several reasons:
+
+\begin{itemize}
+  \item \textbf{Identifying Critical Gaps} — By mapping all contributions across our two-dimensional framework, we can immediately identify where the community has concentrated its efforts and, more importantly, where significant gaps remain. For defense applications, understanding these gaps is crucial for risk management and resource allocation.
+  
+  \item \textbf{Avoiding Redundant Efforts} — A comprehensive landscape view prevents researchers and practitioners from duplicating existing work, allowing them to focus on genuinely underserved areas. In resource-constrained defense environments, this efficiency is particularly valuable.
+  
+  \item \textbf{Enabling Systematic Progress} — Rather than pursuing isolated improvements, the landscape view enables the community to systematically address the entire problem space. This is essential for achieving truly trustworthy systems, as vulnerabilities or gaps in any lifecycle phase or organizational tier can compromise overall mission security.
+  
+  \item \textbf{Guiding Future Research Priorities} — By revealing where foundational work is lacking, our analysis helps funding agencies, research institutions, and defense organizations prioritize investments in areas that will have the greatest impact on achieving trustworthy mission-secure AI systems.
+  
+  \item \textbf{Facilitating Integration and Interoperability} — Understanding how different efforts relate across tiers and lifecycle phases enables better integration of tools, methods, and frameworks. For complex defense systems involving multiple organizations and contractors, this integration capability is essential.
+\end{itemize}
+
+\section{Background: LLM Foundations and Prior Work}
+
+This section covers existing work on pitfalls and best practices for ensuring reliable output from LLMs and conducting rigorous surveys of articles and reports.
+
+\subsection{Reliable Output from Large Language Models}
+
+Large Language Models have demonstrated remarkable capabilities in text understanding and generation, but they also exhibit well-documented failure modes that are particularly problematic for review applications of articles and reports.
+
+\subsubsection{Known LLM Failure Modes}
+
+\noindent\textbf{Hallucination.} LLMs can generate plausible-sounding but factually incorrect information, including non-existent citations with realistic-looking authors, titles, journals, and DOIs; fabricated findings or claims attributed to real papers; blended information from multiple sources incorrectly attributed to a single source; and confident assertions about topics beyond their training data.
+
+\noindent\textbf{Inconsistency.} The same LLM can produce different outputs for identical or similar inputs due to temperature/sampling parameters introducing randomness, context window limitations affecting what information is considered, prompt sensitivity where small wording changes produce different results, and model updates or API changes affecting behavior over time.
+
+\noindent\textbf{Bias and Overconfidence.} LLMs may favor certain types of sources (e.g., open access papers more prominent in training data), reflect biases in their training corpus, express unwarranted confidence in uncertain categorizations, and struggle with nuanced distinctions requiring domain expertise.
+
+\subsubsection{Strategies for Improving LLM Reliability}
+
+Effective strategies for improving LLM reliability include structured prompting with clear, explicit instructions and few-shot examples; multi-model consensus using multiple LLMs and requiring agreement; calibration by requesting confidence scores to identify uncertain classifications; temperature control with lower settings to reduce randomness for deterministic tasks; verification by cross-checking outputs against source documents; and iterative refinement through testing and improving prompts based on error analysis.
+
+\subsection{Using LLMs for Reviewing Articles and Reports}
+
+Recent research investigates LLMs specifically for screening articles and reports. Li et al. \cite{li_llm_screening} evaluated LLMs for abstract screening with key findings showing that overall accuracy was high across multiple LLM models, though precision/recall/sensitivity/specificity sometimes reached only approximately 90\%. LLMs can reduce workload while maintaining reasonable accuracy, and human oversight remains essential for borderline cases. Additional recent studies provide complementary evidence: Dai et al. \cite{dai2024accuracy} provide additional evidence on LLM accuracy for screening articles and reports; Luo et al. \cite{luo2024potential} identify multiple roles LLMs can play in systematic reviews; Cai et al. \cite{cai2025utilizing} show LLM-assisted meta-analyses can achieve workload reduction while maintaining recall; and Ahad et al. \cite{ahad2024empowering} study human validation of meta-analyses generated by LLMs fine-tuned on scientific datasets.
+
+\noindent\textbf{Key lessons from prior work include:}
+
+\begin{itemize}
+\item \textbf{LLMs as Assistants, Not Replacements}: Human oversight remains critical
+\item \textbf{Clear Criteria Essential}: Well-defined categorization criteria improve performance
+\item \textbf{Multi-Model Approaches}: Multiple LLMs with consensus improves reliability
+\item \textbf{Validation Critical}: Systematic comparison against human judgments necessary
+\item \textbf{Workload Benefits Real}: LLMs enable analysis at impractical scales for manual review
+\item \textbf{Quality Control Non-Negotiable}: Error detection and correction mechanisms essential
+\end{itemize}
+
+\section{Hybrid Human-LLM Approach}
+
+We designed a systematic methodology that combines keyword-based filtering with LLM-assisted categorization and human validation. Our approach ensures comprehensive coverage of AI trustworthiness articles and reports while maintaining rigorous quality control through human oversight and cross-validation. Our methodology consists of three primary stages:
+
+\begin{enumerate}
+  \item \textbf{Keyword-Based Abstract Filtering} — Pre-screening abstracts using carefully selected keywords related to trust and security
+  
+  \item \textbf{Multi-LLM Categorization} — Processing filtered abstracts through three independent LLMs to categorize papers in our two-dimensional framework
+  
+  \item \textbf{Human Validation and Comparison} — Creating a human-indexed matrix for a subset of papers and comparing results to assess reliability and draw conclusions
+\end{enumerate}
+
+\subsection{Stage 1: Keyword-Based Abstract Filtering}
+\label{KeywordFiltering}
+To ensure our survey focuses on relevant AI trustworthiness articles and reports, we first apply keyword-based filtering to the collected abstracts. This pre-screening step reduces the corpus to papers explicitly addressing trust, security, or related properties.
+
+%\subsubsection{Keyword Selection}
+
+We developed a comprehensive set of keywords covering multiple dimensions of AI trustworthiness:
+
+\begin{itemize}
+  \item \textbf{Trust and Assurance}: ``trust'', ``reliab'', ``assurance'', ``assured''
+  \item \textbf{Explainability and Interpretability}: ``explainab'', ``xai'', ``interpretab'', ``accountab''
+  \item \textbf{Security and Robustness}: ``secure'', ``security'', ``adversar'', ``resilien'', ``vulnerab''
+  \item \textbf{Specific Threats}: ``prompt injection''
+\end{itemize}
+
+The complete keyword string used for filtering is:
+
+\begin{verbatim}
+keystrings = ["trust", "explainab", "xai", "interpretab", "accountab",
+"reliab", "secure", "security", "adversar", "resilien", "assurance",
+"assured", "prompt injection", "vulnerab"]
+\end{verbatim}
+
+%\subsubsection{Filtering Process}
+
+For each collected abstract, we perform case-insensitive substring matching against the keyword list. Papers containing at least one keyword in their abstract are retained for further analysis. This filtering approach uses truncated keywords (e.g., ``explainab'' matches ``explainable'', ``explainability'') to capture morphological variations and reduces the corpus to a manageable size for LLM processing, while capturing a wide range of trustworthiness-related articles and reports.  Using simple keyword filtering also enables reproducible paper selection based on objective criteria.
+
+\subsection{Stage 2: Multi-LLM Categorization}
+
+%After keyword filtering, we process the pre-screened abstracts through three independent Large Language Models to categorize each paper according to our two-dimensional framework (organizational tiers × lifecycle phases). The total number of filtered abstracts fed to the LLMs was over 9,000.  From these 9,000, we sampled 50 uniformly at random from the corpus for manual human validation (detailed in section \ref{human_validation}).  Human validation and LLM categorization followed the same categorization rubric.
+
+%\subsubsection{LLM Selection and Configuration}
+After applying the keyword filters described in \ref{KeywordFiltering}, we were left with 9,183 abstracts to review and score. Each abstract was evaluated along both the x- and y-axes, requiring two separate LLM queries per entry for each of the three LLMs used. Even at this reduced set, the process resulted in 55,098 %54,984
+unique LLM calls (9,183 abstracts $\times$ 3 LLMs $\times$ 2 queries per LLM).
+
+When using cloud-hosted models, individual prompts routinely took between 5 and 20 seconds to complete, leading to substantial end-to-end processing delays. Notably, locally hosted models performed on par with significantly more sophisticated—and more expensive—frontier models. This outcome is largely attributable to the tightly constrained prompt design, the narrow evaluation scope, and the inherently subjective nature of the scoring task.
+
+To this end, we selected two locally hosted models alongside a single frontier model for comparative evaluation. This selection allowed us to directly assess performance, consistency, and throughput under identical prompt constraints.
+
+\begin{enumerate}
+\item LLM 1: google/gemma-3-27b
+\item LLM 2: openai/gpt-oss-20b
+\item LLM 3: openai/gpt-5.1-chat
+\end{enumerate}
+
+Each LLM receives a structured prompt requesting categorization that includes:
+\begin{itemize}
+  \item The rubric for each axis in question, with detailed descriptions of each tier or lifecycle phase
+  \item The paper's title and abstract
+  \item Instructions to assign papers to top three best matches of the abstract to the axis category in question, and include a two to three sentence "rationale" as to why the LLM selected those categories
+\end{itemize}
+The full rubric for each axis category is given in section \ref{sec:detailed_rubric_questions}.
+
+% \subsubsection{Categorization Process}
+
+% For each pre-screened abstract, we:
+
+% \begin{enumerate}
+% \item Feed the abstract independently to all three LLMs
+% \item Collect categorization results including:
+%   \begin{itemize}
+%     \item Primary organizational tier(s)
+%     \item Primary lifecycle phase(s)
+%     \item Confidence scores for each assignment
+%     \item Supporting rationale extracted from the abstract
+%   \end{itemize}
+% \item Record all results without cross-contamination between models
+% %\item Flag papers where LLMs disagree significantly for potential human review
+% \end{enumerate}
+
+\subsection{Stage 3: Human Validation and Matrix Comparison}
+\label{human_validation}
+
+We validated LLM output by cross-checking with manual human categorizations of a sub-sample of 50 abstracts.  The 50 abstracts were sampled uniformly at random from the 9K processed by the LLMs, to ensure validation using a representative sample of the full paper distribution.
+
+Three team members volunteered as human coders of the data.  Each coder rated each of the 50 abstracts along both X and Y matrix axes, using the same rubric as the LLMs.  The human coders operated independently; we did not inspect each other's categorizations until all human coding was complete.  At this point, LLM ratings on the same 50 abstracts were extracted for comparison with the ``gold standard'' human ratings.
+
+We used two mechanisms to compare LLM output with human ratings and validate LLM fidelity:
+\begin{itemize}
+    \item \textbf{Inter-Rater Reliability (IRR) metrics:} When multiple data coders assign ratings to a common set of objects, IRR metrics are used to quantify the amount of consistency between the coders. We used three common and complementary IRR metrics: Percent agreement, Krippendorff's $\alpha$ \cite{hayes_krippendorff}, and Gwet's AC1 \cite{gwet_irr}.  We used these measures to quantify consistency within three groups: \textbf{(1)} The 3 LLMs, \textbf{(2)} the 3 human coders, and \textbf{(3)} the 6-coder union of the LLMs and humans.  We did separate IRR computations for each matrix axis, and also for the ``coarse-grained'' X-axis that groups lifecycle stages into problem context, solution context, and trustworthiness context.  We used the irrCAC Python library for the statistical calculations.
+    \item \textbf{Majority Voting:} Since ratings within each group were not perfectly consistent, we also applied majority voting to each coder group (humans vs LLMs) to assign a final categorization to each paper.  We then calculated percent agreement between the majority vote from the LLM group and the majority vote from the human group.  The majority vote of the humans is treated as a ``gold standard'' consensus as to the best categorization.  Comparing the LLM majority vote against this gold standard quantifies the reliability of the LLM output. As with the IRR calculations, we did the majority vote comparison separately for each matrix axis including the coarse context X-axis. 
+\end{itemize}
+
+% To validate the reliability of LLM categorization and assess potential biases or systematic errors, we create an independent human-indexed matrix for comparison.
+
+% \subsubsection{Human Indexing Process}
+
+% We select a representative sample of papers for manual human categorization:
+
+% \begin{enumerate}
+% \item \textbf{Sample Selection}: Stratified random sampling ensuring coverage across:
+%   \begin{itemize}
+%     \item All publication venues
+%     \item Different years (2021-2025)
+%     \item Various paper types (conference, journal, technical report)
+%     \item Papers with high and low LLM consensus
+%   \end{itemize}
+  
+% \item \textbf{Manual Review}: Multiple human reviewers independently read full abstracts and categorize papers using the same rubric
+
+% \item \textbf{Consensus Building}: Reviewers discuss disagreements and establish consensus categorizations
+
+% \item \textbf{Gold Standard Creation}: Finalized human categorizations serve as ground truth for validation
+% \end{enumerate}
+
+% \subsubsection{Matrix Comparison and Analysis}
+
+% We conduct comprehensive comparison between:
+% \begin{itemize}
+%   \item Three LLM-generated matrices
+%   \item Human-indexed matrix (ground truth)
+% \end{itemize}
+
+% \noindent\textbf{Comparison Metrics:}
+
+% \begin{enumerate}
+% \item \textbf{Inter-Rater Reliability}:
+%   \begin{itemize}
+%     \item Krippendorff's alpha between each LLM and human indexing
+%     \item Krippendorff's alpha among the three LLMs
+%     \item Target: $\alpha \geq 0.800$ for acceptable reliability
+%   \end{itemize}
+  
+% \item \textbf{Classification Performance}:
+%   \begin{itemize}
+%     \item Accuracy, precision, recall, and F1 score for each LLM
+%     \item Category-specific performance (which tiers/phases are easiest/hardest)
+%     \item Confusion matrices showing common misclassifications
+%   \end{itemize}
+  
+% \item \textbf{Consensus Analysis}:
+%   \begin{itemize}
+%     \item Percentage of papers where all three LLMs agree
+%     \item Percentage where majority (2 of 3) agree
+%     \item Characteristics of papers with low consensus
+%   \end{itemize}
+  
+% \item \textbf{Error Pattern Analysis}:
+%   \begin{itemize}
+%     \item Systematic biases (e.g., over-assignment to certain categories)
+%     \item Types of papers most prone to misclassification
+%     \item Common failure modes across LLMs
+%   \end{itemize}
+% \end{enumerate}
+
+% \subsection{Drawing Conclusions and Recommendations}
+
+% Based on the matrix comparison, we:
+
+% \begin{enumerate}
+%   \item \textbf{Assess LLM Reliability}: Determine whether LLM categorization achieves sufficient agreement with human judgment ($\alpha \geq 0.800$) to justify using LLM results for the full corpus
+  
+%   \item \textbf{Identify Limitations}: Document specific scenarios where LLMs struggle and require human oversight
+  
+%   \item \textbf{Refine Methodology}: If reliability is insufficient, iterate on:
+%   \begin{itemize}
+%     \item Prompt engineering to improve clarity
+%     \item Rubric refinement to reduce ambiguity
+%     \item Hybrid approaches (LLM for initial categorization, human review for uncertain cases)
+%   \end{itemize}
+  
+%   \item \textbf{Generate Final Landscape}: Produce the complete literature landscape matrix by:
+%   \begin{itemize}
+%     \item Using high-confidence LLM categorizations where all three models agree
+%     \item Applying human review to disputed or low-confidence cases
+%     \item Documenting confidence levels for different regions of the matrix
+%   \end{itemize}
+  
+%   \item \textbf{Identify Research Gaps}: Analyze the final matrix to identify:
+%   \begin{itemize}
+%     \item Underserved cells (few or no papers)
+%     \item Concentration areas (many papers)
+%     \item Critical gaps in early lifecycle phases
+%     \item Missing coverage at specific organizational tiers
+%   \end{itemize}
+  
+%   \item \textbf{Provide Actionable Recommendations}: Guide future research investments based on identified gaps
+% \end{enumerate}
+
+% \subsection{Quality Assurance Measures}
+
+% Throughout the process, we implement multiple quality controls:
+
+% \begin{itemize}
+%   \item \textbf{Version Control}: All prompts, rubrics, and model configurations are versioned and documented
+  
+%   \item \textbf{Reproducibility}: Complete data and code will be made available for replication
+  
+%   \item \textbf{Transparency}: We report not just final results but also disagreements, confidence levels, and limitations
+  
+%   \item \textbf{Error Prevention}: LLMs never generate citations (only categorize existing papers) to prevent hallucination
+  
+%   \item \textbf{Conservative Approach}: When in doubt, we flag for human review rather than accepting uncertain categorizations
+% \end{itemize}
+
+% This methodology enables us to leverage LLM capabilities for efficient large-scale analysis while maintaining scientific rigor through human validation and cross-model comparison. The resulting literature landscape provides an authoritative foundation for identifying gaps and directing future AI trustworthiness research.
+
+\section{Detailed Rubric Questions}
+\label{sec:detailed_rubric_questions}
+
+The following questions are designed to guide the investigator/AI in categorizing the research in the matrix. First we ask three questions to identify the organizational level of control, which reduces the matrix to a single row. Then we ask eleven questions to identify which lifecycle phase(s) the document addresses.
+
+\subsection{Level Classification Questions}
+
+Given a particular paper or article, analyze the provided document and categorize the content based on how the document addresses the following three dimensions of AI security. For each document, evaluate and provide specific examples from the text that demonstrate how it covers each category:
+
+\subsubsection{Level 1: Organizational Level}
+
+Does the document emphasize \textit{governance exclusively} without regard to specific implementation details? Are policies, roles, and culture addressed? Does the document address the managerial processes or approaches to define trust of AI? Look for content related to:
+
+\begin{itemize}
+    \item Organizational structures and roles for AI security oversight
+    \item Decision-making frameworks and accountability mechanisms
+    \item Risk management processes and governance structures
+    \item Leadership responsibilities and strategic planning
+    \item Compliance frameworks and regulatory approaches
+    \item Clear definitions for trust
+    \item Guidance on what constitutes a suitable project to evaluate AI for use in
+    \item Board-level or executive oversight of AI security initiatives
+    \item How the organization will measure ROI for AI
+\end{itemize}
+
+\subsubsection{Level 2: Mission / Business Process Level}
+
+Does the document address governance in combination with aspects of mapping and/or measuring, how the approach will be implemented in the organization beyond the technical details of the AI components? Look for content related to:
+
+\begin{itemize}
+    \item Implementation strategies and operational procedures beyond the AI
+    \item How will humans interact with the AI
+    \item What decisions should be made by humans and what decisions should be made by the AI
+    \item Policy frameworks and standard operating procedures
+    \item Workflow processes and operational guidelines
+    \item Training and awareness programs
+    \item Incident response and operational protocols
+    \item Performance monitoring and evaluation processes
+\end{itemize}
+
+\subsubsection{Level 3: System Level}
+
+Does the document address to map, measure and manage a specific AI system? How or what tools will be used to secure AI? Look for content related to:
+
+\begin{itemize}
+    \item Technical security solutions and software tools
+    \item Monitoring and detection technologies
+    \item Assessment and testing methodologies
+    \item Infrastructure and architectural approaches
+    \item Automation tools and technical frameworks
+    \item Specific technologies, platforms, or technical standards
+    \item Measures of performance
+\end{itemize}
+
+\subsection{Lifecycle Phase Classification Questions}
+
+Once the categorization of the levels has been identified, the following questions must be asked to assess what part or parts of the systems engineering lifecycle the document addresses:
+
+\begin{enumerate}
+    \item \textbf{Business and Mission Analysis}: Does the document describe how choices will be made? Does the document provide guidance for selecting which projects might be most suitable for AI? Does the document suggest a hypothesis for generating and measuring the ROI for the AI project? Does the document prescribe a business or mission problem the AI is expected to address? Does the document outline success criteria for the AI initiative?
+    
+    \item \textbf{Stakeholder Needs and Requirements Definition}: Does the document describe how to identify stakeholders and their security needs? Does it provide methods for gathering and defining protection requirements from different stakeholder perspectives?
+    
+    \item \textbf{System Requirements Definition}: Does the document explain how to convert stakeholder needs into measurable security requirements? Does it address how to define security performance metrics and verification criteria?
+    
+    \item \textbf{Architecture Definition}: Does the document provide guidance on developing security architectures? Does it address how to identify and integrate security-enabling systems and components?
+    
+    \item \textbf{Design Definition}: Does the document specify how to create detailed security designs? Does it provide sufficient technical detail for implementation teams to build secure systems?
+    
+    \item \textbf{System Analysis}: Does the document describe analytical methods for understanding security risks and trade-offs? Does it provide frameworks for technical security assessments throughout the lifecycle?
+    
+    \item \textbf{Implementation}: Does the document address secure coding practices and implementation methodologies? Does it provide guidance on how to actually build and deploy security controls?
+    
+    \item \textbf{Integration}: Does the document explain how to securely combine system components? Does it address security considerations when integrating multiple systems or subsystems?
+    
+    \item \textbf{Verification}: Does the document describe methods for testing and confirming that security requirements are met? Does it provide approaches for validating security controls against design specifications?
+    
+    \item \textbf{Validation}: Does the document explain how to confirm the system works securely in real-world operational environments? Does it address testing effectiveness against actual threats and use cases?
+    
+    \item \textbf{Transition}: Does the document provide guidance on securely deploying systems into production? Does it address operational security considerations for system handover and go-live processes?
+\end{enumerate}
+
+% \section{Reporting Standards and Reproducibility}
+
+% \subsection{Validation Approach}
+
+% Our validation strategy operates at three levels. Internal validation includes Stage 1 human IRR demonstrating human agreement, Stage 2 human-LLM agreement demonstrating LLM reliability, and Stage 3 spot-checks demonstrating scaled reliability. External validation includes subject matter expert review of samples, comparison with other published surveys where available, and stakeholder review of results. Statistical validation includes Krippendorff's alpha with confidence intervals, confusion matrices showing categorization patterns, category-specific metrics identifying strengths and weaknesses, and temporal stability testing to ensure consistency over time.
+
+% \subsection{Reporting Standards}
+
+% We commit to comprehensive reporting across multiple dimensions. The methodology section includes a complete framework description, full rubric with definitions, LLM models with versions and parameters, prompt engineering details, and quality control procedures. The results section includes corpus descriptive statistics, inter-rater reliability statistics, categorization distribution across the framework, and identified literature gaps. The validation section includes performance metrics, error analysis with examples, spot-check results, and acknowledged limitations. Supplementary materials include the complete categorized paper list, raw data for replication, rubric versions, and example prompts and outputs.
+
+\section{Transparency and Reproducibility}
+
+To support reproducibility, this section has covered a complete framework description, full rubric with definitions, LLM models with versions and parameters, prompt engineering details, and quality control procedures.  Our processing scripts, abstract database with links and metadata, full human and LLM categorizations, and PDF copies of all references cited in this report's bibliography, are all preserved in a private repository and available on request.\footnote{For access, contact \texttt{gkatz01@syr.edu}.  The repository URL (only accessible after approval) is 
+\url{https://drive.google.com/drive/folders/1wD__MxpJl9w_BoUalxbpZFoPehgvgHZh?usp=sharing}}
+
+The results section includes corpus descriptive statistics, inter-rater reliability statistics, categorization distributions across the matrix framework, and identified paper publication gaps.
+
+\section{Limitations and Mitigation Strategies}
+
+\noindent\textbf{Acknowledged Limitations:}
+We recognize several limitations in our approach. Context window constraints mean some papers may be too long for LLMs to process in full; we mitigate this by focusing on abstracts. % plus key sections and conducting manual review for critical papers.
+%LLM training data cutoffs mean models may not have seen recent papers; we mitigate this by providing full abstract text rather than relying on prior knowledge. 
+Categorization ambiguity exists as some papers span multiple categories; we mitigate this through our majority voting scheme, although in future iterations of this meta-analysis we may allow multiple assignments per paper. Selection bias may occur as our search strategy could miss relevant papers; we mitigate this by documenting search terms and acknowledging scope limitations. Resource constraints mean we cannot manually review all 9000+ papers; we mitigate this through random sub-sampling and multi-model consensus.
+
+\noindent\textbf{Threats to Validity:}
+We address several threats to validity. For internal validity, human raters may be influenced by prior knowledge; we mitigate this through independent categorization by team members with diverse backgrounds in academic AI research, industrial engineering and defense, and formal methods and cybersecurity. For external validity, our framework is specific to our research questions; we mitigate by clearly documenting rationale and scope. For construct validity, categories may not perfectly capture all distinctions; we mitigate by grounding in established standards and seeking stakeholder validation. For reliability, LLM performance may degrade on unfamiliar papers; we mitigate through inter-rater reliability and comparison with human categorizations.%continuous monitoring and willingness to expand review if degradation is detected.
+
+\section{Ethical Considerations}
+
+\noindent\textbf{Attribution and Credit:}
+We ensure all papers are properly cited with full attribution, avoid any fabricated citations by design, and maintain clear distinction between paper claims and our interpretations. Proper attribution respects intellectual property and enables readers to verify our characterizations.
+
+\noindent\textbf{Bias and Fairness:}
+We acknowledge potential biases in LLM training data, commit to reporting performance across different source types (journals and conference proceedings), and consider whether certain work may be under-represented in our corpus or analysis. Awareness of bias enables us to interpret results appropriately.
+
+\noindent\textbf{Responsible AI Use:}
+We maintain that LLMs augment human judgment rather than replace it, human accountability is maintained throughout the process, and we are transparent about LLM involvement in our methodology. This responsible approach ensures AI serves human goals rather than introducing unaccountable automation.
+
+\section{Summary}
+
+Our methodology embodies eight key principles that enable reliable LLM-assisted publications review:
+
+\begin{enumerate}
+\item \textbf{Human-LLM Hybrid}: LLMs accelerate analysis; humans maintain oversight and accountability
+\item \textbf{Validation-First}: Establish reliability on representative subset
+\item \textbf{Multi-Model Consensus}: Agreement across models improves reliability
+\item \textbf{Statistical Rigor}: IRR metrics quantify consistency objectively
+\item \textbf{Error Prevention}: Multiple safeguards against hallucination and mischaracterization
+\item \textbf{Transparency}: Full methodological documentation enables scrutiny and replication
+\item \textbf{Continuous Monitoring}: Quality control maintained throughout scaled application
+\item \textbf{Conservative Approach}: Flag for review when uncertain, rather than accept questionable categorizations
+\end{enumerate}
+
+We designed this methodology to produce a reliable categorization of 9000+ papers with quantified reliability, provide comprehensive publication landscape mapping, contribute methodological insights for LLM-assisted research, and build stakeholder confidence through rigorous validation. By combining established meta-analysis best practices with emerging LLM capabilities, we demonstrate that AI can be used reliably to study AI—with careful methodology, rigorous validation, and appropriate human oversight.

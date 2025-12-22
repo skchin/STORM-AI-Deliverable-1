@@ -1,0 +1,339 @@
+\documentclass[12pt]{report}
+\usepackage{holtex}
+\usepackage{array}
+\usepackage{skcformat}
+\usepackage{authblk}
+\usepackage{float}
+\usepackage{rotating}
+\usepackage[T1]{fontenc}
+
+%\usepackage[hyphens]{url}
+%\usepackage[numbers, sort&compress]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{hyperref}
+\usepackage{xurl}
+
+\usepackage[colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black]{hyperref}
+\usepackage{enumitem}
+\usepackage{textcomp}
+\usepackage{titlesec}
+
+% Page layout
+\usepackage[top=1.3in, bottom=1in, left=1in, right=1in, headheight=0.75in, headsep=0.25in]{geometry}
+
+% Graphics
+\usepackage{graphicx}
+\usepackage{eso-pic}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\graphicspath{{Figures/}}
+
+% Colors - CTR uses teal/cyan instead of orange
+\usepackage{xcolor}
+\usepackage{colortbl}  % For table row colors
+\definecolor{nsablue}{RGB}{0,51,102}
+\definecolor{nsateal}{RGB}{0,188,212}  % Teal/cyan color for CTR
+\definecolor{ctrdarkblue}{RGB}{25,58,75}  % Dark blue for cover sidebar
+
+%% ---------------------------------------------------
+%% Packages for colorboxes
+%% ---------------------------------------------------
+\usepackage{tcolorbox}
+
+% Patch commands to use mainpages style on all pages
+\usepackage{etoolbox}
+\patchcmd{\tableofcontents}{\thispagestyle{plain}}{\thispagestyle{mainpages}}{}{}
+\patchcmd{\listoftables}{\thispagestyle{plain}}{\thispagestyle{mainpages}}{}{}
+\patchcmd{\listoffigures}{\thispagestyle{plain}}{\thispagestyle{mainpages}}{}{}
+\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{mainpages}}{}{}
+
+% Section numbering
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+% Headers and Footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+% Define the header background for running pages (pages 2+)
+\newcommand{\ctrheaderbackground}{%
+    \begin{tikzpicture}[remember picture,overlay]
+        % Header background
+        \node[anchor=north west, inner sep=0pt] at (current page.north west) {%
+            \includegraphics[width=\paperwidth,height=0.75in]{header-background.jpg}%
+        };
+        % Teal line below header (CTR uses teal not orange)
+        \draw[line width=3pt, nsateal] ([yshift=-0.75in]current page.north west) -- ([yshift=-0.75in]current page.north east);
+    \end{tikzpicture}%
+}
+
+% Cover page style (no header/footer on cover)
+\fancypagestyle{coverpage}{%
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
+% Main pages style (Pages 2+) - FIXED: Background is drawn first, then logo and text on top
+\fancypagestyle{mainpages}{%
+    \fancyhf{}
+    \fancyhead[L]{%
+        \ctrheaderbackground% Draw background first
+        \begin{tikzpicture}[remember picture,overlay]
+            % Position logo on top of background
+            \node[anchor=north west, inner sep=0pt] at ([xshift=0.5in, yshift=-0.15in]current page.north west) {%
+                \includegraphics[height=0.4in]{nsa-logo.png}%
+            };
+            % Position text on top of background
+            \node[anchor=west, inner sep=0pt] at ([xshift=1.15in, yshift=-0.35in]current page.north west) {%
+                \parbox{6in}{\color{white}\fontsize{13}
+%                {16}\selectfont\textbf{NSA | Landscape of %Government, Academic, and Industry Efforts in Responsible,
+%Secure, and Trustworthy AI}}%
+                 {16}\selectfont\textbf{NSA | Analysis of Research in Reliable, Secure, and Trustworthy AI}}%
+           };
+        \end{tikzpicture}%
+    }
+    \fancyfoot[L]{\small U/OO/\#-24 | PP-24-\#\#\#\# | Month 2024 Ver. 1.0}
+    \fancyfoot[R]{\small\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
+% REMOVED: Don't use AddToShipoutPictureBG since mainpages style now handles it
+% This was causing the issue where Chapter 2 (page 1 in arabic numbering) didn't get background
+% \AddToShipoutPictureBG{%
+%     \ifnum\value{page}>1
+%         \ctrheaderbackground
+%     \fi
+% }
+
+% Use roman numerals for front matter
+\pagenumbering{roman}
+
+% Listings for code
+\usepackage{listings}
+\usepackage{textcomp}
+
+% Math packages
+\usepackage{amsmath,amssymb}
+
+% Other packages
+\usepackage{shadow}
+\usepackage{xspace}
+\usepackage{soul}
+
+\newcommand{\hlc}[2][yellow]{{%
+    \colorlet{foo}{#1}%
+    \sethlcolor{foo}\hl{#2}}%
+}
+
+% Column types
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+
+\usepackage{calc}
+\usepackage{booktabs}
+
+% HOL packages
+\usepackage{holtexbasic}
+\usepackage{holtex}
+
+\begin{document}
+
+\input{our-content-macros}
+
+%% ---------------------------------------------------
+%% Cover Page with Two-Column Layout
+%% ---------------------------------------------------
+\thispagestyle{coverpage}
+
+% Create the two-column cover page
+\begin{tikzpicture}[remember picture,overlay]
+    % Left sidebar - dark blue gradient with dots
+    \fill[ctrdarkblue] (current page.north west) rectangle ([xshift=2.5in]current page.south west);
+    
+    % Add dot pattern to sidebar
+    \node[anchor=north west, inner sep=0pt, opacity=0.3] at (current page.north west) {%
+        \includegraphics[width=2.5in,height=\paperheight]{header-background.jpg}%
+    };
+    
+    % NSA Logo on left sidebar
+    \node[anchor=north west, inner sep=0pt] at ([xshift=0.5in, yshift=-1.5in]current page.north west) {%
+        \includegraphics[height=1.2in]{nsa-logo.png}%
+    };
+    
+    % Right side content - centered text
+    % Title header
+    \node[anchor=north, inner sep=0pt] at ([xshift=4.75in, yshift=-2in]current page.north west) {%
+        \parbox{4.5in}{\raggedleft\fontsize{18}{22}\selectfont\textbf{National Security Agency\\Cybersecurity Technical Report}}%
+    };
+    
+    % Main title
+    \node[anchor=center, inner sep=0pt] at ([xshift=5.75in, yshift=-5in]current page.north west) {%
+        \parbox{4.5in}{\raggedleft\fontsize{24}%
+%        {30}\selectfont\textbf{Landscape of Government,
+%cademic, and Industry Efforts in Responsible,
+%Secure, and Trustworthy AI}}%
+{30}\selectfont\textbf{Analysis of Research in Reliable,
+Secure, and Trustworthy AI}}%
+    };
+     
+    % Bottom info
+    \node[anchor=south east, inner sep=0pt] at ([xshift=-0.5in, yshift=1.5in]current page.south east) {%
+        \parbox{3in}{\raggedleft
+            \fontsize{12}{16}\selectfont
+            December, 2025\\[0.2cm]
+            U/OO/\#-24\\
+            PP-24-\#\#\#\#\\
+            Version 1.0
+        }%
+    };
+\end{tikzpicture}
+
+\clearpage
+
+%% ---------------------------------------------------
+%% Front Matter - use mainpages style
+%% ---------------------------------------------------
+\pagestyle{mainpages}
+
+\section*{Notices and history}
+\addcontentsline{toc}{chapter}{Notices and History}
+
+\subsection*{Document change history}
+\vspace{-0.25in}
+% Table without caption (not included in List of Tables)
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{2in}|p{1in}|p{3in}|}
+\hline
+\rowcolor{black!80}
+\textcolor{white}{\textbf{Date}} & \textcolor{white}{\textbf{Version}} & \textcolor{white}{\textbf{Description}} \\
+\hline
+December, 2025 & 1.0 & Initial publication \\
+\hline
+%& & \\
+\hline
+\end{tabular}
+\end{table}
+
+\vspace{0.3cm}
+
+\subsection*{Disclaimer of warranties and endorsement}
+
+The information and opinions contained in this document are provided ``as is'' and without any warranties or guarantees. Reference herein to any specific commercial products, process, or service by trade name, trademark, manufacturer, or otherwise, does not constitute or imply its endorsement, recommendation, or favoring by the United States Government, and this guidance shall not be used for advertising or product endorsement purposes.
+
+\vspace{0.3cm}
+
+\subsection*{Trademark recognition}
+Not applicable.
+%Technology is a registered trademark of company. ‚Äö√±‚Ñ¢ Technology is a registered trademark of company.
+
+\vspace{0.3cm}
+
+\subsection*{\textit{Acknowledgements}}
+
+%NSA acknowledges 
+
+\vspace{0.3cm}
+
+\subsection*{Publication information}
+
+\textbf{Author(s)}
+Jae C. Oh, Shiu-Kai Chin, Matt Clark, Garrett Katz, and William Young
+%National Security Agency (NSA)\\
+%Cybersecurity Directorate
+
+\vspace{0.3cm}
+
+\noindent\textbf{Contact information}
+
+\noindent Jae C. Oh, David G. Edelstein Professor, 2-187
+Center for Science and Technology, College of
+Engineering and Computer Science, Syracuse
+University, Syracuse, NY 13244 |
+\href{mailto:jcoh@syr.edu}{jcoh@syr.edu}
+
+\noindent\textbf{Cybersecurity Report Feedback:} \href{mailto:CybersecurityReports@nsa.gov}{CybersecurityReports@nsa.gov}
+
+\noindent\textbf{General Cybersecurity Inquiries or Customer Requests:} \href{mailto:Cybersecurity_Requests@nsa.gov}{Cybersecurity\_Requests@nsa.gov}
+
+\noindent\textbf{Defense Industrial Base Inquiries and Cybersecurity Services:} \href{mailto:DIB_Defense@cyber.nsa.gov}{DIB\_Defense@cyber.nsa.gov}
+
+\noindent\textbf{Media Inquiries / Press Desk:} NSA Media Relations: 443-634-0721, \href{mailto:MediaRelations@nsa.gov}{MediaRelations@nsa.gov}
+
+\clearpage
+
+%% ---------------------------------------------------
+%% Purpose Section (on its own page)
+%% ---------------------------------------------------
+
+\subsection*{Purpose}
+
+This document was developed in furtherance of NSA's cybersecurity missions, including its responsibilities to identify and disseminate threats, and to develop and issue cybersecurity specifications and mitigations. This information may be shared broadly to reach all appropriate stakeholders.
+
+\clearpage
+
+%\section*{Executive summary}
+%\addcontentsline{toc}{chapter}{Executive Summary}
+
+% Add your executive summary content here or use \input
+\input{execSummaryAlt}
+
+\clearpage
+
+%% ---------------------------------------------------
+%% Table of Contents
+%% ---------------------------------------------------
+
+\tableofcontents
+\clearpage
+
+\listoftables
+\clearpage
+
+\listoffigures
+\clearpage
+
+%% ---------------------------------------------------
+%% Main Content - switch to arabic numbering
+%% ---------------------------------------------------
+\pagenumbering{arabic}
+
+%\chapter{Introduction}
+%\label{ch:introduction}
+\input{description}
+
+%\section{Audience}
+% Add audience section content here
+
+%\chapter{Mitigations}
+%\label{ch:mitigations}
+\input{combined345}
+\input{Graphical view of the Results}
+\input{Gaps and Recommendations}
+
+%% ---------------------------------------------------
+%% Works Cited
+%% ---------------------------------------------------
+%\chapter{Works cited}
+%\label{ch:works-cited}
+
+%\begin{enumerate}
+%\item National Cyber Security Centre et al. \textit{Guidelines for secure AI system development}. 2023. \\
+%\url{https://www.ncsc.gov.uk/files/Guidelines-for-secure-AI-system-development.pdf}
+%\item 
+%\end{enumerate}
+
+%% ---------------------------------------------------
+%% Bibliography from BibTeX
+%% ---------------------------------------------------
+%\typeout{}
+%\bibliographystyle{acm}
+\bibliographystyle{plainnat}
+\bibliography{Book,references,chapter6_references}
+\addcontentsline{toc}{chapter}{Bibliography}
+
+\end{document}

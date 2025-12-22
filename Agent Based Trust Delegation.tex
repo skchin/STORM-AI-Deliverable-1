@@ -1,0 +1,490 @@
+\chapter{Agent-Based Trust Examples}
+% -- Comments below are at the very end of component files
+% -- pointing to the main file
+% ---- this points LaTeX to STORM-AI-Deliverable-1.tex ---- 
+% Local Variables: 
+% TeX-master: "STORM-AI-Deliverable-1"
+% End:
+
+% This LaTeX file requires the enumitem package for [nosep] option
+% Add to your preamble: \usepackage{enumitem}
+
+
+
+\section{Delegation of Authority Based on Trust}
+
+Trust in automated systems fundamentally involves delegation of authority‚Äîdeciding which tasks can be performed autonomously by machines and which require human oversight or intervention. This delegation is not binary but exists on a spectrum, with the level of autonomy granted reflecting the degree of trust placed in the system's trustworthiness for specific tasks in specific contexts.
+
+\subsection{Car Assembly Line Automation}
+
+A car is a complex engineering achievement requiring tens of thousands of parts to be assembled. As the industry advances, many assembly steps are becoming automated, with robots replacing humans at various stages. From a trust perspective, replacing humans with robots represents delegation of authority for specific tasks.\\
+
+\noindent\textbf{Example: Windshield Installation Robot.} Consider an assembly robot assigned to install windshield glass on the mainframe. A fully automated robot can recognize the proper windshield glass from multiple options, pick it up with appropriate force to avoid damage, apply correct adhesive in the proper pattern, position and place the windshield at the correct location, apply appropriate pressure for secure bonding, and verify installation quality through sensors. This robot is fully trusted to perform this particular task without human intervention‚Äîthe delegation of authority is complete for this bounded task.
+
+However, a robot that cannot fully automate windshield installation will require human guidance in some steps, such as identifying the correct windshield model, determining if the windshield has defects, locating the mainframe when sensor systems are unreliable, or handling exceptional cases like damaged parts or misaligned frames. As technology advances, these manual steps are progressively replaced by automated processes.
+
+\subsubsection{Connection to NIST Trust Definitions}
+
+We can draw a direct parallel between assembly line automation and the definitions of Trust and Trustworthiness outlined in NIST SP 800-160v1r1:
+
+\begin{itemize}
+\item \textbf{Trust} is based on the belief that an entity, such as a robot, can successfully perform a task. The factory manager's decision to deploy the windshield installation robot without human oversight represents a trust decision.
+
+\item \textbf{Trustworthiness} is the measurable, evidence-based assessment of the robot's actual capability, demonstrated through extensive testing showing consistent installations within quality specifications.
+
+\item \textbf{Trust $\neq$ Trustworthiness}: The belief does not imply that the entity is automatically trustworthy. Trust must be calibrated to actual trustworthiness based on objective evidence.
+\end{itemize}
+
+The trustworthiness of the windshield installation system should be based on evidence demonstrating correct implementation:
+\begin{itemize}
+\item Success rate statistics (e.g., 99.97\% correct installations)
+\item Quality control measurements (adhesive pattern accuracy, alignment precision)
+\item Failure mode analysis (what happens when sensors fail?)
+\item Performance across environmental variations (temperature, humidity, lighting)
+\end{itemize}
+
+\subsection{Self-Driving Cars: Levels of Autonomy}
+
+Another example is developing a self-driving car. Currently, these cars have varying levels of autonomy, which requires conditional delegation of authority from a human perspective. The SAE defines levels of driving automation as trust delegation:
+
+\begin{itemize}
+\item \textbf{Level 0 (No Automation)}: No delegation; human performs all driving tasks
+\item \textbf{Level 1 (Driver Assistance)}: Minimal delegation for specific functions (cruise control, lane keeping); human monitors continuously
+\item \textbf{Level 2 (Partial Automation)}: Combined function delegation (steering + acceleration/braking); human must remain engaged
+\item \textbf{Level 3 (Conditional Automation)}: Substantial delegation in defined conditions; human must be available to take over when requested
+\item \textbf{Level 4 (High Automation)}: Full delegation within operational design domain; no human intervention needed in defined contexts
+\item \textbf{Level 5 (Full Automation)}: Complete delegation under all conditions; no human driver needed
+\end{itemize}
+
+Each level represents a different trust relationship between human and machine. Some functions are more trusted than others, leading to differential delegation:
+\begin{itemize}
+\item Highway driving on clear days: Higher trust, more autonomy granted
+\item Urban driving in heavy rain at night: Lower trust, more human oversight required
+\item Emergency maneuvers: Often reserved for human judgment even in highly autonomous systems
+\end{itemize}
+
+The mismatch between user trust and system trustworthiness is a critical safety concern. Over-trust occurs when users grant too much autonomy (e.g., sleeping while "Autopilot" is engaged), leading to accidents. Under-trust prevents utilization of capabilities that could improve safety. Proper trust calibration requires clear communication of system capabilities and limitations, training on when to trust and intervene, system design making trustworthiness legible, and continuous monitoring to detect degradation.
+
+\subsection{Military Applications: MQ-99 Target Identification}
+
+In military applications, delegation of authority based on trust takes on critical importance due to the potential for loss of life and strategic consequences. Consider an MQ-99 drone conducting reconnaissance over hostile territory.
+
+\subsubsection{Delegation Categories}
+
+\noindent\textbf{Fully Delegated Tasks (High Trust):}
+\begin{itemize}
+\item Navigation and flight path optimization
+\item Obstacle avoidance and collision prevention
+\item Sensor data collection and initial processing
+\item Communication link management
+\item Fuel management and route efficiency
+\end{itemize}
+
+These tasks are fully automated because they have been demonstrated trustworthy through extensive testing, and their failure modes have acceptable consequences.
+
+\noindent\textbf{Partially Delegated Tasks (Conditional Trust):}
+\begin{itemize}
+\item Target detection and classification
+\item Priority assessment for intelligence value
+\item Route adjustment based on tactical situation
+\item Threat assessment and evasion maneuvers
+\end{itemize}
+
+These tasks have AI assistance but require human oversight because error consequences are significant, context requires human judgment, and trustworthiness is not yet sufficient for full autonomy.
+
+\noindent\textbf{Never Delegated Tasks (No Trust for Autonomous Action):}
+\begin{itemize}
+\item Engagement authorization (weapons release)
+\item Rules of engagement interpretation
+\item Friendly force identification verification
+\item Mission-critical strategic decisions
+\end{itemize}
+
+These tasks are reserved for human authority regardless of AI capability because legal and ethical requirements mandate human decision-making, consequences of error are unacceptable, accountability requires human judgment, and strategic implications require understanding beyond AI capability.
+
+\subsubsection{Dynamic Trust Adjustment}
+
+During an MQ-99 mission, trust delegation may change dynamically based on observed performance. For example, when monitoring systems detect anomalous patterns such as AI classifying known civilian structures as military targets, operators reduce trust in AI, increase human verification, and implement two-operator approval requirements. After root cause analysis and mitigation (such as deploying hotfixes to adjust sensor fusion weighting), trust gradually recovers with enhanced monitoring. This illustrates that trust is dynamic and must be continuously calibrated based on observed system behavior, changing operational conditions, and adversary adaptation.
+
+\section{PAGE Framework of Designing Intelligent Agents}
+
+To systematically design AI agents worthy of trust, we need frameworks that structure our thinking about agent capabilities, environment characteristics, and desired behaviors. Russell and Norvig define the PAGE framework for designing intelligent agents with four key elements: Percepts, Actions, Goals, and Environment.
+
+\subsection{Percepts (P)}
+
+\textbf{Definition:} Inputs the agent receives through its sensors from the surrounding environment.\\
+
+\noindent\textbf{Key Considerations:}
+\begin{itemize}
+\item Sensor limitations: noise, inaccuracies, latency, limited range
+\item Imperfect observation: percepts may not perfectly reflect actual environmental state
+\item Environment dependence: percept accuracy depends on operating conditions
+\item Sensor fusion: multiple sensor types needed to build reliable percepts
+\end{itemize}
+
+\noindent\textbf{Trust Implications:} Trustworthiness depends critically on percept quality. Adversaries may target sensors through spoofing or jamming. Systems must detect and handle degraded or malicious percepts, and uncertainty in percepts must propagate through decision-making.
+
+\subsection{Actions (A)}
+
+\textbf{Definition:} The set of actions the agent is capable of performing and can choose from.\\
+
+\noindent\textbf{Key Considerations:}
+\begin{itemize}
+\item Action space: What actions are physically or logically possible?
+\item Constraints: What actions are permitted by rules, regulations, or safety requirements?
+\item Consequences: What are the effects of each action on the environment?
+\item Reversibility: Can actions be undone if they prove incorrect?
+\end{itemize}
+
+\noindent\textbf{Trust Implications:} Critical high-consequence actions may be reserved for human authorization. Safety constraints limit action space with fail-safe defaults. Actions should be reversible or have safeguards when possible, and action logging enables accountability.
+
+\subsection{Goals (G)}
+
+\textbf{Definition:} The set of objectives the agent desires to achieve.\\
+
+\textbf{Key Considerations:}
+\begin{itemize}
+\item Goal specification: How are goals defined and prioritized?
+\item Multi-objective: Multiple goals may conflict; how are trade-offs made?
+\item Goal stability: Do goals change over time or with context?
+\item Alignment: Are agent goals aligned with stakeholder values?
+\end{itemize}
+
+\noindent\textbf{Trust Implications:} Agent goals must align with stakeholder values (goal alignment). Goals should be explicit and understandable (transparency). For complex domains, goals may need to be learned from human feedback (value learning). Unexpected goal changes indicate potential trustworthiness degradation.
+
+\subsection{Environment (E)}
+
+\textbf{Definition:} The context in which the agent operates, characterized along multiple dimensions. \\
+
+\noindent Russell and Norvig propose several dimensions for characterizing environments:
+
+\begin{enumerate}
+\item \textbf{Accessible vs. Inaccessible}: Can the agent fully observe the environment?
+\begin{itemize}
+\item Accessible: Chess game (all pieces visible)
+\item Inaccessible: Self-driving car (cannot see around corners)
+\end{itemize}
+
+\item \textbf{Deterministic vs. Stochastic}: Are the results of actions predictable?
+\begin{itemize}
+\item Deterministic: Robotic assembly line (actions have consistent effects)
+\item Stochastic: Weather forecasting (inherent randomness)
+\end{itemize}
+
+\item \textbf{Static vs. Dynamic}: Does the environment change while the agent is deliberating?
+\begin{itemize}
+\item Static: Offline medical diagnosis
+\item Dynamic: Real-time combat environment
+\end{itemize}
+
+\item \textbf{Discrete vs. Continuous}: Are the states and actions countable or infinite?
+\begin{itemize}
+\item Discrete: Board games, finite state systems
+\item Continuous: Physical motion, analog sensor readings
+\end{itemize}
+\end{enumerate}
+
+\noindent\textbf{Environment Complexity and Trust:} An environment that is accessible, deterministic, static, and discrete is easier for the agent to handle than one that is inaccessible, stochastic, dynamic, and continuous. For example:
+\begin{itemize}
+\item Chessboard: Accessible, deterministic, static, discrete ‚Üí High trustworthiness achievable
+\item Self-driving car: Inaccessible, stochastic, dynamic, continuous ‚Üí Trustworthiness more difficult
+\item MQ-99 mission: Inaccessible, stochastic, dynamic, continuous ‚Üí Very challenging
+\end{itemize}
+
+\noindent\textbf{Key Insight:} The same agent design may need different trust requirements depending on environment characteristics. An AI that is trustworthy in a benign environment may become untrustworthy when adversaries actively work to deceive it.
+
+\subsection{Mapping PAGE to Control Systems}
+
+For audiences with a systems engineering background, we can map the PAGE framework to the classical feedback control system model. Table \ref{tab:control_vs_ai} compares traditional control systems with AI agents.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{3.5cm}|p{5cm}|p{5.5cm}|}
+\hline
+\textbf{Aspect} & \textbf{Traditional Control Systems} & \textbf{AI Agents} \\
+\hline
+Adaptability & Usually fixed or model-based & Learn and adapt over time; may change behavior based on experience \\
+\hline
+Goals & Quantifiable setpoints (temperature, position, speed) & Can be abstract or multi-objective (safety + efficiency + fairness) \\
+\hline
+Environment Model & Typically assumes deterministic or well-characterized stochastic models & May operate in partially observable or poorly modeled environments \\
+\hline
+Uncertainty Handling & Robust control for known uncertainty bounds & Must handle novel situations, adversarial inputs, distribution shift \\
+\hline
+Verification & Formal methods possible for simpler systems & Difficult to verify comprehensively; empirical validation dominant \\
+\hline
+\end{tabular}
+\caption{Comparison of Traditional Control Systems and AI Agents}
+\label{tab:control_vs_ai}
+\end{table}
+
+Traditional control systems are often more trustworthy in narrow domains because behavior is predictable and verifiable, formal analysis methods apply, and safety bounds can be rigorously established. AI agents have potential for broader capability but face trustworthiness challenges including development of unexpected behaviors in learning systems, behavior changes over time, difficulty providing formal guarantees for complex learned behaviors, and vulnerability to adversarial inputs.
+
+\section{Agent Types and Trust Characteristics}
+
+Russell and Norvig describe several agent types, ranging from simplest to most complex. Each agent type has different trust characteristics and is appropriate for different domains.
+
+\subsection{Simple Reflex Agents}
+
+\textbf{Architecture:} Condition-action rules based on current percept only; no memory of past.
+
+\textbf{Trust Characteristics:}
+\begin{itemize}
+\item Predictable: Behavior is deterministic and easily understood
+\item Transparent: Rules can be inspected directly
+\item Limited: Cannot handle situations requiring history or context
+\item Fragile: Fails when current percept is insufficient for good decision
+\end{itemize}
+
+\textbf{Appropriate Applications:} Simple, well-defined environments; actions with low consequences of error; problems not requiring temporal reasoning.
+
+\subsection{Model-Based Reflex Agents}
+
+\textbf{Architecture:} Maintain internal model of environment state; use model to choose actions.
+
+\noindent\textbf{Trust Characteristics:}
+\begin{itemize}
+\item More robust: Can handle partial observability better than simple reflex
+\item Context-aware: Consider history when making decisions
+\item Model dependence: Trustworthiness depends on model accuracy
+\item State estimation error: Internal state may diverge from true state
+\end{itemize}
+
+\noindent\textbf{Appropriate Applications:} Partially observable environments; problems requiring short-term memory; situations where current percept alone is insufficient.
+
+\subsection{Goal-Based Agents}
+
+\textbf{Architecture:} Explicitly represent goals; search or plan to find action sequences that achieve goals.
+
+\noindent\textbf{Trust Characteristics:}
+\begin{itemize}
+\item Transparent goals: Goals are explicit and inspectable
+\item Flexible: Can handle novel situations by planning
+\item Explainable: Can provide rationale (path to goal)
+\item Goal dependence: Trustworthy only if goals properly specified
+\end{itemize}
+
+\noindent\textbf{Appropriate Applications:} Well-defined goal states; domains where planning is feasible; situations requiring flexibility and novel action sequences.
+
+\subsection{Utility-Based Agents}
+
+\textbf{Architecture:} Define utility function measuring desirability of states; choose actions maximizing expected utility.
+
+\noindent\textbf{Trust Characteristics:}
+\begin{itemize}
+\item Principled trade-offs: Can balance multiple objectives through utility function
+\item Handles uncertainty: Expected utility accounts for stochastic outcomes
+\item Utility specification challenge: Difficult to specify utility correctly
+\item Complexity: More complex than goal-based agents
+\end{itemize}
+
+\noindent\textbf{Trust Implications:} Trustworthiness entirely depends on utility function capturing stakeholder values correctly. Mis-specified utility can lead to gaming behavior and unintended consequences (e.g., the paperclip maximizer problem).
+
+\subsection{Learning Agents}
+
+\textbf{Architecture:} Improve performance over time through experience; includes learning element, performance element, critic, and problem generator.
+
+\noindent\textbf{Trust Characteristics:}
+\begin{itemize}
+\item Adaptive: Can improve and handle novel situations
+\item Behavior changes: Performance changes over time (positive or negative)
+\item Exploration risk: May try suboptimal actions to learn
+\item Difficult to verify: Cannot fully test all learned behaviors in advance
+\end{itemize}
+
+\noindent\textbf{Trust Requirements:}
+\begin{itemize}
+\item Safe exploration: Constrain exploration to safe region of state/action space
+\item Continuous monitoring: Detect performance degradation during operation
+\item Intervention capability: Allow human override when behavior is problematic
+\item Retraining triggers: Automatically retrain when environment shifts detected
+\end{itemize}
+
+\section{STORM-AI Framework for Trustworthy Agents}
+
+The STORM-AI framework extends the PAGE framework with explicit security and trustworthiness considerations, providing a systematic approach to designing trustworthy AI agents for defense applications and other high-stakes domains.
+
+\subsection{STORM-AI Components}
+
+STORM-AI augments the traditional PAGE framework with five additional dimensions:
+
+\begin{description}
+\item[S - Security] Protect percepts against adversarial manipulation; secure actions against unauthorized execution; defend goals/objectives against corruption; protect internal state and models from extraction.
+
+\item[T - Trustworthiness Characteristics] Incorporate all seven characteristics (Valid, Safe, Secure, Accountable, Explainable, Privacy-Enhanced, Fair); explicitly design for measurable trustworthiness properties; establish verification methods for each characteristic.
+
+\item[O - Operational Context] Define operational design domain (where system is trustworthy); specify conditions for human intervention; establish degraded mode behaviors; define mission-specific success criteria.
+
+\item[R - Risk Management] Identify failure modes and consequences; implement monitoring and anomaly detection; establish response procedures for detected issues; define risk acceptance criteria.
+
+\item[M - Mission Alignment] Ensure agent goals align with mission objectives; define stakeholder trust requirements; establish accountability structures; specify authorization boundaries.
+\end{description}
+
+\subsection{STORM-AI Design Process}
+
+The STORM-AI design process proceeds systematically through eight steps:
+
+\begin{itemize}
+\item \textbf{Step 1: Define Mission Context (M)} -- Answer key questions about operational objectives, stakeholders and their trust requirements, acceptable and unacceptable outcomes.
+
+\textbf{Example: MQ-99 Target Identification}
+\begin{itemize}
+\item Mission: Identify military targets in reconnaissance area
+\item Stakeholders: Mission commander, operators, ROE authority, civilian protection organizations
+\item Trust Requirements: High accuracy (>90\%), low false positive rate (<5\%), rapid classification
+\item Unacceptable: Civilian casualties, friendly fire, intelligence failures
+\end{itemize}
+
+\item \textbf{Step 2: Characterize Environment (E)} -- Determine whether the environment is observable vs. inaccessible, deterministic vs. stochastic, static vs. dynamic, discrete vs. continuous, and adversarial vs. non-adversarial.
+
+\item \textbf{Step 3: Define Percepts with Security (P + S)} -- Identify available sensors, their limitations and failure modes, corruption vectors, detection methods for corrupted percepts, and plans for unreliable percepts.
+
+\item \textbf{Step 4: Define Actions with Authorization (A + O)} -- Determine possible actions, which actions are autonomous versus requiring human authorization, action consequences, reversibility, and safety constraints.
+
+\item \textbf{Step 5: Define Goals with Alignment (G + M)} -- Determine agent objectives, alignment with mission and stakeholder values, conflict resolution between multiple goals, and verification of maintained alignment.
+
+\item \textbf{Step 6: Incorporate Trustworthiness Characteristics (T)} -- Address each of the seven trustworthiness characteristics with specific requirements and verification methods. For MQ-99:
+\begin{itemize}
+\item \textbf{Valid \& Reliable}: Target classification accuracy >94\% validated across 15 operational environments
+\item \textbf{Safe}: Fail-safe default to "uncertain" classification; automatic abort if civilians detected
+\item \textbf{Secure \& Resilient}: Adversarial robustness >89\%; hardware-based integrity verification
+\item \textbf{Accountable \& Transparent}: Complete mission recording; 90-day retention; full audit trail
+\item \textbf{Explainable}: Visual overlays highlighting features; operator comprehension validated at 92\%
+\item \textbf{Privacy-Enhanced}: OPSEC maintained through classification and access controls
+\item \textbf{Fair}: No statistical bias across 8 tested operational theaters
+\end{itemize}
+
+\item \textbf{Step 7: Identify Risks and Establish Monitoring (R)} -- Determine what can go wrong, detection methods, response procedures, and acceptable residual risks. Table \ref{tab:mq99_risk} shows a risk management matrix for MQ-99.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{3cm}|}
+\hline
+\textbf{Risk} & \textbf{Detection} & \textbf{Response} & \textbf{Acceptance} \\
+\hline
+Adversarial deception & Anomaly detection, operator alert & Reduce AI confidence, enhance verification & 11\% attack success acceptable with human oversight \\
+\hline
+Sensor degradation & Performance monitoring, cross-sensor consistency & Switch to alternate sensors & Temporary 30\% accuracy reduction acceptable \\
+\hline
+Distribution shift & Statistical drift detection & Flag for retraining, reduce confidence & Must retrain before sustained operations \\
+\hline
+Model extraction & Access pattern monitoring, watermark verification & Revoke credentials, update model & Low probability threat, monitoring sufficient \\
+\hline
+\end{tabular}
+\caption{MQ-99 Risk Management Matrix}
+\label{tab:mq99_risk}
+\end{table}
+
+\item \textbf{Step 8: Define Operational Boundaries (O)} -- Determine where and when the system is trustworthy, conditions requiring human oversight, degraded mode behaviors, and when the system should refuse to act. For MQ-99:
+\begin{itemize}
+\item \textbf{Geographic}: Authorized operational areas only; automatic restrictions for politically sensitive regions
+\item \textbf{Environmental}: Enhanced oversight when performance <70\% accuracy in heavy weather
+\item \textbf{Confidence Threshold}: Recommendations below 85\% confidence automatically escalate to human
+\item \textbf{Adversarial}: Suspected manipulation triggers mandatory stand-down and analysis
+\end{itemize}
+
+\end{itemize}
+
+\subsection{STORM-AI Architecture and Benefits}
+
+Figure \ref{fig:stormai_arch} illustrates the STORM-AI architecture for the MQ-99 Target Identification system, showing how percepts flow through agent reasoning with mission context, risk assessment, and trustworthiness checks, leading to actions with appropriate human authorization loops and continuous monitoring.
+
+\begin{figure}[h]
+\centering
+\fbox{\parbox{0.9\textwidth}{
+\textbf{STORM-AI ARCHITECTURE}\\
+\textbf{MQ-99 Target Identification System}
+
+\vspace{0.3cm}
+\textbf{PERCEPTS (P+S)}
+\begin{itemize}
+\item Multi-sensor fusion: Visual, Thermal, Radar, Signals Intelligence
+\item Security Layer: Anomaly Detection, Consistency Checking, Confidence Scoring
+\end{itemize}
+
+\vspace{0.2cm}
+$\downarrow$
+
+\vspace{0.2cm}
+\textbf{AGENT REASONING (M+R+T)}
+\begin{itemize}
+\item Mission Context: Target identification goals, Rules of Engagement, Theater-specific rules
+\item Risk Assessment: Threat evaluation, Civilian proximity detection, Confidence scoring
+\item Trustworthiness Checks: Validity assessment, Fairness monitoring, Security monitoring
+\end{itemize}
+
+\vspace{0.2cm}
+$\downarrow$
+
+\vspace{0.2cm}
+\textbf{ACTIONS (A+O)}
+\begin{itemize}
+\item Autonomous: Teamwork classification, Update target tracking, Transmit intelligence
+\item Human Authorization Required: Engagement recommendations, High-value target identification, Civilian area assessment
+\item Never Autonomous: Weapons release, ROE interpretation
+\end{itemize}
+
+\vspace{0.2cm}
+$\rightarrow$ \textbf{HUMAN OPERATOR (Authorization Loop)}
+
+\vspace{0.2cm}
+\textbf{CONTINUOUS MONITORING (R+T)}
+\begin{itemize}
+\item Real-time: Classification accuracy, Attack detection, Safety constraint violations
+\item Mission-Level: Intelligence value, Operator trust calibration
+\item Strategic: Performance trends, Trustworthiness degradation
+\end{itemize}
+
+\vspace{0.2cm}
+\textbf{ACCOUNTABILITY (T)}
+\begin{itemize}
+\item Complete mission recording, Classification explanations, Post-mission analysis capability
+\end{itemize}
+}}
+\caption{STORM-AI Architecture for MQ-99 Target Identification System}
+\label{fig:stormai_arch}
+\end{figure}
+
+
+\vspace{0.15in}The STORM-AI framework provides several key benefits for developing trustworthy AI agents:
+
+\begin{itemize}
+\item \textbf{Systematic Trust Engineering:} The framework forces explicit consideration of all trustworthiness dimensions from the earliest stages of design. By identifying security threats early and establishing clear accountability and authorization boundaries, organizations can build trustworthiness into systems rather than attempting to add it later.
+
+\item \textbf{Mission Alignment:} STORM-AI ensures agent goals align with mission objectives and stakeholder values through explicit mapping between operational requirements and system design. The framework defines operational boundaries and degraded mode behaviors, clarifying when and how human-AI authority delegation should occur in different contexts.
+
+\item \textbf{Risk Management:} By systematically identifying failure modes and mitigation strategies, STORM-AI enables proactive rather than reactive risk management. The framework establishes monitoring and response procedures that detect and address issues before they become critical, while documenting accepted residual risks to support informed authorization decisions.
+
+\item \textbf{Verification and Validation:} STORM-AI provides structure for testing trustworthiness characteristics through clear requirements and measurable criteria. This enables systematic assessment against requirements and supports evidence-based authorization decision-making with objective metrics.
+
+\item \textbf{Adaptability:} The framework applies across different agent types, scaling from simple reflex agents to complex learning systems. It accommodates different operational domains including civilian applications, defense systems, and hybrid environments, providing flexibility while maintaining rigor.
+\end{itemize}
+
+\section{Summary and Key Takeaways}
+
+This chapter has explored trust in AI systems through the lens of agent design, demonstrating how systematic frameworks enable trustworthy autonomy. The following key insights provide essential guidance for designing, implementing, and operating AI systems worthy of trust:
+
+\begin{enumerate}
+\item \textbf{Trust as Delegation}: Trusting AI systems means delegating authority for specific tasks in specific contexts. The level of delegation should match demonstrated trustworthiness.
+
+\item \textbf{Trust Calibration}: Human trust must be calibrated to actual system trustworthiness. Both over-trust and under-trust cause problems.
+
+\item \textbf{PAGE Framework Foundation}: Percepts, Actions, Goals, and Environment provide essential structure for reasoning about agent capabilities and limitations.
+
+\item \textbf{Environment Complexity}: Environment characteristics (observable, deterministic, static, discrete vs. their opposites) fundamentally affect achievable trustworthiness.
+
+\item \textbf{Agent Type Selection}: Different agent types (reflex, model-based, goal-based, utility-based, learning) have different trust profiles appropriate for different applications.
+
+\item \textbf{Security is Essential}: In adversarial environments, security must be integrated throughout agent design, not added as afterthought.
+
+\item \textbf{STORM-AI Framework}: Extending PAGE with Security, Trustworthiness, Operational context, Risk management, and Mission alignment provides systematic approach to trustworthy agent design.
+
+\item \textbf{Continuous Monitoring}: Trust must be continuously validated through monitoring; trustworthiness can degrade due to environment changes, adversary adaptation, or system drift.
+
+\item \textbf{Human-AI Teaming}: Most high-stakes applications require hybrid human-AI authority structures where humans retain ultimate responsibility for critical decisions.
+
+\item \textbf{Mission Context Matters}: Trustworthiness requirements are mission-specific. The same AI may be trustworthy for one mission but not another.
+\end{enumerate}
+
+These frameworks and concepts provide foundation for designing trustworthy AI systems from first principles, evaluating existing systems for trustworthiness gaps, establishing systematic verification and validation processes, and creating clear authorization and accountability structures. Subsequent chapters apply these concepts to real-world systems, demonstrating how STORM-AI enables principled development of AI systems worthy of trust in defense applications and other high-stakes domains.
