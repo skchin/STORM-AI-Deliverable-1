@@ -9,7 +9,7 @@ Our initial paper collection gathered papers from the world's leading AI, machin
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.85\textwidth]{abstract_barchart.eps}
+    \includegraphics[width=0.85\textwidth]{Figures/abstract_barchart.eps}
     \caption{Distribution of papers by year showing keyword matching results for trust/security related terms. Orange bars represent papers matching our keyword criteria; blue bars represent papers without keyword matches.}
     \label{fig:keyword_filtering}
 \end{figure}
@@ -102,7 +102,7 @@ Figure~\ref{fig:manual_scoring} presents the results from our human categorizati
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{STORM-AI Deliverable-1/Figures/HumanScoring.png}
+    \includegraphics[width=\textwidth]{Figures/HumanScoring.png}
     \caption{Manual human categorization matrix showing distribution of papers across organizational tiers (rows) and systems engineering lifecycle phases (columns). This serves as ground truth for validating LLM categorization performance. Numbers represent paper counts assigned to each cell.}
     \label{fig:manual_scoring}
 \end{figure}
@@ -115,7 +115,7 @@ Figure~\ref{fig:llm1_scoring} presents the categorization results from our first
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{GPTOSS.png}
+    \includegraphics[width=\textwidth]{Figures/GPTOSS.png}
     \caption{Categorization matrix from LLM Model 1 (openai/gpt-oss-20b) showing distribution of papers across organizational tiers (rows) and systems engineering lifecycle phases (columns). Numbers represent paper counts assigned to each cell.  Matrix Score from GPT-OSS 20 Billion Parameter Model}
     \label{fig:llm1_scoring}
 \end{figure}
@@ -126,7 +126,7 @@ Figure~\ref{fig:llm2_scoring} presents the categorization results from our secon
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{GPT5.png}
+    \includegraphics[width=\textwidth]{Figures/GPT5.png}
     \caption{Categorization matrix from LLM Model 2 (openai/gpt-5.1-chat). Matrix Score from OpenAI ChatGPT 5.1 Frontier Model}
     \label{fig:llm2_scoring}
 \end{figure}
@@ -137,7 +137,7 @@ Figure~\ref{fig:llm3_scoring} presents the categorization results from our third
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{GEMMA32.png}
+    \includegraphics[width=\textwidth]{Figures/GEMMA32.png}
     \caption{Categorization matrix from LLM Model 3 (google/gemma-3-27b). Matrix Score from Google Gemma 27 Billion Parameter Model}
     \label{fig:llm3_scoring}
 \end{figure}
@@ -254,7 +254,7 @@ The metrics we used were Krippendorff's $\alpha$ \cite{hayes_krippendorff}, Gwet
 To further compare LLM output against human ratings, we also used majority voting to aggregate ratings within each group (human vs LLM) and then compared the LLM majority votes against the human majority votes.  Majority vote means that we take the most frequent rating for a given paper and axis.  For example, if two humans rate a paper as system level (3) and the third human rates it as process level (2), the majority vote is system level (3).  After computing majority votes, we also measure percentage agreement between the LLM majority votes and human majority votes.  Papers with no clear majority vote (all three coders gave distinct ratings), in either coder group, are excluded from this percentage agreement calculation.
 
 \begin{figure}
-    \includegraphics[width=\textwidth]{interrate.eps}
+    \includegraphics[width=\textwidth]{Figures/interrate.eps}
     \caption{Comparison of Human and LLM ratings on a random sample of 50 papers.  In each grid, columns correspond to papers and rows correspond to individual coders or majority votes across coder groups.  The number in each cell is the category rating (1-3 for level and context, 1-11 for systems engineering lifecycle stage, increasing from top to bottom or left to right in the categorization matrix).  Ratings are color-coded to aid visualization, with red, green, and blue corresponding to ratings 1, 2, and 3.  Individual lifecycle stages use the same color as their containing context but with a finer color gradient.  Black cells indicate papers with no clear majority vote (each coder gave a distinct rating).}
     \label{fig:interrate}
 \end{figure}

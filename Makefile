@@ -15,4 +15,4 @@ clean:
 
 report:
 	make clean
-	${LATEXMK} description
+	${LATEXMK} -f Storm-AI-Deliverable-1
