@@ -7,7 +7,13 @@
 \usepackage{rotating}
 \usepackage[T1]{fontenc}
 
-%\usepackage[hyphens]{url}
+%% ---------------------------------------------------
+%% Use biblatex
+%% ---------------------------------------------------
+% \usepackage[backend=biber,style=numeric]{biblatex}
+% \addbibresource{Book.bib,references.bib,chapter6_references.bib}
+
+% \usepackage[hyphens]{url}
 %\usepackage[numbers, sort&compress]{natbib}
 \usepackage[numbers]{natbib}
 % \usepackage{hyperref}
@@ -334,6 +340,7 @@ This document was developed in furtherance of NSA's cybersecurity missions, incl
 %\bibliographystyle{acm}
 \bibliographystyle{plainnat}
 \bibliography{Book,references,chapter6_references}
-\addcontentsline{toc}{chapter}{Bibliography}
+% \printbibliography
+% \addcontentsline{toc}{chapter}{Bibliography}
 
 \end{document}
