@@ -9,7 +9,7 @@ Our initial paper collection gathered papers from the world's leading AI, machin
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.85\textwidth]{Figures/abstract_barchart.eps}
+    \includegraphics[width=0.85\textwidth]{abstract_barchart.eps}
     \caption{Distribution of papers by year showing keyword matching results for trust/security related terms. Orange bars represent papers matching our keyword criteria; blue bars represent papers without keyword matches.}
     \label{fig:keyword_filtering}
 \end{figure}
@@ -49,7 +49,7 @@ As shown in Figure~\ref{fig:keyword_filtering}, our keyword-based filtering reve
 The keyword filtering results provide several insights:
 
 \begin{enumerate}
-    \item \textbf{Sustained Research Interest}: The consistent 16-18\% match rate demonstrates that approximately one in six AI research papers addresses trustworthiness, security, explainability, or related concerns—a substantial and stable portion of the field.
+    \item \textbf{Sustained Research Interest}: The consistent 16-18\% match rate demonstrates that approximately one in six AI research papers addresses trustworthiness, security, explainability, or related concerns, a substantial and stable portion of the field.
     
     \item \textbf{Absolute Growth in Trustworthiness Research}: While the percentage remained stable, the absolute number of trustworthiness-related papers nearly doubled from 1,393 in 2021 to 2,474 in 2024, reflecting both the growth of AI research and sustained attention to trustworthiness.
     
@@ -102,7 +102,7 @@ Figure~\ref{fig:manual_scoring} presents the results from our human categorizati
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{Figures/HumanScoring.png}
+    \includegraphics[width=\textwidth]{STORM-AI Deliverable-1/Figures/HumanScoring.png}
     \caption{Manual human categorization matrix showing distribution of papers across organizational tiers (rows) and systems engineering lifecycle phases (columns). This serves as ground truth for validating LLM categorization performance. Numbers represent paper counts assigned to each cell.}
     \label{fig:manual_scoring}
 \end{figure}
@@ -115,7 +115,7 @@ Figure~\ref{fig:llm1_scoring} presents the categorization results from our first
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{Figures/GPTOSS.png}
+    \includegraphics[width=\textwidth]{GPTOSS.png}
     \caption{Categorization matrix from LLM Model 1 (openai/gpt-oss-20b) showing distribution of papers across organizational tiers (rows) and systems engineering lifecycle phases (columns). Numbers represent paper counts assigned to each cell.  Matrix Score from GPT-OSS 20 Billion Parameter Model}
     \label{fig:llm1_scoring}
 \end{figure}
@@ -126,7 +126,7 @@ Figure~\ref{fig:llm2_scoring} presents the categorization results from our secon
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{Figures/GPT5.png}
+    \includegraphics[width=\textwidth]{GPT5.png}
     \caption{Categorization matrix from LLM Model 2 (openai/gpt-5.1-chat). Matrix Score from OpenAI ChatGPT 5.1 Frontier Model}
     \label{fig:llm2_scoring}
 \end{figure}
@@ -137,7 +137,7 @@ Figure~\ref{fig:llm3_scoring} presents the categorization results from our third
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{Figures/GEMMA32.png}
+    \includegraphics[width=\textwidth]{GEMMA32.png}
     \caption{Categorization matrix from LLM Model 3 (google/gemma-3-27b). Matrix Score from Google Gemma 27 Billion Parameter Model}
     \label{fig:llm3_scoring}
 \end{figure}
@@ -226,12 +226,12 @@ Examining Figures~\ref{fig:manual_scoring}---\ref{fig:llm3_scoring}, we observe 
     
     \item \textbf{Organizational and Mission Level Gaps}: All four approaches identify severe underrepresentation at the Organizational Level (Row 1) and Mission/Business Process Level (Row 2), with these two tiers collectively accounting for a small fraction of total papers.
     
-    \item \textbf{Early Lifecycle Phase Gaps}: Consistent across all models, early lifecycle phases—particularly Business and Mission Analysis (Column 1), Stakeholder Needs Definition (Column 2), and System Requirements Definition (Column 3)—show limited coverage even at the System Level.
+    \item \textbf{Early Lifecycle Phase Gaps}: Consistent across all models, early lifecycle phases, particularly Business and Mission Analysis (Column 1), Stakeholder Needs Definition (Column 2), and System Requirements Definition (Column 3), show limited coverage even at the System Level.
     
     \item \textbf{Deployment Phase Gaps}: All models identify minimal coverage in the later operational phases of Integration (Column 7), Verification (Column 9), Validation (Column 10), and Transition (Column 11).
 \end{enumerate}
 
-The consistency of these patterns across independent categorization efforts—human and three different LLMs—provides strong evidence that these characteristics reflect actual properties of the publications rather than measurement artifacts.
+The consistency of these patterns across independent categorization efforts, human and three different LLMs provides strong evidence that these characteristics reflect actual properties of the publications rather than measurement artifacts.
 
 \subsubsection{Model-Specific Variations}
 
@@ -247,14 +247,14 @@ While the fundamental patterns are consistent, we note some variations in specif
 
 \subsubsection{Quantitative Inter-Rater Reliability and LLM Quality Assurance}
 
-In this section we quantify rating consistency between and within each group of coders (humans and LLMs) on the same random sample of 50 papers, drawn uniformly from the full set of $~9$K papers after keyword filtering.  The complete rating data is shown in Figure \ref{fig:interrate}, in what is called ``canonical form'' in inter-rater reliability (IRR) nomenclature.  From this data we calculated several IRR metrics using the irrCAC Python library; the results are given in Table \ref{tab:interrate}.  We analyzed this data to determine whether the LLM categorizations were reliable.
+In this section we quantify rating consistency between and within each group of coders (humans and LLMs) on the same random sample of 50 papers, drawn uniformly from the full set of $~9$K papers after keyword filtering.  The complete rating data is shown in Figure \ref{fig:interrate}, in what is called ``canonical form'' in inter-rater reliability (IRR) nomenclature.\footnote{``Canonical form'' is a table with one row per rater and one column per item, and each cell contains the rating assigned by the corresponding rater to the corresponding item.}  From this data we calculated several IRR metrics using the irrCAC Python library; the results are given in Table \ref{tab:interrate}.  We analyzed this data to determine whether the LLM categorizations were reliable.
 
-The metrics we used were Krippendorff's $\alpha$ \cite{hayes_krippendorff}, Gwet's AC1 \cite{gwet_irr}, and percent agreement.  Here, we define percent agreement as the percentage of papers for which all coders gave the same rating.  We calculated these metrics separately for organizational level ratings (vertical matrix axis) and systems engineering lifecycle stage rating (horizontal matrix axis).  We also grouped lifecycle stage ratings into ``problem context'' (stages 1-3), ``solution context'' (stages 4-8), and ``trustworthiness context'' (stages 9-11), and calculated reliability metrics on this lower-resolution division of the horizontal matrix axis.  In each case, metrics were calculated within three coder groups: Humans only, LLMs only, and both humans and LLMs pooled into a single group.
+The metrics we used were Krippendorff's $\alpha$ \cite{hayes_krippendorff}, Gwet's AC1 \cite{gwet_irr}, and percent agreement.\footnote{Krippendorff's $\alpha$ and Gwet's AC1 compare the rater disagreements actually observed with the disagreements that would be expected due to random chance.  The two methods differ in how they correct for random chance, with Gwet's AC1 producing results closer to percent agreement when the rating distributions are highly skewed.}  Here, we define percent agreement as the percentage of papers for which all coders gave the same rating.  We calculated these metrics separately for organizational level ratings (vertical matrix axis) and systems engineering lifecycle stage rating (horizontal matrix axis).  We also grouped lifecycle stage ratings into ``problem context'' (stages 1-3), ``solution context'' (stages 4-8), and ``trustworthiness context'' (stages 9-11), and calculated reliability metrics on this lower-resolution division of the horizontal matrix axis.  In each case, metrics were calculated within three coder groups: Humans only, LLMs only, and both humans and LLMs pooled into a single group.
 
 To further compare LLM output against human ratings, we also used majority voting to aggregate ratings within each group (human vs LLM) and then compared the LLM majority votes against the human majority votes.  Majority vote means that we take the most frequent rating for a given paper and axis.  For example, if two humans rate a paper as system level (3) and the third human rates it as process level (2), the majority vote is system level (3).  After computing majority votes, we also measure percentage agreement between the LLM majority votes and human majority votes.  Papers with no clear majority vote (all three coders gave distinct ratings), in either coder group, are excluded from this percentage agreement calculation.
 
 \begin{figure}
-    \includegraphics[width=\textwidth]{Figures/interrate.eps}
+    \includegraphics[width=\textwidth]{interrate.eps}
     \caption{Comparison of Human and LLM ratings on a random sample of 50 papers.  In each grid, columns correspond to papers and rows correspond to individual coders or majority votes across coder groups.  The number in each cell is the category rating (1-3 for level and context, 1-11 for systems engineering lifecycle stage, increasing from top to bottom or left to right in the categorization matrix).  Ratings are color-coded to aid visualization, with red, green, and blue corresponding to ratings 1, 2, and 3.  Individual lifecycle stages use the same color as their containing context but with a finer color gradient.  Black cells indicate papers with no clear majority vote (each coder gave a distinct rating).}
     \label{fig:interrate}
 \end{figure}

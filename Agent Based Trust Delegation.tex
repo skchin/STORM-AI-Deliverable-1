@@ -13,13 +13,13 @@
 
 \section{Delegation of Authority Based on Trust}
 
-Trust in automated systems fundamentally involves delegation of authority‚Äîdeciding which tasks can be performed autonomously by machines and which require human oversight or intervention. This delegation is not binary but exists on a spectrum, with the level of autonomy granted reflecting the degree of trust placed in the system's trustworthiness for specific tasks in specific contexts.
+Trust in automated systems fundamentally involves the delegation of authority, deciding which tasks can be performed autonomously by machines and which require human oversight or intervention. This delegation is not binary but exists on a spectrum, with the level of autonomy granted reflecting the degree of trust placed in the system's trustworthiness for specific tasks in specific contexts.
 
 \subsection{Car Assembly Line Automation}
 
 A car is a complex engineering achievement requiring tens of thousands of parts to be assembled. As the industry advances, many assembly steps are becoming automated, with robots replacing humans at various stages. From a trust perspective, replacing humans with robots represents delegation of authority for specific tasks.\\
 
-\noindent\textbf{Example: Windshield Installation Robot.} Consider an assembly robot assigned to install windshield glass on the mainframe. A fully automated robot can recognize the proper windshield glass from multiple options, pick it up with appropriate force to avoid damage, apply correct adhesive in the proper pattern, position and place the windshield at the correct location, apply appropriate pressure for secure bonding, and verify installation quality through sensors. This robot is fully trusted to perform this particular task without human intervention‚Äîthe delegation of authority is complete for this bounded task.
+\noindent\textbf{Example: Windshield Installation Robot.} Consider an assembly robot assigned to install windshield glass on the mainframe. A fully automated robot can recognize the proper windshield glass from multiple options, pick it up with appropriate force to avoid damage, apply correct adhesive in the proper pattern, position and place the windshield at the correct location, apply appropriate pressure for secure bonding, and verify installation quality through sensors. This robot is fully trusted to perform this particular task without human intervention. The delegation of authority is complete for this bounded task.
 
 However, a robot that cannot fully automate windshield installation will require human guidance in some steps, such as identifying the correct windshield model, determining if the windshield has defects, locating the mainframe when sensor systems are unreliable, or handling exceptional cases like damaged parts or misaligned frames. As technology advances, these manual steps are progressively replaced by automated processes.
 
@@ -186,9 +186,9 @@ To systematically design AI agents worthy of trust, we need frameworks that stru
 
 \noindent\textbf{Environment Complexity and Trust:} An environment that is accessible, deterministic, static, and discrete is easier for the agent to handle than one that is inaccessible, stochastic, dynamic, and continuous. For example:
 \begin{itemize}
-\item Chessboard: Accessible, deterministic, static, discrete ‚Üí High trustworthiness achievable
-\item Self-driving car: Inaccessible, stochastic, dynamic, continuous ‚Üí Trustworthiness more difficult
-\item MQ-99 mission: Inaccessible, stochastic, dynamic, continuous ‚Üí Very challenging
+\item Chessboard: Accessible, deterministic, static, discrete, High trustworthiness achievable
+\item Self-driving car: Inaccessible, stochastic, dynamic, continuous  Trustworthiness more difficult
+\item MQ-99 mission: Inaccessible, stochastic, dynamic, continuous  Very challenging
 \end{itemize}
 
 \noindent\textbf{Key Insight:} The same agent design may need different trust requirements depending on environment characteristics. An AI that is trustworthy in a benign environment may become untrustworthy when adversaries actively work to deceive it.
@@ -325,7 +325,7 @@ STORM-AI augments the traditional PAGE framework with five additional dimensions
 The STORM-AI design process proceeds systematically through eight steps:
 
 \begin{itemize}
-\item \textbf{Step 1: Define Mission Context (M)} -- Answer key questions about operational objectives, stakeholders and their trust requirements, acceptable and unacceptable outcomes.
+\item \textbf{Step 1: Define Mission Context (M)} --- Answer key questions about operational objectives, stakeholders and their trust requirements, acceptable and unacceptable outcomes.
 
 \textbf{Example: MQ-99 Target Identification}
 \begin{itemize}
@@ -335,15 +335,15 @@ The STORM-AI design process proceeds systematically through eight steps:
 \item Unacceptable: Civilian casualties, friendly fire, intelligence failures
 \end{itemize}
 
-\item \textbf{Step 2: Characterize Environment (E)} -- Determine whether the environment is observable vs. inaccessible, deterministic vs. stochastic, static vs. dynamic, discrete vs. continuous, and adversarial vs. non-adversarial.
+\item \textbf{Step 2: Characterize Environment (E)} --- Determine whether the environment is observable vs. inaccessible, deterministic vs. stochastic, static vs. dynamic, discrete vs. continuous, and adversarial vs. non-adversarial.
 
-\item \textbf{Step 3: Define Percepts with Security (P + S)} -- Identify available sensors, their limitations and failure modes, corruption vectors, detection methods for corrupted percepts, and plans for unreliable percepts.
+\item \textbf{Step 3: Define Percepts with Security (P + S)} --- Identify available sensors, their limitations and failure modes, corruption vectors, detection methods for corrupted percepts, and plans for unreliable percepts.
 
-\item \textbf{Step 4: Define Actions with Authorization (A + O)} -- Determine possible actions, which actions are autonomous versus requiring human authorization, action consequences, reversibility, and safety constraints.
+\item \textbf{Step 4: Define Actions with Authorization (A + O)} --- Determine possible actions, which actions are autonomous versus requiring human authorization, action consequences, reversibility, and safety constraints.
 
-\item \textbf{Step 5: Define Goals with Alignment (G + M)} -- Determine agent objectives, alignment with mission and stakeholder values, conflict resolution between multiple goals, and verification of maintained alignment.
+\item \textbf{Step 5: Define Goals with Alignment (G + M)} --- Determine agent objectives, alignment with mission and stakeholder values, conflict resolution between multiple goals, and verification of maintained alignment.
 
-\item \textbf{Step 6: Incorporate Trustworthiness Characteristics (T)} -- Address each of the seven trustworthiness characteristics with specific requirements and verification methods. For MQ-99:
+\item \textbf{Step 6: Incorporate Trustworthiness Characteristics (T)} --- Address each of the seven trustworthiness characteristics with specific requirements and verification methods. For MQ-99:
 \begin{itemize}
 \item \textbf{Valid \& Reliable}: Target classification accuracy >94\% validated across 15 operational environments
 \item \textbf{Safe}: Fail-safe default to "uncertain" classification; automatic abort if civilians detected
@@ -354,7 +354,7 @@ The STORM-AI design process proceeds systematically through eight steps:
 \item \textbf{Fair}: No statistical bias across 8 tested operational theaters
 \end{itemize}
 
-\item \textbf{Step 7: Identify Risks and Establish Monitoring (R)} -- Determine what can go wrong, detection methods, response procedures, and acceptable residual risks. Table \ref{tab:mq99_risk} shows a risk management matrix for MQ-99.
+\item \textbf{Step 7: Identify Risks and Establish Monitoring (R)} --- Determine what can go wrong, detection methods, response procedures, and acceptable residual risks. Table \ref{tab:mq99_risk} shows a risk management matrix for MQ-99.
 
 \begin{table}[h]
 \centering
@@ -376,7 +376,7 @@ Model extraction & Access pattern monitoring, watermark verification & Revoke cr
 \label{tab:mq99_risk}
 \end{table}
 
-\item \textbf{Step 8: Define Operational Boundaries (O)} -- Determine where and when the system is trustworthy, conditions requiring human oversight, degraded mode behaviors, and when the system should refuse to act. For MQ-99:
+\item \textbf{Step 8: Define Operational Boundaries (O)} --- Determine where and when the system is trustworthy, conditions requiring human oversight, degraded mode behaviors, and when the system should refuse to act. For MQ-99:
 \begin{itemize}
 \item \textbf{Geographic}: Authorized operational areas only; automatic restrictions for politically sensitive regions
 \item \textbf{Environmental}: Enhanced oversight when performance <70\% accuracy in heavy weather

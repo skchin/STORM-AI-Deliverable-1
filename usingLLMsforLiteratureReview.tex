@@ -11,7 +11,7 @@
 
 \section{Purpose and Motivation}
 
-We are planning to use Large Language Models (LLMs) for our literature survey and meta-analysis of AI trustworthiness research. While LLMs offer tremendous potential for accelerating literature review processes—enabling analysis of thousands of documents that would be impractical to review manually—they also introduce risks that must be carefully managed.
+We are planning to use Large Language Models (LLMs) for our literature survey and meta-analysis of AI trustworthiness research. While LLMs offer tremendous potential for accelerating literature review processes---enabling analysis of thousands of documents that would be impractical to review manually---they also introduce risks that must be carefully managed.
 
 As emphasized in our discussions with the NSA technical director, critical errors in literature characterization could jeopardize the entire project. Specifically, two types of errors are unacceptable: hallucinated references (citing non-existent papers, fabricated authors, or invented findings) and inaccurate characterization (misrepresenting what existing papers actually say or claim). Either error type would undermine the credibility of our findings and damage our relationship with project sponsors. Therefore, we must clearly and transparently explain and justify our methodology, ensuring that it avoids common pitfalls and aligns with current best practices in both LLM usage and systematic literature review.
 
@@ -33,7 +33,7 @@ This chapter serves multiple complementary purposes:
 
 \subsection{Scope and Applicability}
 
-While this chapter focuses on our specific application—surveying AI trustworthiness literature—the principles and practices described are broadly applicable to systematic literature reviews in any technical domain, meta-analyses requiring categorization of large document sets, research synthesis projects where manual review is impractical, and any application of LLMs requiring high reliability and verifiability.
+While this chapter focuses on our specific application---surveying AI trustworthiness literature---the principles and practices described are broadly applicable to systematic literature reviews in any technical domain, meta-analyses requiring categorization of large document sets, research synthesis projects where manual review is impractical, and any application of LLMs requiring high reliability and verifiability.
 
 \section{Background: Foundations and Prior Work}
 
@@ -123,7 +123,7 @@ For each collected abstract, we perform case-insensitive substring matching agai
 
 \subsection{Stage 2: Multi-LLM Categorization}
 
-After keyword filtering, we process the pre-screened abstracts through three independent Large Language Models to categorize each paper according to our two-dimensional framework (organizational tiers × lifecycle phases).
+After keyword filtering, we process the pre-screened abstracts through three independent Large Language Models to categorize each paper according to our two-dimensional framework (organizational tiers x lifecycle phases).
 
 \subsubsection{Categorization Framework}
 
@@ -350,4 +350,4 @@ Our methodology embodies eight key principles that enable reliable LLM-assisted 
 \item \textbf{Conservative Approach}: Flag for review when uncertain rather than accept questionable categorizations
 \end{enumerate}
 
-We expect this methodology to produce reliable categorization of 4000+ papers with quantified reliability ($\alpha \geq 0.800$), provide comprehensive literature landscape mapping, contribute methodological insights for LLM-assisted research, and build stakeholder confidence through rigorous validation. By combining established meta-analysis best practices with emerging LLM capabilities, we demonstrate that AI can be used reliably to study AI—with careful methodology, rigorous validation, and appropriate human oversight.
+We expect this methodology to produce reliable categorization of 4000+ papers with quantified reliability ($\alpha \geq 0.800$), provide comprehensive literature landscape mapping, contribute methodological insights for LLM-assisted research, and build stakeholder confidence through rigorous validation. By combining established meta-analysis best practices with emerging LLM capabilities, we demonstrate that AI can be used reliably to study AI-with careful methodology, rigorous validation, and appropriate human oversight.

@@ -1,4 +1,15 @@
 \documentclass[12pt]{report}
+%%----------------------------
+%% Ragged right justification to match NSA CTR template
+%%----------------------------
+\usepackage{ragged2e}
+\AtBeginDocument{\RaggedRight}
+
+%%----------------------------
+%% adjust spacing between paragraphs
+%%----------------------------
+\usepackage[skip=0.5em]{parskip}
+
 \usepackage{holtex}
 \usepackage{array}
 \usepackage{skcformat}
@@ -7,29 +18,11 @@
 \usepackage{rotating}
 \usepackage[T1]{fontenc}
 
-%% ---------------------------------------------------
-%% Use biblatex
-%% ---------------------------------------------------
-% \usepackage[backend=biber,style=numeric]{biblatex}
-% \addbibresource{Book.bib,references.bib,chapter6_references.bib}
-
-% \usepackage[hyphens]{url}
-%\usepackage[numbers, sort&compress]{natbib}
-\usepackage[numbers]{natbib}
-\usepackage{xurl}
-
-%% -------------------------------------
-%% hyperref without parameters outlines urls in teal boxes in bibliography
-%% -------------------------------------
-\usepackage{hyperref}
-% \usepackage[colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black]{hyperref}
-
 \usepackage{enumitem}
 \usepackage{textcomp}
-\usepackage{titlesec}
 
-% Page layout (use what's in skcformat.sty)
-% \usepackage[top=1.3in, bottom=1in, left=1in, right=1in, headheight=0.75in, headsep=0.25in]{geometry}
+% Page layout
+%\usepackage[top=1.3in, bottom=1in, left=1in, right=1in, headheight=0.75in, headsep=0.25in]{geometry}
 
 % Graphics
 \usepackage{graphicx}
@@ -45,7 +38,7 @@
 \definecolor{nsateal}{RGB}{0,188,212}  % Teal/cyan color for CTR
 \definecolor{ctrdarkblue}{RGB}{25,58,75}  % Dark blue for cover sidebar
 
-%% ---------------------------------------------------
+% ---------------------------------------------------
 %% Packages for colorboxes
 %% ---------------------------------------------------
 \usepackage{tcolorbox}
@@ -57,6 +50,22 @@
 \patchcmd{\listoffigures}{\thispagestyle{plain}}{\thispagestyle{mainpages}}{}{}
 \patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{mainpages}}{}{}
 
+%% ---------------------------------------------------
+%% Chapter headings gone
+%%----------------------------------------------------
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]
+  {\normalfont\huge\bfseries}{}{0pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-20pt}{10pt}
+
+%%%-----------------------------
+%% adjust spacing between section titles
+%% \titlespacing*{\section}{left}{before-sep}{after-sep}
+%% left: Horizontal space to left (usually 0pt)
+%% before-sep: vertical space before the title
+%% after-sep: vertical space after the title
+%%-----------------------------
+\titlespacing{\section}{0pt}{12pt}{6pt}
 % Section numbering
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
@@ -66,6 +75,13 @@
 \pagestyle{fancy}
 \fancyhf{}
 
+\usepackage[hyphens]{url}
+%\usepackage[numbers, sort&compress]{natbib}
+\usepackage[numbers]{natbib}
+\usepackage{xurl}
+
+%\usepackage[colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black]{hyperref}
+\usepackage[hidelinks]{hyperref}
 % Define the header background for running pages (pages 2+)
 \newcommand{\ctrheaderbackground}{%
     \begin{tikzpicture}[remember picture,overlay]
@@ -100,7 +116,7 @@
                 \parbox{6in}{\color{white}\fontsize{13}
 %                {16}\selectfont\textbf{NSA | Landscape of %Government, Academic, and Industry Efforts in Responsible,
 %Secure, and Trustworthy AI}}%
-                 {16}\selectfont\textbf{NSA | Analysis of Research in Reliable, Secure, and Trustworthy AI}}%
+                 {16}\selectfont\textbf{NSA | A Critical Analysis of Reliable, Secure, and Trustworthy AI}}%
            };
         \end{tikzpicture}%
     }
@@ -186,8 +202,7 @@
 %        {30}\selectfont\textbf{Landscape of Government,
 %cademic, and Industry Efforts in Responsible,
 %Secure, and Trustworthy AI}}%
-{30}\selectfont\textbf{Analysis of Research in Reliable,
-Secure, and Trustworthy AI}}%
+{30}\selectfont\textbf{A Critical Analysis of Reliable, Secure, and Trustworthy AI}}%
     };
      
     % Bottom info
@@ -239,7 +254,7 @@ The information and opinions contained in this document are provided ``as is'' a
 
 \subsection*{Trademark recognition}
 Not applicable.
-%Technology is a registered trademark of company. ‚Äö√±‚Ñ¢ Technology is a registered trademark of company.
+%Technology is a registered trademark of company. Technology is a registered trademark of company.
 
 \vspace{0.3cm}
 
@@ -290,8 +305,8 @@ This document was developed in furtherance of NSA's cybersecurity missions, incl
 %\addcontentsline{toc}{chapter}{Executive Summary}
 
 % Add your executive summary content here or use \input
-\input{execSummaryAlt}
-
+%\input{execSummaryAlt}
+\input{execSummary-jcoh}
 \clearpage
 
 %% ---------------------------------------------------
@@ -344,7 +359,6 @@ This document was developed in furtherance of NSA's cybersecurity missions, incl
 %\bibliographystyle{acm}
 \bibliographystyle{plainnat}
 \bibliography{Book,references,chapter6_references}
-% \printbibliography
-% \addcontentsline{toc}{chapter}{Bibliography}
+\addcontentsline{toc}{chapter}{Bibliography}
 
 \end{document}

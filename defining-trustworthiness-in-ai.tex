@@ -11,7 +11,7 @@
 
 \section{Importance of Defining the Meaning of Trust}
 
-Systems incorporating Artificial Intelligence are inherently \textit{non-deterministic}, meaning that even after trust has been initially established, the behavior of the system may evolve, necessitating ongoing recalibration of that trust. This expands the dimensions of both trust and trustworthiness beyond context-specific factors to include the \textit{extent and nature of the system’s adaptability} to new or emergent behaviors. 
+Systems incorporating Artificial Intelligence are inherently \textit{non-deterministic}, meaning that even after trust has been initially established, the behavior of the system may evolve, necessitating ongoing recalibration of that trust. This expands the dimensions of both trust and trustworthiness beyond context-specific factors to include the \textit{extent and nature of the system's adaptability} to new or emergent behaviors. 
 
 The concept of trust in AI systems remains poorly defined across technical and research communities. This lack of standardization creates confusion and introduces vulnerabilities in system security and assurance practices. In this chapter, we establish a precise, operational definition of trust tailored specifically to the requirements of secure and assured systems.
 
@@ -25,7 +25,7 @@ Artificial Intelligence is an algorithm designed to emulate human intelligence b
 
 \subsection{Trust}
 
-Trust is a stakeholder's belief about how a system will perform in a specific context. Stakeholders confer trust when they assess that a system is fit for purpose—meaning it can perform required tasks to an acceptable level within defined operational contexts.
+Trust is a stakeholder's belief about how a system will perform in a specific context. Stakeholders confer trust when they assess that a system is fit for purpose meaning it can perform required tasks to an acceptable level within defined operational contexts.
 The decision to grant trust is inherently subjective and relational, shaped by multiple factors: the stakeholder's prior experience with similar systems, the system's reputation, the operational context, and the structure of the decision-making process itself (whether formal or informal). Different stakeholders may reach different trust judgments about the same system based on these varying influences.
 
 \subsection{Trustworthiness}
@@ -39,17 +39,17 @@ Trust is granted by stakeholders based on their perception of whether a system i
 However, trustworthiness and trust are distinct: trustworthiness enables trust, but does not guarantee stakeholders will grant it. Conversely, stakeholders may grant trust to systems that subsequently fail to behave in trustworthy ways.
 
 
-\section{Trust is Based on a System’s Emergent Behavior}
+\section{Trust is Based on a System's Emergent Behavior}
 
-How, then, do stakeholders decide to trust a system? Trust decisions are based on stakeholders' belief that the system's behavior will satisfy specific claims about performance, safety, or other requirements. Because system-level behavior emerges from complex interactions among components, trust must be evaluated at the system level—specifically, at the boundary for which stakeholders are accountable.
+How, then, do stakeholders decide to trust a system? Trust decisions are based on stakeholders' belief that the system's behavior will satisfy specific claims about performance, safety, or other requirements. Because system-level behavior emerges from complex interactions among components, trust must be evaluated at the system level specifically, at the boundary for which stakeholders are accountable.
 It is essential to distinguish trust from trustworthiness: trust is a stakeholder decision, while trustworthiness is a system property. A system can be trustworthy (demonstrably meeting claims) without being trusted, and conversely, stakeholders may trust systems that are not fully trustworthy.
 
 
 \begin{itemize}
-    \item \textbf{Not Built-In}: Trust is not embedded in the system itself. A system can be designed to be trustworthy, but \textbf{trust is granted by stakeholders on the basis of their }interaction, interpretation, and assessment of a system’s behavior against specific claims.
-    \item \textbf{Context-Dependent}: Trust is nuanced and granted by stakeholders depending on the \textbf{environment}, \textbf{stakeholder expectations}, and their \textbf{prior experiences}.
-    \item \textbf{Dynamic}: Trust is not constant. Stakeholders trust in the system evolves over time based on \textbf{feedback loops}—positive experiences reinforce trust, while failures erode it.
-    \item \textbf{Relational}: It arises from the\textbf{relationship} between the system and its stakeholders, not just from technical specifications.
+    \item \textbf{Not Built-In}: Trust is not embedded in the system itself. A system can be designed to be trustworthy, but \textbf{trust is granted by stakeholders on the basis of their }interaction, interpretation, and assessment of a system's behavior against specific claims.
+    \item \textbf{Context-Dependent}: Trust is nuanced and granted by stakeholders depending on the \textbf{environment}, \textbf{stakeholder expectations}, and their \textbf{prior experiences}.
+    \item \textbf{Dynamic}: Trust is not constant. Stakeholders trust in the system evolves over time based on \textbf{feedback loops} positive experiences reinforce trust, while failures erode it.
+    \item \textbf{Relational}: It arises from the\textbf{relationship} between the system and its stakeholders, not just from technical specifications.
 \end{itemize}
 
 
@@ -74,7 +74,7 @@ Overtrust leads operators to:
     \item Accept system outputs without appropriate verification
 \end{itemize}
 
-Among the most common tendencies associated with automation overtrust, or misuse, include complacency and automation bias~\cite{macdonald2023trusting}—where operators uncritically defer to automated recommendations even when contradictory evidence exists.\\
+Among the most common tendencies associated with automation overtrust, or misuse, include complacency and automation bias~\cite{macdonald2023trusting} where operators uncritically defer to automated recommendations even when contradictory evidence exists.\\
 
 \noindent\textbf{\underline{Undertrust (Disuse):}} Stakeholders withhold trust from systems that have demonstrated adequate trustworthiness, resulting in underutilization of capable systems~\cite{latiff2024calibrating, lee2004trust}. This leads to:
 \begin{itemize}
@@ -85,18 +85,18 @@ Among the most common tendencies associated with automation overtrust, or misuse
     \item Missed opportunities for performance enhancement
 \end{itemize}
 
-When errors occur, human operators tend to over-correct their trust levels and lower their expectations to a level below the capabilities of the system—thereby transitioning directly from overtrust to distrust~\cite{macdonald2023trusting}. This overcorrection demonstrates how calibration is not merely about initial trust establishment but requires continuous adjustment.\\
+When errors occur, human operators tend to over-correct their trust levels and lower their expectations to a level below the capabilities of the system, thereby transitioning directly from overtrust to distrust~\cite{macdonald2023trusting}. This overcorrection demonstrates how calibration is not merely about initial trust establishment but requires continuous adjustment.\\
 
-\noindent\textbf{\underline{Asymmetric Consequences:}} Both overtrust and undertrust are problematic—overtrust may lead to misuse, while distrust may lead to disuse~\cite{lee2004trust}. The economic and safety costs differ systematically: overtrust creates reliability and safety risks through inappropriate delegation and inadequate monitoring, while undertrust creates efficiency and capability risks through missed automation benefits and excessive manual workload.
+\noindent\textbf{\underline{Asymmetric Consequences:}} Both overtrust and undertrust are problematic overtrust may lead to misuse, while distrust may lead to disuse~\cite{lee2004trust}. The economic and safety costs differ systematically: overtrust creates reliability and safety risks through inappropriate delegation and inadequate monitoring, while undertrust creates efficiency and capability risks through missed automation benefits and excessive manual workload.
 
 \subsection{Calibration Dimensions: Resolution and Specificity}
 
 Lee and See (2004) introduced two additional dimensions beyond calibration that characterize appropriate trust: resolution and specificity~\cite{lee2004trust, berkeley2020calibrating}.
 
 \begin{itemize}
-    \item \emph{Resolution}: The match between variability in trust judgments and variability in system capabilities~\cite{latiff2024calibrating}. Good resolution occurs when stakeholders adjust their trust levels to match changes in system capabilities—for example, reducing trust when error rates increase~\cite{latiff2024calibrating}. Poor resolution occurs when trust remains static despite significant capability fluctuations, leading to persistent miscalibration. An operator with poor resolution might maintain constant trust in a system whose reliability varies from 95\% in normal conditions to 60\% in edge cases—a dangerous mismatch.
+    \item \emph{Resolution}: The match between variability in trust judgments and variability in system capabilities~\cite{latiff2024calibrating}. Good resolution occurs when stakeholders adjust their trust levels to match changes in system capabilities, for example, reducing trust when error rates increase~\cite{latiff2024calibrating}. Poor resolution occurs when trust remains static despite significant capability fluctuations, leading to persistent miscalibration. An operator with poor resolution might maintain constant trust in a system whose reliability varies from 95\% in normal conditions to 60\% in edge cases, a dangerous mismatch.
     
-    \item \emph{Specificity}: The degree to which trust is associated with particular components, functions, or temporal periods of system operation~\cite{berkeley2020calibrating}. Functional specificity means trust is differentiated across system capabilities, while temporal specificity reflects sensitivity to changes in context and time that affect capability~\cite{berkeley2020calibrating}. High specificity enables nuanced trust decisions—trusting a system for routine operations while remaining skeptical during edge cases, or trusting the perception subsystem while questioning the decision logic.
+    \item \emph{Specificity}: The degree to which trust is associated with particular components, functions, or temporal periods of system operation~\cite{berkeley2020calibrating}. Functional specificity means trust is differentiated across system capabilities, while temporal specificity reflects sensitivity to changes in context and time that affect capability~\cite{berkeley2020calibrating}. High specificity enables nuanced trust decisions, trusting a system for routine operations while remaining skeptical during edge cases, or trusting the perception subsystem while questioning the decision logic.
 \end{itemize}
 
 Enhancing human-AI partnerships requires good calibration, high resolution, and high specificity of trust~\cite{lee2004trust, berkeley2020calibrating}. Systems achieving all three dimensions enable operators to grant appropriate trust that matches actual capabilities across varying conditions and subsystems.
@@ -110,9 +110,9 @@ Trust calibration is affected by the four inherent characteristics of trust esta
     
     \item \emph{Dynamic Nature}: Trust in automation is a dynamic process, continuously recalibrated with input of new information, knowledge, and experience~\cite{liu2024developing}. Calibration requires ongoing adjustment as systems evolve, stakeholders gain experience, and operational contexts shift. This dynamic quality means calibration is not a one-time achievement but a continuous process.
     
-    \item \emph{Relational Basis}: Individual self-efficacy in using automation—confidence in ability to effectively utilize automation technologies—plays a crucial role in shaping trust, with higher self-efficacy correlating with greater trust and willingness to use automated systems~\cite{liu2024developing}. Calibration depends on the quality of the stakeholder-system relationship, including transparency of behavior, clarity of claims, and accessibility of trustworthiness evidence.
+    \item \emph{Relational Basis}: Individual self-efficacy in using automation confidence in the ability to effectively utilize automation technologies plays a crucial role in shaping trust, with higher self-efficacy correlating with greater trust and willingness to use automated systems~\cite{liu2024developing}. Calibration depends on the quality of the stakeholder-system relationship, including transparency of behavior, clarity of claims, and accessibility of trustworthiness evidence.
     
-    \item \emph{Not Built-In}: Because trust is granted rather than inherent, calibration requires deliberate design choices that help stakeholders accurately assess trustworthiness—such as interpretable outputs, uncertainty communication, and appropriate failure modes.
+    \item \emph{Not Built-In}: Because trust is granted rather than inherent, calibration requires deliberate design choices that help stakeholders accurately assess trustworthiness, such as interpretable outputs, uncertainty communication, and appropriate failure modes.
 \end{itemize}
 
 \section{Trust Calibration in High-Stakes Domains: Military and Medical Applications}
@@ -126,7 +126,7 @@ AI technologies are being developed for military use within three broad categori
 \begin{itemize}
     \item \emph{Temporal Dynamics}: Military air combat operates on subsecond timescales where operators constantly evaluate and grant appropriate levels of trust to intelligent machines~\cite{macdonald2023trusting}, while medical diagnosis unfolds over minutes to hours, allowing more deliberative calibration. Both require dynamic adjustment as context shifts, but the time available for recalibration differs by orders of magnitude.
     
-    \item \emph{Consequence Profiles}: Military miscalibration risks immediate lethal consequences and mission failure. Overtrust in air combat autonomy can result in aircraft loss, pilot death, or civilian casualties. Undertrust degrades combat effectiveness and may lead to mission failure. Medical miscalibration manifests as diagnostic errors affecting patient outcomes over longer horizons—overtrust leads to acceptance of incorrect diagnoses, while undertrust results in rejection of accurate AI recommendations and diagnostic delays. Both impose severe costs, but with different temporal signatures and recovery opportunities.
+    \item \emph{Consequence Profiles}: Military miscalibration risks immediate lethal consequences and mission failure. Overtrust in air combat autonomy can result in aircraft loss, pilot death, or civilian casualties. Undertrust degrades combat effectiveness and may lead to mission failure. Medical miscalibration manifests as diagnostic errors affecting patient outcomes over longer horizons. Overtrust leads to acceptance of incorrect diagnoses, while undertrust results in rejection of accurate AI recommendations and diagnostic delays. Both impose severe costs, but with different temporal signatures and recovery opportunities.
     
     \item \emph{Verification Requirements}: In advance of formal verification methods for AI-based autonomy, the military domain pioneered new methods to train and test AI agent compliance with safety requirements, including flight envelope protection and aerial/ground collision avoidance, as well as ethical requirements including combat training rules, weapons engagement zones, and clear avenues of fire~\cite{defensescoop2024pentagon}. Medical systems similarly require validation against clinical standards, though with less emphasis on real-time physical safety constraints and more on statistical accuracy and clinical validity.
 \end{itemize}
@@ -135,9 +135,9 @@ AI technologies are being developed for military use within three broad categori
 
 \noindent\textbf{\underline{Program Overview and Objectives}}
 
-The proliferation of AI in military operations will necessarily lead to more interaction between humans and intelligent machines, with operations increasingly relying on safe and effective human-machine teaming that depends on humans constantly evaluating and granting appropriate levels of trust—known as trust calibration—to intelligent machines~\cite{macdonald2023trusting}.
+The proliferation of AI in military operations will necessarily lead to more interaction between humans and intelligent machines, with operations increasingly relying on safe and effective human-machine teaming that depends on humans constantly evaluating and granting appropriate levels of trust known as trust calibration to intelligent machines~\cite{macdonald2023trusting}.
 
-DARPA's Air Combat Evolution (ACE) program, begun in 2019, aims to develop trusted, scalable, human-level, AI-driven autonomy for air combat by using human-machine collaborative dogfighting as its challenge problem~\cite{darpa2023ace, darpa2021collaborative}. The program explicitly frames trust calibration as its central research focus, recognizing that technical capability alone is insufficient—pilots must appropriately calibrate their trust to leverage AI capabilities effectively.
+DARPA's Air Combat Evolution (ACE) program, begun in 2019, aims to develop trusted, scalable, human-level, AI-driven autonomy for air combat by using human-machine collaborative dogfighting as its challenge problem~\cite{darpa2023ace, darpa2021collaborative}. The program explicitly frames trust calibration as its central research focus, recognizing that technical capability alone is insufficient; pilots must appropriately calibrate their trust to leverage AI capabilities effectively.
 
 In August 2020, the ACE program's AlphaDogfight Trials pitted eight teams whose AIs flew simulated F-16s in one-versus-one aerial dogfights, with the champion AI defeating an experienced F-16 fighter pilot 5-0 in simulated combat~\cite{darpa2021collaborative}. Subsequently, 21 test flights were conducted between December 2022 and September 2023, achieving the first-ever in-air tests of AI algorithms autonomously flying an F-16 against a human-piloted F-16 in within-visual-range combat scenarios~\cite{defensescoop2024pentagon}.\\
 
@@ -151,7 +151,7 @@ The ACE program confronts both calibration failure modes directly. In air combat
     \item Situational awareness degradation: Reduced attention to flight dynamics and tactical situation as pilots over-rely on AI recommendations
 \end{itemize}
 
-The consequences are catastrophic: aircraft loss, pilot death, fratricide, or civilian casualties. Among the most common tendencies associated with automation overtrust, or misuse, include complacency and automation bias~\cite{macdonald2023trusting}—tendencies that prove lethal in air combat.
+The consequences are catastrophic: aircraft loss, pilot death, fratricide, or civilian casualties. Among the most common tendencies associated with automation overtrust, or misuse, include complacency and automation bias~\cite{macdonald2023trusting} tendencies which prove lethal in air combat.
 
 Combat undertrust equally degrades mission effectiveness:
 \begin{itemize}
@@ -161,14 +161,14 @@ Combat undertrust equally degrades mission effectiveness:
     \item Mission degradation: Reduced combat effectiveness through human limitations rather than technical constraints
 \end{itemize}
 
-When errors occur, human operators tend to over-correct their trust levels and lower their expectations to a level below the capabilities of the system—thereby transitioning directly from overtrust to distrust~\cite{macdonald2023trusting}. In combat, this overcorrection following a single AI error can permanently degrade trust below the system's actual reliability, preventing effective human-machine teaming for the remainder of the mission or indefinitely.\\
+When errors occur, human operators tend to over-correct their trust levels and lower their expectations to a level below the capabilities of the system, thereby transitioning directly from overtrust to distrust~\cite{macdonald2023trusting}. In combat, this overcorrection following a single AI error can permanently degrade trust below the system's actual reliability, preventing effective human-machine teaming for the remainder of the mission or indefinitely.\\
 
 \noindent\textbf{\underline{Trust Measurement and Calibration Methods}}
 
 The ACE program implemented multi-modal trust assessment unprecedented in autonomous systems research:
 
 \begin{enumerate}
-    \item \emph{Physiological Monitoring}: Test pilots flew flights in an L-29 jet trainer at the University of Iowa Technology Institute's Operator Performance Laboratory, with the two-seat jet outfitted with sensors in the cockpit to measure pilot physiological responses, giving researchers clues as to whether the pilot is trusting the AI or not~\cite{darpa2021collaborative, uiowa2021opl}. This real-time physiological data—including heart rate variability, galvanic skin response, and respiration patterns—provides continuous, non-intrusive trust measurement during high-stress operations, revealing trust dynamics that pilots cannot self-report.
+    \item \emph{Physiological Monitoring}: Test pilots flew flights in an L-29 jet trainer at the University of Iowa Technology Institute's Operator Performance Laboratory, with the two-seat jet outfitted with sensors in the cockpit to measure pilot physiological responses, giving researchers clues as to whether the pilot is trusting the AI or not~\cite{darpa2021collaborative, uiowa2021opl}. This real-time physiological data, including heart rate variability, galvanic skin response, and respiration patterns, provides continuous, non-intrusive trust measurement during high-stress operations, revealing trust dynamics that pilots cannot self-report.
     
     \item \emph{Behavioral Metrics}: The program recorded time per disengagement, analogous to miles per disengagement used in self-driving cars, serving as a major calibration metric~\cite{darpa2021collaborative}. Frequent disengagements indicate undertrust or poor system performance; rare disengagements in challenging scenarios suggest either excellent performance or dangerous overtrust.
     
@@ -176,7 +176,7 @@ The ACE program implemented multi-modal trust assessment unprecedented in autono
     
     \item \emph{Compliance-Based Trust Framework}: Program officials defined trust operationally: ``When we talk about trust in the ACE program, what we're talking about is compliance with well-codified norms. The AI agents are going to perform in some ways differently than humans. What we ultimately mean in trust is whether the system ultimately achieves the objectives of the dogfighting set while complying with those norms''~\cite{defenseone2024ai}.
     
-    This grounds calibration in objective, verifiable criteria rather than subjective comfort—a critical distinction. Pilots may subjectively feel comfortable (overtrust) or uncomfortable (undertrust) regardless of actual system capability. Compliance-based trust focuses on whether the system demonstrably meets safety and ethical requirements, providing an objective calibration target.
+    This grounds calibration in objective, verifiable criteria rather than subjective comfort, a critical distinction. Pilots may subjectively feel comfortable (overtrust) or uncomfortable (undertrust) regardless of actual system capability. Compliance-based trust focuses on whether the system demonstrably meets safety and ethical requirements, providing an objective calibration target.
 \end{enumerate}
 
 \noindent\textbf{\underline{Progressive Complexity for Calibration}}
@@ -194,8 +194,8 @@ The ACE program manager stated: ``Only after human pilots are confident that the
     
     \item \emph{Phase 2 - Human-Servo Flights}:
     \begin{itemize}
-        \item Safety pilot manually executes AI-generated commands while evaluation pilot observes
-        \item Enables trust measurement without autonomy risk—the jet is not actually flown by an AI; rather a safety pilot in the front cockpit acts as a ``human servo actuator'' executing flight control inputs generated by an AI, so to the evaluator pilot in the backseat, it appears as if the AI is performing the aircraft maneuvers~\cite{darpa2021collaborative}
+        \item Safety pilot manually executes AI-generated commands while the evaluation pilot observes
+        \item Enables trust measurement without autonomy risk, the jet is not actually flown by an AI; rather a safety pilot in the front cockpit acts as a ``human servo actuator'' executing flight control inputs generated by an AI, so to the evaluator pilot in the backseat, it appears as if the AI is performing the aircraft maneuvers~\cite{darpa2021collaborative}
         \item Allows pilots to assess AI decision quality with human safety buffer
         \item Captures trust responses through physiological and behavioral metrics
     \end{itemize}
@@ -210,13 +210,13 @@ The ACE program manager stated: ``Only after human pilots are confident that the
     
     \item \emph{Phase 4 - Combat Scenario Complexity}:
     \begin{itemize}
-        \item Introducing multiple weapon options and aircraft to assess how AI agents handle clear avenue of fire restrictions set up to prevent fratricide—exceedingly important when operating with offensive weapons in a dynamic and confusing environment~\cite{darpa2021collaborative}
+        \item Introducing multiple weapon options and aircraft to assess how AI agents handle clear avenues of fire restrictions set up to prevent fratricide, exceedingly important when operating with offensive weapons in a dynamic and confusing environment~\cite{darpa2021collaborative}
         \item Tests AI performance in increasingly realistic combat scenarios
         \item Evaluates both overtrust (inappropriate delegation) and undertrust (excessive intervention)
     \end{itemize}
 \end{itemize}
 
-DARPA officials recognized the importance of developing optimal curricula for interactions with AI systems early on to help calibrate the level of trust operators might have, noting that if early interactions with AI systems go well, operators might trend toward overtrusting them, while if initial interactions are poor, they may trend toward undertrusting~\cite{csis2024darpa}. This insight directly informed the ACE program's graduated exposure strategy—early successes build foundational trust without inducing overtrust, while controlled exposure to AI limitations prevents excessive undertrust.\\
+DARPA officials recognized the importance of developing optimal curricula for interactions with AI systems early on to help calibrate the level of trust operators might have, noting that if early interactions with AI systems go well, operators might trend toward overtrusting them, while if initial interactions are poor, they may trend toward undertrusting~\cite{csis2024darpa}. This insight directly informed the ACE program's graduated exposure strategy. Early successes build foundational trust without inducing overtrust, while controlled exposure to AI limitations prevents excessive undertrust.\\
 
 \noindent\textbf{\underline{Interface Design for Calibration}}
 
@@ -231,16 +231,16 @@ Transparency is one potential design feature for enhancing human-autonomy teamin
         \item Facilitates appropriate trust calibration
     \end{itemize}
     
-    \item \emph{Transparency Risks}: Natural language processing and synthetic speech enables conversational communication between humans and robots that improves transparency and trust, although anthropomorphizing can have negative effects including encouraging overtrust in autonomous agents due to human-like speech patterns~\cite{macdonald2023trusting}. Human-like communication may induce inappropriate trust by suggesting human-like understanding and judgment that AI systems do not possess.
+    \item \emph{Transparency Risks}: Natural language processing and synthetic speech enable conversational communication between humans and robots that improves transparency and trust, although anthropomorphizing can have negative effects, including encouraging overtrust in autonomous agents due to human-like speech patterns~\cite{macdonald2023trusting}. Human-like communication may induce inappropriate trust by suggesting human-like understanding and judgment that AI systems do not possess.
 \end{itemize}
 
-The ACE program addresses this tension through bounded transparency—communicating AI state, intended actions, and confidence levels without anthropomorphic presentation that might induce overtrust.
+The ACE program addresses this tension through bounded transparency, communicating AI state, intended actions, and confidence levels without anthropomorphic presentation that might induce overtrust.
 
 \subsection{Medical Example: AI-Assisted Diagnostic Systems}
 
 \noindent\textbf{\underline{The Clinical Calibration Challenge}}
 
-Despite the usefulness of AI-based diagnostic decision support systems, over-reliance by physicians on AI-generated diagnoses may lead to diagnostic errors, particularly among inexperienced doctors~\cite{tsuzuki2024facilitating}. This parallels military concerns about operator experience levels affecting calibration quality—less experienced operators more susceptible to both overtrust and undertrust.
+Despite the usefulness of AI-based diagnostic decision support systems, over-reliance by physicians on AI-generated diagnoses may lead to diagnostic errors, particularly among inexperienced doctors~\cite{tsuzuki2024facilitating}. This parallels military concerns about operator experience levels affecting calibration quality less experienced operators more susceptible to both overtrust and undertrust.
 
 Overtrust in medical diagnosis manifests as:
 \begin{itemize}
@@ -258,7 +258,7 @@ Undertrust in medical diagnosis leads to:
     \item Resource inefficiency: Redundant testing and analysis already performed computationally
 \end{itemize}
 
-Recent evidence indicates that biased AI decreased diagnostic precision of physicians, and providing explanations for AI reasoning did not improve diagnostic precision~\cite{tsuzuki2024facilitating}—a finding that challenges assumptions about transparency as a universal calibration solution, contrasting with military findings where transparency proved beneficial but required careful implementation to avoid overtrust from anthropomorphization.\\
+Recent evidence indicates that biased AI decreased diagnostic precision of physicians, and providing explanations for AI reasoning did not improve diagnostic precision~\cite{tsuzuki2024facilitating}, a finding that challenges assumptions about transparency as a universal calibration solution, contrasting with military findings where transparency proved beneficial but required careful implementation to avoid overtrust from anthropomorphization.\\
 
 \noindent\textbf{\underline{Empirical Calibration Study}}
 
@@ -273,7 +273,7 @@ A quasi-experimental study at Dokkyo Medical University in Japan investigated tr
 
 Trust calibration did not significantly improve physicians' diagnostic accuracy in this formative study, potentially due to small sample size and suboptimal trust calibration methods~\cite{tsuzuki2024facilitating}. The results indicate that physicians' trust calibration of AI without objective indicators may lead to excessive confidence in AI, resulting in incorrect diagnostic decisions~\cite{tsuzuki2024facilitating}.
 
-This negative result—where simple calibration intervention proved insufficient—illuminates critical requirements: \emph{simple awareness of AI reliability is inadequate for effective calibration}. The study revealed overtrust persisted despite the intervention, suggesting physicians required more robust feedback mechanisms, structured performance tracking, and objective calibration criteria—principles directly paralleling the ACE program's multi-modal measurement approach.\\
+This negative result, where simple calibration intervention proved insufficient, illuminates critical requirements: \emph{simple awareness of AI reliability is inadequate for effective calibration}. The study revealed overtrust persisted despite the intervention, suggesting physicians required more robust feedback mechanisms, structured performance tracking, and objective calibration criteria principles directly paralleling the ACE program's multi-modal measurement approach.\\
 
 \noindent\textbf{\underline{Advanced Medical Calibration Approaches}}
 
@@ -282,13 +282,13 @@ More sophisticated medical calibration mechanisms demonstrate convergence with m
 \begin{enumerate}
     \item \emph{Dynamic Confidence Scoring}: Implementation of dynamic scoring frameworks integrating AI confidence scores, semantic similarity measures, and transparency weighting reduced override rates to 33.29\%, with high-confidence predictions (90-99\%) overridden at only 1.7\% and low-confidence predictions (70-79\%) at 99.3\%~\cite{alothman2025enhancing}.
     
-    This demonstrates effective calibration through confidence-weighted recommendations—physicians appropriately trusted high-confidence predictions (low override rate indicating neither overtrust nor undertrust) while appropriately distrusting low-confidence predictions (high override rate indicating proper caution). This parallels the ACE program's emphasis on bounded, transparent behaviors where AI clearly signals its confidence and operating envelope.
+    This demonstrates effective calibration through confidence-weighted recommendations; physicians appropriately trusted high-confidence predictions (low override rate indicating neither overtrust nor undertrust) while appropriately distrusting low-confidence predictions (high override rate indicating proper caution). This parallels the ACE program's emphasis on bounded, transparent behaviors where AI clearly signals its confidence and operating envelope.
     
     \item \emph{Adaptive Calibration Cues}: Methods that detect inappropriate calibration status by monitoring user reliance behavior and present trust calibration cues only when necessary to trigger recalibration~\cite{okamura2020adaptive} mirror the ACE program's attention-tracking approach. Unlike studies emphasizing continuous information display, adaptive presentation of simple cues significantly promoted trust calibration during over-trust situations~\cite{okamura2020adaptive}.
     
-    This adaptive approach addresses a key challenge: continuous transparency can overwhelm operators or habituate them to warnings (reducing effectiveness). Adaptive cues presented only during detected miscalibration maintain salience and effectiveness—applicable to both medical and military contexts.
+    This adaptive approach addresses a key challenge: continuous transparency can overwhelm operators or habituate them to warnings (reducing effectiveness). Adaptive cues presented only during detected miscalibration maintain salience and effectiveness applicable to both medical and military contexts.
     
-    \item \emph{Transparency and Process Visibility}: Proposed solutions include showing physicians the reasoning process of AI diagnostic systems in advance or utilizing secondary AI systems that indicate when to rely on primary diagnostic support systems~\cite{tsuzuki2024facilitating}—similar to military transparency requirements for tactical decisions, though the slower tempo allows more detailed explanation than combat timescales permit.
+    \item \emph{Transparency and Process Visibility}: Proposed solutions include showing physicians the reasoning process of AI diagnostic systems in advance or utilizing secondary AI systems that indicate when to rely on primary diagnostic support systems~\cite{tsuzuki2024facilitating} similar to military transparency requirements for tactical decisions, though the slower tempo allows more detailed explanation than combat timescales permit.
 \end{enumerate}
 
 \subsection{Comparative Analysis: Domain-Specific Calibration Requirements}
@@ -329,17 +329,17 @@ Specificity Requirements & Differentiate trust across maneuvers (takeoff vs. com
 Analysis across military and medical domains reveals converging technical requirements for trust calibration:
 
 \begin{enumerate}
-    \item \emph{Multi-Modal Measurement}: Real-time assessment of trust is critical for capturing dynamic changes, thereby facilitating trust calibration through continuous monitoring and adjustment~\cite{liu2024developing}. Both domains demonstrate that single-point assessments (e.g., post-task surveys) are inadequate for dynamic calibration. The ACE program's physiological monitoring and medical systems' override tracking exemplify this principle—trust cannot be inferred from self-report alone but requires objective behavioral observation.
+    \item \emph{Multi-Modal Measurement}: Real-time assessment of trust is critical for capturing dynamic changes, thereby facilitating trust calibration through continuous monitoring and adjustment~\cite{liu2024developing}. Both domains demonstrate that single-point assessments (e.g., post-task surveys) are inadequate for dynamic calibration. The ACE program's physiological monitoring and medical systems' override tracking exemplify this principle: trust cannot be inferred from self-report alone but requires objective behavioral observation.
     
     \item \emph{Objective Performance Criteria}: Trust must be operationalized as compliance with well-codified norms and achievement of objectives~\cite{defenseone2024ai}, whether combat rules or clinical standards. Subjective comfort is insufficient and potentially dangerous for high-stakes calibration. Operators may feel comfortable (indicating potential overtrust) or uncomfortable (indicating potential undertrust) regardless of actual system capability. Calibration requires grounding in measurable system performance against explicit requirements.
     
-    \item \emph{Metacognitive Transparency}: Reports of metacognitive sensitivity—how correctly and incorrectly judgments are endorsed with appropriate confidence levels—facilitate both trust calibration and optimal decision making in human-AI collaboration~\cite{lee2025metacognitive}. Both domains require systems that communicate their own uncertainty accurately. AI confidence scores must correlate with actual accuracy—high confidence should reliably predict correctness, low confidence should reliably predict potential errors. Miscalibrated AI confidence (overconfident or underconfident) prevents operators from calibrating their own trust appropriately.
+    \item \emph{Metacognitive Transparency}: Reports of metacognitive sensitivity on how correctly and incorrectly judgments are endorsed with appropriate confidence levels facilitate both trust calibration and optimal decision making in human-AI collaboration~\cite{lee2025metacognitive}. Both domains require systems that communicate their own uncertainty accurately. AI confidence scores must correlate with actual accuracy. High confidence should reliably predict correctness, low confidence should reliably predict potential errors. Miscalibrated AI confidence (overconfident or underconfident) prevents operators from calibrating their own trust appropriately.
     
     \item \emph{Progressive Validation}: Only after operators are confident that AI algorithms are trustworthy in handling bounded, transparent and predictable behaviors should scenarios increase in difficulty and realism~\cite{idstch2020darpa}. Both military and medical contexts benefit from graduated exposure rather than immediate deployment in complex scenarios. This staged approach builds appropriate trust incrementally while exposing operators to system limitations in controlled settings, preventing both extreme overtrust (from only seeing successes) and extreme undertrust (from premature exposure to failures).
     
-    \item \emph{Context-Specific Calibration}: Trust calibration involves making AI systems both interpretable and uncertainty-aware to enable rapid understanding of system limitations and likely failures~\cite{okamura2020trust}. This is particularly critical where data may be limited and often of low quality, requiring rapid trust calibration so decision-makers can calibrate trust in system outputs appropriately~\cite{okamura2020trust}. Operators must understand not just that the system may fail, but when and why it is likely to fail—enabling appropriate trust reduction in high-risk contexts while maintaining appropriate trust in validated scenarios.
+    \item \emph{Context-Specific Calibration}: Trust calibration involves making AI systems both interpretable and uncertainty-aware to enable rapid understanding of system limitations and likely failures~\cite{okamura2020trust}. This is particularly critical where data may be limited and often of low quality, requiring rapid trust calibration so decision-makers can calibrate trust in system outputs appropriately~\cite{okamura2020trust}. Operators must understand not just that the system may fail, but when and why it is likely to fail, enabling appropriate trust reduction in high-risk contexts while maintaining appropriate trust in validated scenarios.
     
-    \item \emph{Adaptive Mechanisms}: Existing techniques to measure trust discretely or disruptively are inadequate; continuous, non-intrusive measures are needed to support the process of trust calibration effectively~\cite{hergeth2016keeping}. Both the ACE program's physiological monitoring and medical systems' override tracking exemplify this principle. Calibration requires closed-loop feedback where system monitors operator trust state, detects miscalibration, and provides corrective interventions—creating a dynamic equilibrium between operator trust and system trustworthiness.
+    \item \emph{Adaptive Mechanisms}: Existing techniques to measure trust discretely or disruptively are inadequate; continuous, non-intrusive measures are needed to support the process of trust calibration effectively~\cite{hergeth2016keeping}. Both the ACE program's physiological monitoring and medical systems' override tracking exemplify this principle. Calibration requires closed-loop feedback where the system monitors operator trust state, detects miscalibration, and provides corrective interventions, creating a dynamic equilibrium between operator trust and system trustworthiness.
     
     \item \emph{Overtrust and Undertrust Prevention}: Both domains require explicit mechanisms to prevent calibration failure modes:
     \begin{itemize}
@@ -348,17 +348,17 @@ Analysis across military and medical domains reveals converging technical requir
     \end{itemize}
 \end{enumerate}
 
-The military applications, particularly the ACE program, provide the most comprehensive demonstration of these principles in practice. The X-62A team's demonstration that cutting-edge machine learning-based autonomy could be safely used to fly dynamic combat maneuvers while complying with American norms for safe and ethical use of autonomous technology~\cite{defensescoop2024pentagon} represents a landmark achievement in operationalizing trust calibration for safety-critical AI systems. The program successfully navigated the challenge of building appropriate trust—neither overtrust leading to dangerous complacency nor undertrust preventing effective human-machine teaming—through multi-modal measurement, progressive validation, objective performance criteria, and careful interface design.
+The military applications, particularly the ACE program, provide the most comprehensive demonstration of these principles in practice. The X-62A team's demonstration that cutting-edge machine learning-based autonomy could be safely used to fly dynamic combat maneuvers while complying with American norms for safe and ethical use of autonomous technology~\cite{defensescoop2024pentagon} represents a landmark achievement in operationalizing trust calibration for safety-critical AI systems. The program successfully navigated the challenge of building appropriate trust, neither overtrust leading to dangerous complacency nor undertrust preventing effective human-machine teaming through multi-modal measurement, progressive validation, objective performance criteria, and careful interface design.
 
-Medical applications complement this by revealing that transparency alone is insufficient—providing explanations for AI reasoning did not improve diagnostic precision~\cite{tsuzuki2024facilitating}—and that structured, objective calibration mechanisms with performance feedback are essential. This negative finding reinforces military insights about calibration complexity: operators require more than understanding to calibrate appropriately; they need objective evidence of system capability boundaries, continuous feedback on performance, and mechanisms to detect and correct miscalibration.
+Medical applications complement this by revealing that transparency alone is insufficient, providing explanations for AI reasoning did not improve diagnostic precision~\cite{tsuzuki2024facilitating}, and that structured, objective calibration mechanisms with performance feedback are essential. This negative finding reinforces military insights about calibration complexity: operators require more than understanding to calibrate appropriately; they need objective evidence of system capability boundaries, continuous feedback on performance, and mechanisms to detect and correct miscalibration.
 
-Together, these domains demonstrate that trust calibration is not merely a human factors challenge but a fundamental system engineering requirement for safety-critical AI. Achieving appropriate calibration—avoiding both overtrust and undertrust—requires deliberate design spanning system architecture, interface design, training protocols, operational procedures, and continuous monitoring. The ACE program's success in enabling pilots to appropriately trust AI for combat maneuvers while maintaining appropriate skepticism and monitoring provides an existence proof that well-calibrated human-AI teaming is achievable in even the most demanding environments.
+Together, these domains demonstrate that trust calibration is not merely a human factors challenge but a fundamental system engineering requirement for safety-critical AI. Achieving appropriate calibration, avoiding both overtrust and undertrust, requires deliberate design spanning system architecture, interface design, training protocols, operational procedures, and continuous monitoring. The ACE program's success in enabling pilots to appropriately trust AI for combat maneuvers while maintaining appropriate skepticism and monitoring provides an existence proof that well-calibrated human-AI teaming is achievable in even the most demanding environments.
 %**********
 
 
 \section{Trust Emerges Through Composition Across Abstraction Levels}
 
-Trust in complex systems is not monolithic but emerges compositionally through interactions across multiple abstraction levels. Each level—from individual hardware components to integrated systems to operational deployments—involves distinct stakeholders, evidence types, and trust judgments. Critically, trust does not simply aggregate linearly across these levels; rather, \textbf{system-level trust emerges from complex interactions between levels, producing behaviors and trust requirements that cannot be predicted from examining any single level in isolation}.
+Trust in complex systems is not monolithic but emerges compositionally through interactions across multiple abstraction levels. Each level, from individual hardware components to integrated systems to operational deployments, involves distinct stakeholders, evidence types, and trust judgments. Critically, trust does not simply aggregate linearly across these levels; rather, \textbf{system-level trust emerges from complex interactions between levels, producing behaviors and trust requirements that cannot be predicted from examining any single level in isolation}.
 
 \subsection{Abstraction Levels in System Trust}
 
@@ -371,10 +371,10 @@ Complex systems exhibit hierarchical structure across multiple abstraction level
     
     \item \emph{System Level}: Complete integrated system performing mission-level functions (autonomous aircraft, diagnostic AI, robotic platform). Trust concerns system-level emergent properties, end-to-end behavior, and mission capability.
     
-    \item \emph{Operational Level}: System deployed in operational context with human operators, environmental factors, and mission constraints. Trust concerns real-world performance, human-machine interaction, and adaptation to context.
+    \item \emph{Operational Level}: System deployed in an operational context with human operators, environmental factors, and mission constraints. Trust concerns real-world performance, human-machine interaction, and adaptation to context.
 \end{itemize}
 
-Each level exhibits emergent properties—characteristics that arise from component interactions but are not properties of individual components. Trust in these emergent properties constitutes a fundamental challenge in compositional trust.
+Each level exhibits emergent properties that arise from component interactions but are not properties of individual components. Trust in these emergent properties constitutes a fundamental challenge in compositional trust.
 
 \subsection{Trust Composition Mechanisms}
 
@@ -387,12 +387,12 @@ Component-level trust provides \emph{necessary but insufficient} foundation for 
 \begin{itemize}
     \item \emph{Integration Trust}: Even when individual components are trusted, their integration may introduce unanticipated interactions, timing dependencies, or emergent failures. Trust in integration requires evidence beyond component-level testing.
     
-    \item \emph{Interface Trust}: Components interact through interfaces with implicit assumptions. Trust requires that these assumptions hold across all operational scenarios—a property verifiable only at higher abstraction levels.
+    \item \emph{Interface Trust}: Components interact through interfaces with implicit assumptions. Trust requires that these assumptions hold across all operational scenarios, a property verifiable only at higher abstraction levels.
     
     \item \emph{Emergent Property Trust}: System-level properties (safety, liveness, fairness) emerge from component interactions. These properties require system-level verification and cannot be established through component testing alone.
 \end{itemize}
 
-\noindent\textbf{Military Example - F-35 Sensor Fusion}: Individual sensors (radar, electro-optical, infrared) undergo rigorous component-level testing and verification. Each sensor demonstrates high reliability and accuracy within specified parameters. However, trust in the fused sensor picture—the system-level emergent property—requires additional validation:
+\noindent\textbf{Military Example - F-35 Sensor Fusion}: Individual sensors (radar, electro-optical, infrared) undergo rigorous component-level testing and verification. Each sensor demonstrates high reliability and accuracy within specified parameters. However, trust in the fused sensor picture of the system-level emergent property requires additional validation:
 
 \begin{itemize}
     \item Sensor fusion algorithms must correctly weight and integrate conflicting sensor data
@@ -401,7 +401,7 @@ Component-level trust provides \emph{necessary but insufficient} foundation for 
     \item Adversarial scenarios (jamming, spoofing) may affect sensors differently, requiring system-level resilience
 \end{itemize}
 
-Trust in the fused sensor picture emerges from but transcends component-level sensor trust. Operators must trust not just individual sensors but the emergent integrated awareness—a qualitatively different trust judgment requiring system-level evidence.\\
+Trust in the fused sensor picture emerges from but transcends component-level sensor trust. Operators must trust not just individual sensors but the emergent integrated awareness, a qualitatively different trust judgment requiring system-level evidence.\\
 
 \noindent\textbf{\underline{Downward Trust Influence}}
 
@@ -428,21 +428,21 @@ These component requirements derive meaning only from system-level operational t
 
 \subsection{Emergent Behaviors and Trust}
 
-Emergent behaviors—system properties arising from component interactions that individual components do not exhibit—pose fundamental challenges for compositional trust.\\
+Emergent behaviors are system properties arising from component interactions that individual components do not exhibit, posing fundamental challenges for compositional trust.\\
 
 \noindent\textbf{\underline{Positive Emergence: Capabilities Beyond Components}}
 
 Systems can exhibit trustworthy behavior exceeding component-level capabilities through beneficial emergence:
 
 \begin{itemize}
-    \item \emph{Graceful Degradation}: System maintains partial functionality despite component failures. Trust in system resilience emerges from architectural redundancy and adaptive reconfiguration—properties no single component possesses.
+    \item \emph{Graceful Degradation}: System maintains partial functionality despite component failures. Trust in system resilience emerges from architectural redundancy and adaptive reconfiguration properties that no single component possesses.
     
     \item \emph{Collective Intelligence}: Multiple simple components produce sophisticated system behavior. Trust in system-level intelligence emerges from component coordination, not individual component sophistication.
     
-    \item \emph{Robust Performance}: System performs reliably across conditions where individual components show variability. Trust in system robustness emerges from diversity and complementarity of components.
+    \item \emph{Robust Performance}: System performs reliably across conditions where individual components show variability. Trust in system robustness emerges from the diversity and complementarity of components.
 \end{itemize}
 
-\noindent\textbf{Medical Example - Ensemble Diagnostic AI}: Individual diagnostic models may each achieve 85\% accuracy with different error patterns. An ensemble system combining five such models can achieve 95\% accuracy through majority voting and confidence weighting. Trust in the ensemble system's diagnostic capability emerges from the \emph{diversity} of component errors rather than individual component excellence. Stakeholders trust the system more than any individual component—positive emergence enabling higher trust.
+\noindent\textbf{Medical Example - Ensemble Diagnostic AI}: Individual diagnostic models may each achieve 85\% accuracy with different error patterns. An ensemble system combining five such models can achieve 95\% accuracy through majority voting and confidence weighting. Trust in the ensemble system's diagnostic capability emerges from the \emph{diversity} of component errors rather than individual component excellence. Stakeholders trust the system more than any individual component, positive emergence, enabling higher trust.
 
 This positive emergence creates a trust composition challenge: validating emergent system capabilities requires system-level testing that exposes component interactions, not just component-level verification. Stakeholders must trust properties (ensemble accuracy) that no component individually exhibits.\\
 
@@ -465,14 +465,14 @@ Conversely, systems can exhibit untrustworthy behavior despite trusted component
 \begin{itemize}
     \item \emph{Component Level}: Angle-of-attack (AOA) sensor functioned according to specification (providing angle measurements). Flight control computer executed programmed logic correctly. Control surfaces responded to commanded inputs properly.
     
-    \item \emph{Subsystem Level}: MCAS software implemented its algorithm as designed—adjusting trim based on AOA sensor input. Each subsystem (sensing, computation, actuation) performed specified functions.
+    \item \emph{Subsystem Level}: MCAS software implemented its algorithm as designed, adjusting trim based on AOA sensor input. Each subsystem (sensing, computation, actuation) performed specified functions.
     
     \item \emph{System Level}: Emergent failure arose from \emph{interaction between subsystems}: Single AOA sensor failure provided erroneous input; MCAS repeatedly commanded nose-down trim; pilots lacked adequate information about MCAS activation; cumulative trim commands exceeded pilot recovery capability. No individual component failed, yet system-level behavior proved catastrophic.
     
-    \item \emph{Operational Level}: Operational context amplified emergent failure—pilot training did not include MCAS failure scenarios; cockpit indicators did not clearly signal MCAS activation; time pressure prevented diagnosis and recovery.
+    \item \emph{Operational Level}: Operational context amplified emergent failure pilot training did not include MCAS failure scenarios; cockpit indicators did not clearly signal MCAS activation; time pressure prevented diagnosis and recovery.
 \end{itemize}
 
-This negative emergence destroyed trust despite component-level trustworthiness. Each component passed individual verification, yet system integration created unsafe emergent behavior. Stakeholders who trusted individual components correctly could not predict system-level untrustworthiness—the emergent property only became apparent through system-level interaction.
+This negative emergence destroyed trust despite component-level trustworthiness. Each component passed individual verification, yet system integration created unsafe emergent behavior. Stakeholders who trusted individual components correctly could not predict system-level untrustworthiness; the emergent property only became apparent through system-level interaction.
 
 The 737 MAX case demonstrates that \textbf{compositional trust requires explicit attention to emergent properties that transcend component boundaries}. Trust verification must address not only ``does each component work correctly'' but ``do component interactions produce trustworthy system behavior.''
 
@@ -495,11 +495,11 @@ Machine learning systems exhibit emergent behaviors that evolve over time:
 \noindent\textbf{Military Example - ACE Program Emergent Behaviors}: DARPA's Air Combat Evolution program encountered emergent AI behaviors requiring trust calibration:
 
 \begin{itemize}
-    \item \emph{Simulation-to-Reality Transfer}: AI algorithms trained in simulation exhibited emergent behaviors in physical flight not present in simulation. Component-level trust (algorithm performance in simulation) did not fully compose to system-level trust (algorithm performance in aircraft).
+    \item \emph{Simulation-to-Reality Transfer}: AI algorithms trained in simulation exhibited emergent behaviors in physical flight not present in simulation. Component-level trust (algorithm performance in simulation) did not fully compose with system-level trust (algorithm performance in aircraft).
     
-    \item \emph{Adversarial Adaptation}: AI agents developed emergent tactics not explicitly programmed—both desirable (novel combat maneuvers) and concerning (behaviors near safety boundaries). Trust calibration required evaluating whether emergent tactics complied with safety and ethical norms.
+    \item \emph{Adversarial Adaptation}: AI agents developed emergent tactics not explicitly programmed, both desirable (novel combat maneuvers) and concerning (behaviors near safety boundaries). Trust calibration required evaluating whether emergent tactics complied with safety and ethical norms.
     
-    \item \emph{Human-AI Interaction Dynamics}: Pilot trust emerged from interaction patterns between human and AI rather than AI capability alone. Emergent trust depended on AI transparency, predictability, and appropriate confidence signaling—system-level properties arising from component interactions.
+    \item \emph{Human-AI Interaction Dynamics}: Pilot trust emerged from interaction patterns between human and AI rather than AI capability alone. Emergent trust depended on AI transparency, predictability, and an appropriate confidence signaling system-level properties arising from component interactions.
 \end{itemize}
 
 The ACE program addressed emergent behavior through progressive validation: simulation validation established component-level algorithm trust; human-servo flights revealed human-AI interaction emergence; live autonomous flights exposed physical reality emergence; increasing scenario complexity surfaced combat-relevant emergent tactics. Each abstraction level revealed emergent behaviors invisible at lower levels, requiring iterative trust calibration.\\
@@ -511,7 +511,7 @@ Traditional compositional verification approaches struggle with ML components:
 \begin{itemize}
     \item \emph{Specification Gaps}: ML components often lack formal specifications, making compositional reasoning difficult. Trust in ML-containing systems requires new verification approaches addressing learned behavior composition.
     
-    \item \emph{Non-Compositional Properties}: Neural network properties (adversarial robustness, fairness, calibration) do not compose—robust components may yield non-robust systems. Trust verification must address system-level properties explicitly.
+    \item \emph{Non-Compositional Properties}: Neural network properties (adversarial robustness, fairness, calibration) do not compose robust components may yield non-robust systems. Trust verification must address system-level properties explicitly.
     
     \item \emph{Continuous Evolution}: Online learning systems continuously adapt, producing emergent behaviors post-deployment. Compositional trust must accommodate temporal evolution and ongoing recalibration.
 \end{itemize}
@@ -557,10 +557,10 @@ System-level stakeholders must synthesize component-level trust evidence while v
     
     \item \emph{Maintainers}: Trust based on diagnostic clarity, repair success, degradation patterns. Provide evidence of system reliability over operational lifetime.
     
-    \item \emph{End Users}: Trust based on outcome quality, explanation adequacy, error handling. Ultimate arbiters of whether system merits trust in practice.
+    \item \emph{End Users}: Trust based on outcome quality, explanation adequacy, error handling. Ultimate arbiters of whether the system merits trust in practice.
 \end{itemize}
 
-Operational-level stakeholders experience emergent system behaviors invisible to component and system-level stakeholders. Their trust judgments reflect real-world emergence—including environmental factors, human interaction dynamics, and long-term adaptation patterns. Operational trust evidence flows back down to refine component and system requirements.\\
+Operational-level stakeholders experience emergent system behaviors invisible to component and system-level stakeholders. Their trust judgments reflect real-world emergence, including environmental factors, human interaction dynamics, and long-term adaptation patterns. Operational trust evidence flows back down to refine component and system requirements.\\
 
 \noindent\textbf{\underline{Trust Dependency Networks}}
 
@@ -569,7 +569,7 @@ These stakeholders form trust dependency networks where higher-level trust depen
 \begin{itemize}
     \item \emph{Vertical Dependencies}: Operational stakeholders depend on system-level validation, which depends on component-level verification. Trust flows upward through evidence aggregation.
     
-    \item \emph{Horizontal Dependencies}: Stakeholders at same level depend on each other—system architects trust integration evidence from V\&V teams; V\&V teams trust requirements from architects. Trust requires coordination within abstraction levels.
+    \item \emph{Horizontal Dependencies}: Stakeholders at the same level depend on each other. System architects trust integration evidence from V\&V teams; V\&V teams trust requirements from architects. Trust requires coordination within abstraction levels.
     
     \item \emph{Feedback Dependencies}: Operational experience reveals emergent behaviors requiring component redesign. Trust evidence flows downward to refine lower-level requirements and verification.
 \end{itemize}
@@ -595,7 +595,7 @@ To enable trustworthy compositional trust across abstraction levels:
     \begin{itemize}
         \item Identify potential emergent properties during architecture design
         \item Establish verification approaches for emergent behaviors
-        \item Design for observable emergence—enable monitoring of interaction-dependent properties
+        \item Design for observable emergence enable monitoring of interaction-dependent properties
         \item Document assumptions about component interactions
     \end{itemize}
     
@@ -651,5 +651,5 @@ Trust in complex systems is itself an emergent phenomenon. Just as system behavi
 
 \noindent\textbf{Stakeholder networks propagate trust evidence}. Component-level stakeholders provide foundational evidence; system-level stakeholders validate integration and emergence; operational stakeholders provide real-world evidence. Trust emerges through evidence composition across this stakeholder network.\\
 
-The military examples—F-35 sensor fusion, ACE program AI behaviors, 737 MAX integration failures—demonstrate that compositional trust requires explicit attention to emergence at every abstraction level. Trust verification cannot stop at component boundaries but must address the emergent properties that make systems valuable (and potentially dangerous). Achieving trustworthy composition requires progressive validation strategies that surface emergence incrementally, enabling trust calibration before deployment in high-stakes operational contexts.
+The military examples F-35 sensor fusion, ACE program AI behaviors, and 737 MAX integration failures demonstrate that compositional trust requires explicit attention to emergence at every abstraction level. Trust verification cannot stop at component boundaries but must address the emergent properties that make systems valuable (and potentially dangerous). Achieving trustworthy composition requires progressive validation strategies that surface emergence incrementally, enabling trust calibration before deployment in high-stakes operational contexts.
 

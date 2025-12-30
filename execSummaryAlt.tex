@@ -9,12 +9,14 @@
 %       \item This definition is consistent with the following standards
 %         \begin{itemize}
 %           \item NIST SP 800-160v1r1, Engineering Secure Trustworthy Systems, \cite{NIST800-160}
-%           \item ISO/IEC/IEEE 15288, Systems and software engineering — System life cycle processes, \cite{ISO15288}
+%           \item ISO/IEC/IEEE 15288, Systems and software engineering, System life cycle processes, \cite{ISO15288}
 %         \end{itemize}
 %     \end{itemize}
 %   \end{minipage}%
 % }
 
+\section{Introduction}
+Artificial Intelligence (AI) systems are rapidly being integrated into defense and critical infrastructure, yet a fundamental question remains largely unaddressed: how do we systematically ensure these systems are trustworthy for mission-critical operations? As AI capabilities advance and deployment accelerates, the need for rigorous, evidence-based approaches to AI trustworthiness becomes increasingly urgent. This report presents a comprehensive investigation of  54,628  AI research papers published between 2021 and 2025, mapped against established systems engineering frameworks and organizational risk management standards. Our analysis reveals a troubling disconnect between the technical focus of current AI research and the foundational requirements for mission assurance a gap that poses significant risks to national security and operational effectiveness.
 
 %vspace{-1.5em}
 \section{Our Findings}
@@ -23,12 +25,12 @@ Only 9,183 AI papers out of 54,628 AI papers examined dealt with any aspect of A
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1.0\linewidth]{Figures/Paper-Classification-Results.jpg}
-    \caption{\it Results of searching and classifying 54,628 AI papers: fewer than 17\% address AI Trustworthiness, Reliability, or Security; few or none of those address organizational or mission requirements. \textbf{Mission Assurance is completely neglected.}}
+    \includegraphics[width=1.0\linewidth]{STORM-AI Deliverable-1/Figures/Paper-Classification-Results.jpg}
+    \caption{\it Results of searching and classifying 54,628 AI papers: fewer than 16.8\% address AI Trustworthiness, Reliability, or Security; few or none of those address organizational or mission requirements. \textbf{Mission Assurance is completely neglected.}}
     \label{fig:heatmapAlt}
 \end{figure}
 
-\section{Mission Assurance is Completely Neglected by AI Research}
+\section{Mission Assurance is Completely Neglected}
 
 \textbf{Mission Assurance} \cite{DoD3020-40-MA} \emph{is a process to protect or ensure the continued function and resilience of capabilities and assets, including personnel, equipment, facilities, networks, information and information systems, infrastructure, and supply chains, critical to the execution of DoD mission-essential functions in any operating environment or condition}\footnote{Definition of Mission Assurance in DoD Directive 3020.40 Mission Assurance, September 2018}, where \textbf{Mission-Essential Functions} \cite{DoD3020-26-Continuity-MEF} \emph{are select functions directly related to accomplishing the Department's mission. Failure to perform or sustain these functions, which directly support PMEF, would significantly affect the Department of Defense's ability to provide vital services or exercise authority, direction, and
 control}\footnote{Definition of Mission Essential Functions in DoD Directive 3020.26 DoD Continuity Policy, February 2018}. 

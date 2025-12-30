@@ -20,30 +20,28 @@ To address this lack of agreement, we base our work on established standards and
 
 \section{Report Organization}
 
-This report is organized to provide a comprehensive analysis of the current state of AI trustworthiness research and practice, culminating in our proposed STORM-AI framework. Each chapter has a specific role in helping us understand, design, and develop trustworthy, mission-secure systems for defense applications.\\
+This report is organized to provide a comprehensive analysis of the current state of AI trustworthiness research and practice, culminating in our proposed STORM-AI framework. Each chapter has a specific role in helping us understand, design, and develop trustworthy, mission-secure systems for defense applications.
 
 %\subsection{Road map of the Document Onward}
 
-\noindent\textbf{Chapter 2: Organization of the Report and Methodology} (this chapter describes the overall structure of the report and our approach to the survey of articles, reports, and standards. It outlines the two-dimensional categorization framework using NIST SP 800-39 organizational tiers \cite{nist_sp800_39} and ISO/IEC/IEEE 15288  lifecycle phases \cite{ISO15288}.\\
+\textbf{Chapter 2: Organization of the Report and Methodology} (this chapter describes the overall structure of the report and our approach to the survey of articles, reports, and standards. It outlines the two-dimensional categorization framework using NIST SP 800-39 organizational tiers \cite{nist_sp800_39} and ISO/IEC/IEEE 15288  lifecycle phases \cite{ISO15288}.
 
-\noindent\textbf{Chapter 3: Methodology for Survey of Articles and Reports and Their Categorization} provides comprehensive documentation of our systematic approach to collecting, categorizing, and validating the articles and reports. This chapter integrates three critical components:
+\textbf{Chapter 3: Methodology for Survey of Articles and Reports and Their Categorization} provides comprehensive documentation of our systematic approach to collecting, categorizing, and validating the articles and reports. This chapter integrates three critical components:
 
-\begin{itemize}[noitemsep]
-    \item \textbf{Article and Report Sources and Collection} — Documents the government, academic, and industry sources surveyed, along with our automated collection methodology for processing 9,000+ papers efficiently
+\begin{itemize}%[noitemsep]
+    \item \textbf{Article and Report Sources and Collection},  Documents the government, academic, and industry sources surveyed, along with our automated collection methodology for processing 9,000+ papers efficiently
     
-    \item \textbf{Two-Dimensional Categorization Framework} — Presents the detailed rubric based on NIST SP 800-39 organizational tiers and NIST SP 800-160/ISO 15288 lifecycle phases, including the complete set of questions used to categorize each document
+    \item \textbf{Two-Dimensional Categorization Framework}, Presents the detailed rubric based on NIST SP 800-39 organizational tiers and NIST SP 800-160/ISO 15288 lifecycle phases, including the complete set of questions used to categorize each document
     
-    \item \textbf{LLM-Assisted Analysis with Human Validation} — Describes our three-stage hybrid approach that combines keyword filtering, multi-LLM categorization, and human validation to ensure reliability while enabling large-scale analysis
+    \item \textbf{LLM-Assisted Analysis with Human Validation}, Describes our three-stage hybrid approach that combines keyword filtering, multi-LLM categorization, and human validation to ensure reliability while enabling large-scale analysis
 \end{itemize}
 
-This chapter outlines our approach to ensuring reliability by following established meta-analysis best practices, including keyword-based inclusion criteria and inter-rater reliability measures such as percent agreement, Krippendorff's $\alpha$ \cite{hayes_krippendorff}, and Gwet's AC1 \cite{gwet_irr}. It reviews existing work on ensuring reliable outputs from LLMs and conducting systematic reviews of articles and reports, including PRISMA guidelines \cite{prisma2020} and recent studies on using LLMs for abstract screening. This methodological rigor is crucial for establishing the credibility of our findings and allowing other researchers to replicate our work. Code and data to reproduce our results are available in a private repository.
-\footnote{For access, contact \texttt{gkatz01@syr.edu}.  The repository URL (only accessible after approval) is 
-\url{https://drive.google.com/drive/folders/1wD__MxpJl9w_BoUalxbpZFoPehgvgHZh?usp=sharing}.}\\
+This chapter outlines our approach to ensuring reliability by following established meta-analysis best practices, including keyword-based inclusion criteria and inter-rater reliability measures such as percent agreement, Krippendorff's $\alpha$ \cite{hayes_krippendorff}, and Gwet's AC1 \cite{gwet_irr}. It reviews existing work on ensuring reliable outputs from LLMs and conducting systematic reviews of articles and reports, including PRISMA guidelines \cite{prisma2020} and recent studies on using LLMs for abstract screening. This methodological rigor is crucial for establishing the credibility of our findings and allowing other researchers to replicate our work. Code and data to reproduce our results are available in a private repository.\footnote{For access, contact \texttt{gkatz01@syr.edu}.  The repository URL (only accessible after approval) is 
+\url{https://drive.google.com/drive/folders/1wD__MxpJl9w_BoUalxbpZFoPehgvgHZh?usp=sharing}.}
 
+\textbf{Chapter 4: Categorization Results} presents the visual representation of how existing work maps to our two-dimensional framework. These visualizations immediately reveal where research is concentrated and where critical gaps exist across organizational tiers and lifecycle phases.
 
-\noindent\textbf{Chapter 4: Categorization Results} presents the visual representation of how existing work maps to our two-dimensional framework. These visualizations immediately reveal where research is concentrated and where critical gaps exist across organizational tiers and lifecycle phases.\\
-
-\noindent\textbf{Chapter 5: Gaps and Recommendations} synthesizes the survey results to clearly identify deficiencies in current approaches. This chapter shows that while many organizations concentrate on tools and techniques during the implementation phase, the essential systems engineering work needed for mission-secure systems—especially in early lifecycle phases such as business and mission analysis, stakeholder needs definition, and system requirements definition—remains critically underdeveloped. The recommendations offer practical guidance for funding agencies, research institutions, and defense organizations.
+\textbf{Chapter 5: Gaps and Recommendations} synthesizes the survey results to clearly identify deficiencies in current approaches. This chapter shows that while many organizations concentrate on tools and techniques during the implementation phase, the essential systems engineering work needed for mission-secure systems, especially in early lifecycle phases such as business and mission analysis, stakeholder needs definition, and system requirements definition, remains critically underdeveloped. The recommendations offer practical guidance for funding agencies, research institutions, and defense organizations.
 
 \section{Scope and Methodology of Survey of Articles and Reports}
 
@@ -56,7 +54,7 @@ We developed Python scripts to automate the download and extraction of abstracts
 
 Our automated collection pipeline performs the following operations:
 
-\begin{enumerate}[noitemsep]
+\begin{enumerate}%[noitemsep]
   \item \textbf{Paper Identification} --- Systematically crawls conference proceedings and journal archives to identify relevant papers published between 2021 and 2025
   
   \item \textbf{Metadata Extraction} --- Extracts title, authors, publication venue, year, and DOI/URL for each paper
@@ -84,7 +82,7 @@ Each paper is assigned to one cell in this organizational tier $\times$ lifecycl
 
 Understanding the complete landscape of AI trustworthiness research and practice is essential for:
 
-\begin{itemize}[noitemsep]
+\begin{itemize}%[noitemsep]
 \item\textbf{Identifying Critical Gaps.} By mapping all contributions across our two-dimensional framework, we can immediately identify where the community has concentrated its efforts and where significant gaps remain. For defense applications, understanding these gaps is crucial for risk management~\cite{nist_sp800_39,iso31000} and resource allocation.
 
 \item\textbf{Avoiding Redundant Efforts.} A comprehensive landscape view prevents researchers from duplicating existing work, allowing them to focus on genuinely underserved areas. In resource-constrained defense environments, this efficiency is particularly valuable.

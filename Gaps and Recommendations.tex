@@ -10,44 +10,152 @@
 %}}\\
 %\newline
 
-When we step back and look at the paper publications as a whole, a clear problem emerges. The effort to build ``trustworthy AI'' is overwhelmingly focused on technical solutions, while largely ignoring the mission and governance context those systems are supposed to serve. When we mapped the papers to the NIST SP 800-39 organizational tiers and the ISO/IEC/IEEE 15288 lifecycle, over 95\% of the work landed at the technical System Level (Row 3) and 83\% in design and integration of components within the solutions space. In other words, we are building systems before we have clearly defined what they are being built for. \newline
+When we step back and look at the paper publications as a whole, a clear problem emerges. The effort to build ``trustworthy AI'' is overwhelmingly focused on technical solutions, while largely ignoring the mission and governance context those systems are supposed to serve. In other words, current efforts are at risk of perfectly ``building the wrong thing.''  Put another way, if the gaps are not closed, the Department of War and its industry and academia partners risk building AI systems whose engineering-based trustworthiness attributes do NOT align to the mission-based trust needs of warfighters and other stakeholders.  When we mapped the papers to the NIST SP 800-39 organizational tiers and the ISO/IEC/IEEE 15288 lifecycle, over 95\% of the work landed at the technical System Level (Row 3) and 83\% in design and integration of components within the solutions space. More specifically, systems are being built without a firm, validated, and shared understanding of what is meant by the term ``trust'' within the Department of War's various problem sets. \newline
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{Figures/CoreSummary.png}
+    \includegraphics[width=\textwidth]{STORM-AI Deliverable-1/Figures/CoreSummary.png}
     \caption{Data displayed in percentages based on context categories}
     \label{fig:llm3_scoring_percentage}
 \end{figure}
 
-Across the paper publications, a consistent pattern emerges. The body of work forms a distinctly bottom-heavy pyramid, with more than 83\% of research concentrated at the technical System Level and less than 15\% addressing organizational governance. In defense and other high-consequence domains, this imbalance is problematic. Technical sophistication cannot compensate for weak governance structures or poorly defined mission requirements.
+Across the paper publications, a consistent pattern emerges. The body of work forms a distinctly bottom-heavy pyramid, with more than 83\% of research concentrated at the technical System Level and less than 15\% addressing organizational governance. In defense and other high-consequence domains, this imbalance is problematic. Technical sophistication cannot compensate for weak governance structures or poorly defined mission requirements. It is difficult to build trustworthy AI if there is not a rigorous analysis of what the trust needs are within specific mission contexts.
 
-This skew also reflects a broader tendency toward solution-first thinking. The heavy emphasis on System Analysis and Design Definition suggests the field is producing tools, algorithms, and architectures faster than it is defining the problems they are meant to solve. Business analysis, stakeholder needs, and requirements definition—where purpose, constraints, and success criteria should be established—receive comparatively little attention.
+For military applications, this imbalance is severe. Fog and friction remain persistent realities of warfare. Operational art and operational design, as outlined in Joint Doctrine, are now more vital than ever. Operational Design, in particular, is a proven method for framing complex problems, such as the use of AI in military operations. The lack of specifics on problem context in the literature can be understandable when viewed through this perspective. However, this gap emphasizes the need to improve the current operational design tools and processes.
 
-As a result, foundational work is often missing altogether. Core questions remain unanswered: what mission outcomes justify trust, what stakeholders actually require from AI-enabled systems, and how organizational policy should shape AI adoption. These are not peripheral concerns; they are prerequisites. Without answering them, technical solutions are designed in a vacuum.
+This skew also reflects a broader tendency toward solution-first thinking. The heavy emphasis on System Analysis and Design Definition suggests the field is producing tools, algorithms, and architectures faster than it is defining the problems they are meant to solve. Mission analysis, stakeholder needs, and requirements definition where purpose, constraints, and success criteria should be established receive comparatively little attention. These areas fall within the doctrinal prescription of operational design. 
 
-The consequences are visible downstream. Verification and validation are sparsely represented in the published papers, with only 802 papers addressing verification and 276 addressing validation. This signals a lack of emphasis on demonstrating that AI systems actually meet their stated trustworthiness objectives in real operational settings. In defense contexts, where failure can have severe and irreversible consequences, this gap is especially concerning.
+As a result, foundational work is often absent. Key questions still need answers: what mission outcomes justify trust, what stakeholders at all levels genuinely require from AI-enabled systems, and how organizational policies---including Commander's Intent and Acceptable Level of Risk to Force and Risk to Mission---should guide AI adoption. These are not minor issues; they are crucial. Without addressing them, technical solutions are created in a vacuum.
 
-Finally, the transition from development to operations is largely neglected. With only 61 papers on transition, there is little guidance on how reliable AI systems should be securely deployed, integrated, and handed over to operational users. However, this phase is where trust is most likely to erode if governance, controls, and accountability are not firmly in place.
+The consequences are clear downstream. Verification and validation are rarely featured in published papers, with only 802 papers addressing verification and 276 addressing validation. This shows a lack of emphasis on demonstrating that AI systems genuinely meet their trustworthiness goals in real operational environments. In military contexts, where failure can lead to serious and irreversible outcomes, this gap is especially concerning. 
 
-This imbalance becomes more concerning as you move up the stack. Only 1\% of the work addresses the Organizational Level (Tier 1), and just 3\% addresses the Mission or Business Process Level (Tier 2). Even more striking is the lack of attention paid to the early stages of the lifecycle, phases—Business and Mission Analysis and Stakeholder Needs and Requirements Definition. These are the phases in which the purpose, the constraints, and the success criteria are supposed to be defined. Yet, they receive less than 3\% attention in the research efforts.
+A system may completely satisfy a set of arbitrary (or worse yet, undefined) trustworthiness criteria, but completely fail to meet the trust needs of warfighters at all levels of the organization charged with employing the AI Systems to achieve national security objectives. The history of warfare is replete with painful battlefield lessons where expensive, well-built technology was deployed that did not meet the trust needs of warfighters.  The results were disastrous, with nations paying a high cost in blood and national treasure.  What is worse is that many of these disasters were foreseeable and avoidable if nations had dedicated more resources upfront to clarifying and generating a shared understanding of the right problem the technology was expected to solve.
 
-This is not just a philosophical issue; it directly contradicts established systems security engineering guidance. NIST SP 800-160 is clear that trustworthiness starts with stakeholder needs and protection requirements and must be carried through the entire life cycle. If mission intent and requirements are poorly defined—or missing altogether—there is no way to compensate for that later. Cyber resiliency, mission assurance, and security analysis all depend on having a well-defined operational context from the start.
+Finally, the transition from development to operations is largely neglected. With only 61 papers on transition, there is little guidance on how reliable AI systems should be securely deployed, integrated, and handed over to operational users. However, this phase is where trust is most likely to erode if governance, controls, and accountability are not firmly in place. Equally important, warfighters must be part of the early conversations of trust.  American warfighters are not automatons.  They are smart, thinking, adaptive, and mission-focused professionals.  They must tell technology developers what is necessary for them to trust AI systems, not vice versa.  The AI systems must then be developed to deliver the trustworthiness evidence necessary to assure warfighters who will employ the systems that they are justified in placing their trust (and often their lives) in the AI Systems.
 
-This problem is amplified by the current AI deployment landscape. The State of AI in Business 2025 report shows that despite heavy investment and widespread adoption, roughly 95\% of custom enterprise AI solutions fail to reach production. The reasons are familiar: brittle workflows, lack of context, and poor alignment with real operational needs. \cite{ChallapallyEtAl2025StateOfAI} AI is increasingly being built as a general-purpose tool rather than as a mission-specific system. As a result, these systems lack the persistence, memory, and adaptability required for high-stakes environments, and users default back to human judgment when complexity increases.
+This imbalance becomes more concerning as you move up the stack. Only 1\% of the work addresses the Organizational Level (Tier 1), and just 3\% addresses the Mission or Business Process Level (Tier 2). Even more striking is the lack of attention paid to the early stages of the lifecycle, phases---Business and Mission Analysis (BMA) and Stakeholder Needs and Requirements Definition (SND). These are the phases in which the purpose, the constraints, and the success criteria are supposed to be defined. Yet, they receive less than 3\% attention in the research efforts. Done right, this early phase is where trust is translated from the volatility, uncertainty, complexity, and ambiguity (VUCA) that has always been part of operational warfighting into concrete, testable engineering requirements that can unlock the nation's nascent AI solution ecosystem. 
 
-Addressing this requires a shift in priorities. If we want AI systems that are genuinely trustworthy, we must start by doing the hard early work: explicit mission elicitation, clear organizational risk framing, and well-defined stakeholder requirements at Tiers 1 and 2. This is how we move from building clever solutions to solving the right problems. Only then can security and trustworthiness be demonstrated, rather than assumed.
+The apparent lack of emphasis on BMA and SND within the literature is not just a philosophical issue; it directly contradicts established systems security engineering guidance. NIST SP 800-160 is clear that trustworthiness starts with stakeholder needs and protection requirements and must be carried through the entire life cycle. If Commander's Intent and system requirements are poorly defined---or missing altogether---there is no way to compensate for that later. Cyber resiliency, mission assurance, and security analysis all depend on having a well-defined operational context from the start. In other words, operational design must be at the forefront of AI trustworthiness.  
+
+This problem is amplified by the current AI deployment landscape. The State of AI in Business 2025 report~\cite{ChallapallyEtAl2025StateOfAI} shows that despite heavy investment and widespread adoption, roughly 95\% of custom enterprise AI solutions fail to reach production. The reasons are familiar: brittle workflows, lack of context, and poor alignment with real operational needs. AI is increasingly being built as a general-purpose tool rather than as a mission-specific system. As a result, these systems lack the persistence, memory, and adaptability required for high-stakes environments, and users default back to human judgment when complexity increases.
+
+\section{Stakeholder-Specific Implications}
+
+The identified gaps in AI trustworthiness research carry distinct implications across key stakeholder groups, each requiring targeted attention:
+
+\textbf{For Technical Researchers, including Federally Funded Research and Development Centers (FFRDC):} These gaps represent significant research opportunities in substantially under-explored areas, particularly in organizational governance and early-lifecycle requirements definition. The concentration of 83\% of research in the solution context, while only 10\% addresses the problem context, suggests entire research agendas remain to be developed. Researchers who shift focus to Tiers 1 and 2 (organizational and mission levels) will be working in a relatively open field with high potential impact. 
+
+\textbf{For Program Managers:} The findings indicate that current technical solutions lack the essential foundations to guarantee mission success, requiring a shift in acquisition and integration strategies toward earlier lifecycle involvement. The 95\% failure rate of custom enterprise AI solutions that reach production cannot be fixed by better algorithms alone. It requires a systematic focus on mission elicitation, stakeholder needs, and organizational risk framework from the beginning of the project. Program managers must require evidence of the mission context and the definition of requirements before allocating resources to technical development. Recent focus on mission engineering might help close this gap, but it is not certain. According to Version 2.0 of the Mission Engineering Guide~\cite{Mission-Engineering}, Mission Engineering starts with a Mission Problem (or opportunity), but still needs a clearly defined question of ``what is to be investigated?'' The goal of operational design is to pose the right questions, which requires a careful, structured approach~\cite{young-thesis}.  However, although the current guidance on mission engineering emphasizes task identification and accomplishment, coverage on ``purpose'' behind the tasks remains largely missing from the literature and guidance.  Missions are defined as both task AND purpose.  More specifically, the input to the Mission Engineering process is the ``question'' to be analyzed.  The question is directly tied to the purpose.\footnote{For example, there is a difference between what are the necessary trustworthiness attributes of an ``AI System?'' and what are the necessary trustworthiness attributes of a ``System with AI?''}
+
+\textbf{For Policy-Makers:} The data demonstrates that without systematically addressing these gaps, substantial AI investments risk unacceptably high failure rates and operational mission compromise. The near-total absence of research at the organizational level (1\%) while billions are invested in AI capabilities suggests a fundamental misalignment between policy intent and research execution. Policy interventions---through funding priorities, acquisition requirements, or regulatory frameworks---are needed to reorient the field toward demonstrable mission assurance rather than technical novelty. The gaps indicate that there exist few practical tools for supporting the critical tradeoffs associated with the use of AI in military systems.  
+
+Collectively, these implications underscore the urgency of reorienting the AI trustworthiness research agenda to balance technical advancements with foundational governance and mission assurance frameworks.
+
+Addressing this requires a shift in priorities. If we want AI systems that are genuinely trustworthy, we must start by doing the hard early work: explicit mission elicitation, clear organizational risk framing, and well-defined stakeholder requirements at Tiers 1 and 2. This is how we move from building clever solutions to solving the right problems. Only then can security and trustworthiness be demonstrated, rather than assumed. The hard work must take place within the existing, time-proven military frameworks such as doctrine, operational design, and even theories of victory.  AI-technical frameworks must be integrated with (rather than replace) these frameworks.  
+
+
+Addressing this requires a shift in priorities. If we want AI systems that are genuinely trustworthy, we must start by doing the hard early work: explicit mission elicitation, clear organizational risk framing, and well-defined stakeholder requirements at Tiers 1 and 2. Specifically, what is meant by ``trust'' within the specific military problem space being addressed?  This is how we move from building clever solutions to solving the right problems. Only then can security and trustworthiness be demonstrated, rather than assumed.
+
+
 
 \section{Preliminary Recommendations}
 
-Addressing the documented gap in early-lifecycle mission context and requirements demands a disciplined, systems-level approach. We therefore recommend applying the System-Theoretic and Technical Operational Risk Management (STORM) methodology \cite{STORM}, with particular emphasis on its STPA-SEC component \cite{STPA-SEC}. STPA-SEC is explicitly designed to do the work that is currently missing: eliciting mission objectives, identifying unacceptable losses and hazards, and defining the constraints that must govern system behavior. In doing so, it aligns policy intent with technical implementation and frames security as a mission problem rather than a purely technical one. 
+Addressing the documented gap in early-lifecycle mission context and requirements demands coordinated action across multiple fronts. The following recommendations provide a strategic roadmap for reorienting AI trustworthiness research and practice toward mission-secure systems.
 
-%\noindent\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{%
-%\begin{center}
-\begin{tcolorbox}
+\subsection{Organizational and Funding Priorities}
+
+Organizations looking to invest in AI trustworthiness must implement several structural changes to their research and development portfolios:
+
+\textbf{Mandate Explicit Coverage Across Tiers and Lifecycle Phases:} Research proposals and development programs should be required to explicitly identify which organizational tier (1, 2, or 3) and which lifecycle phases they address. This transparency enables funding agencies and program managers to identify gaps in their portfolios and make informed allocation decisions. Proposals that focus exclusively on system-level technical solutions without addressing organizational context or mission requirements should be flagged for additional justification. Existing frameworks from other disciplines, such as RMF, SSE, Military Doctrine, and Mission Engineering and Integration.
+
+\textbf{Allocate Minimum Funding to Higher Tiers and Early Lifecycle:} Given that current research shows only 1\% addressing Organizational Level (Tier 1) and 3\% addressing Mission/Business Process Level (Tier 2), funding agencies should establish minimum allocation targets. A reasonable initial target would be to dedicate at least 15\% of AI security funding to Tier 1 and Tier 2 research, and at least 20\% to early lifecycle phases (Business and Mission Analysis, Stakeholder Needs Definition, and System Requirements Definition). These targets should increase over time as the research community develops capacity in these areas. Operational Design should be a starting point, not an afterthought.  In particular, AI must be integrated with existing processes, such as developing Commander's Operational Concepts at all levels of the Joint Force.  
+
+\textbf{Establish Dedicated Funding Lines for Mission Assurance:} Mission assurance frameworks that integrate AI trustworthiness across organizational tiers and lifecycle phases require sustained, focused investment. Dedicated funding programs---similar to those established for AI safety or adversarial robustness---would signal the importance of this work and create stable career paths for researchers specializing in mission-focused AI trustworthiness. Any new work should begin with an established process such as the Joint Staff Cyber Survivability Endorsement (CSE).  The CSE currently attempts to address and measure the ability of military systems to sustain and operate through cyber attack.  Integrating some measure of a system's ability to withstand AI-related disruptions in conjunction with other cyber disruptions is a logical starting point.
+
+\subsection{Programmatic and Institutional Changes}
+
+Beyond funding mechanisms, several programmatic changes are needed to build institutional capacity:
+
+\textbf{Develop Interdisciplinary Programs:} AI trustworthiness for mission-critical systems cannot be achieved through computer science alone. Organizations should establish interdisciplinary programs that combine systems engineering, AI/machine learning, cybersecurity, policy, and domain expertise. These programs should emphasize systems thinking and lifecycle-based approaches rather than purely algorithmic innovation.
+
+\textbf{Create Incentives for Early Lifecycle Research:} Current academic and industry incentives favor publishable algorithmic advances over foundational requirements and governance work. Funding agencies should create explicit incentives for early lifecycle research through dedicated prize competitions, fellowship programs, and high-visibility publication venues that value systems engineering contributions alongside algorithmic innovation.
+
+\textbf{Establish Organizational Governance Before System Implementation:} Organizations should be strongly encouraged---or in high-consequence domains, required---to establish organizational-level AI governance frameworks (Tier 1) before pursuing system-level implementations (Tier 3). This top-down approach ensures that technical development proceeds within a clearly defined mission context with appropriate oversight and accountability structures.
+
+\section{Building Trustworthy and Secure AI Systems}
+Artificial intelligence is transforming organizations, missions, and systems at every level. However, without a strong foundation of trust and security, AI adoption can undermine both organizational objectives and public confidence. We propose a framework that unifies NIST's strategic, engineering, and operational risk management guidance with the AI Risk Management Framework (AI RMF 1.0)~\cite{nist_ai_rmf_2023} to provide a comprehensive roadmap for secure and responsible AI. Its central premise is that trustworthiness must be systematically engineered, rigorously governed, and continuously monitored.
+
+ More importantly, the four frameworks have been carefully chosen as a starting point only.  There are many other existing frameworks across government and industry that can and must be added to improve coordination and communication across all of the different industries and domains that have a role in building trustworthy and secure AI systems.  These four represent a powerful first step that an add immediate, demonstrable value to a large number of stakeholders and allow co-creation at the speed of innovation as opposed to forcing innovation efforts to slow down.  Done right, we can build the airplane inflight.  
+
+\section{The Four-Framework Ecosystem}
+
+This section explains how four complementary NIST frameworks form the backbone of AI risk management. The purpose is to show how strategic, engineering, operational, and AI-specific perspectives combine to create a holistic {\it initial} ecosystem for trustworthy AI.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|p{3cm}|p{3.5cm}|p{4cm}|p{4cm}|}
+\hline
+\textbf{Framework} & \textbf{Role in Ecosystem} & \textbf{Primary Focus} & \textbf{Organizational Level} \\ \hline
+SP 800-39 & Strategic Foundation & Organization-wide risk management strategy & All 3 Tiers (Org $\rightarrow$ Mission $\rightarrow$ System) \\ \hline
+SP 800-160v1 & Engineering Implementation & Build security into systems & Tier 3 (System) + informs Tier 1--2 \\ \hline
+SP 800-37 & Operational Risk Management & Authorize and manage system risks & Tier 3 (System) + reports to Tier 1--2 \\ \hline
+AI RMF 1.0 & AI Risk Specialization & AI-specific risks and trustworthiness & Cross-cutting all tiers \\ \hline
+\end{tabular}
+\caption{The Four-Framework Ecosystem for AI Risk Management}
+\label{tab:four-framework-ecosystem}
+\end{table}
+
+\subsection{The STORM-AI Methodology}
+
+
+
+To operationalize these recommendations, we specifically recommend adoption of the System-Theoretic and Technical Operational Risk Management (STORM) methodology~\cite{STORM}, with particular emphasis on its STPA-SEC component~\cite{STPA-SEC}. STPA-SEC is explicitly designed to perform the work currently missing from AI trustworthiness research: eliciting mission objectives, identifying unacceptable losses and hazards, and defining the constraints that must govern system behavior. In doing so, it aligns policy intent with technical implementation and frames security as a mission problem rather than a purely technical one.
+
+STORM was designed to be completely consistent with operational design and military operations.  Specifically, a variation of the STPA-SEC component was taught at the Air Force's Cyber College. A particular strength of STPA-SEC is the ability to produce the engineering equivalent of Commander's Intent.  As a result, STORM is ideally positioned to integrate key guiding military frameworks and concepts such as Joint Pub 5-0 Joint Planning~\cite{Joint17}, Joint Pub 3-0 Joint Campaigns and Operations~\cite{Joint-3-0}, and CJCSM 3105.01B Joint Risk Analysis Methodology~\cite{CJCSM} into the conversation about trustworthy AI.
+
+%%%%%%%%%%%%%%%%%%%%%%%%% Jae's PAGE + STORM-AI
+However, applying STPA-SEC and CSBD effectively requires a fundamental shift in how we conceptualize AI systems. Current AI trustworthiness research treats AI as a collection of models, algorithms, and implementations---reflected in the 96.7\% concentration at the System Level in our survey. This model-centric view obscures the critical question: \textit{what is the AI actually doing in its operational context, and why should we trust it to do so?}
+
+We propose reframing the problem through an \textbf{agent-centric perspective}, i.e., \textbf{agentic AI}. Rather than asking ``how do we make this model trustworthy,'' we ask ``how do we use existing warfighting frameworks (such as Operational design) to inform design for  agents whose behavior we can systematically analyze, constrain, and verify?'' This shift aligns naturally with Russell and Norvig's PAGE framework\footnote{Starting with their second edition, Russell and Norvig adopt the PEAS framework Performance measure, Environment, Actuators, and Sensors. However, for Military Agentic AI systems such as Autonomous Combat Vehicles (ACVs), the earlier PAGE framework in their first edition is more appropriate, as it explicitly incorporates goal specification, which is essential for defining mission critical behavior.}~\cite{russell-norvig-1ed} for intelligent agent design:
+
+\begin{itemize}
+    \item \textbf{Percepts}: What information does the agent receive from its environment?
+    \item \textbf{Actions}: What can the agent do that affects its environment?
+    \item \textbf{Goals}: What objectives is the agent designed to achieve?
+    \item \textbf{Environment}: What world does the agent operate in, including other agents, humans, and physical systems?
+\end{itemize}
+
+When combined with STORM's STPA-SEC methodology, the PAGE framework provides a structured approach to eliciting mission requirements and defining behavioral constraints.\footnote{The PAGE framework clearly aligns with the Joint Definition of a mission.  According to the Joint Dictionary, a mission is ``The essential task or tasks, together with the purpose, that clearly indicate the action to be taken and the reason for the action.'' PAGE ``Goals'' are the ``purpose'' or ``reasons for the actions.''  PAGE ``Actions'' are the ``essential task or tasks'' described in the definition of mission.} Instead of analyzing a neural network's internal representations, we analyze the agent's interactions with its environment: what it senses, what it does, what losses could occur, and what constraints must govern its behavior to prevent those losses. This makes security and trustworthiness properties explicit and analyzable at the mission level---exactly where our survey shows current research is lacking.
+
+Moreover, real-world AI systems rarely operate in isolation. Autonomous combat vehicles coordinate with other weapon systems and infrastructure (such as the Department of the Air Force Battle Network). AI-enabled command and control systems involve multiple decision-making agents and human operators. Defensive cyber systems must anticipate and counter adversarial AI agents. This \textbf{multi-agent reality} introduces emergent behaviors, coordination challenges, and security concerns that cannot be addressed by analyzing individual models in isolation.
+
+Our subsequent deliverable will detail how STORM-AI extends the PAGE framework and integrates with foundational frameworks from multiple disciplines, such as those in Table~\ref{tab:four-framework-ecosystem}, and time-proven military frameworks and processes, such as operational art and operational design 
+
+to systematically address multi-agent systems, providing methods to:
+\begin{itemize}
+    \item Model interactions between multiple AI agents, human operators, and adversaries
+    \item Identify hazards\footnote{We use the term ``hazard'' as defined in CJCSM 3105.01B Joint Risk Analysis Methodology.  Hazards are ``Security, environmental, demographic, political, technical, or social conditions with potential to cause harm.''  Each of these factors are relevant and must be considered in addressing AI trustworthiness.} that emerge only from agent interactions
+    \item Define coordination protocols and constraints that ensure mission-secure behavior
+    \item Verify that the implemented multi-agent system enforces these constraints
+\end{itemize}
+
+By adopting an agent-centric, multi-agent aware approach grounded in STORM methodology, we can finally address AI trustworthiness at the organizational and mission levels where it truly matters---bridging the critical gap our survey has identified between technical sophistication and mission assurance.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.15in}
+\begin{tcolorbox}[colback=gray!10,colframe=black,boxrule=0.5pt]
 \textbf{There is a clear opportunity to strengthen mission context, early requirements definition, and downstream verification and validation in AI trustworthiness research.}
 \end{tcolorbox}
-%\end{center}
-%}}
-%\newline
+\vspace{0.15in}
 
-Once these mission requirements and constraints are established, STORM's Certified Security by Design (CSBD) component \cite{CSBD-IOT} \cite{CSBD-Education} enables formal verification that the system design satisfies them. CSBD provides evidence---not assumptions---that the implemented Concepts of Operation (CONOPS) enforce complete mediation, ensuring that actions occur if and only if they are authorized and authenticated under the defined policy. This closes the loop between mission intent, system design, and verification, and delivers the kind of demonstrable trustworthiness and mission assurance required by NIST SP 800-160v1r1 \cite{nist_sp800_160v1}.
+
+STORM-AI provides a systematic bridge between the organizational and mission levels (Tiers 1 and 2) and the system level (Tier 3). It begins by establishing mission context through stakeholder analysis and loss identification, proceeds through requirements derivation and constraint specification, and continues through design verification and operational validation. This lifecycle-spanning approach directly addresses the gaps identified in our survey.
+
+Once mission requirements and constraints are established through STPA-SEC, STORM's Certified Security by Design (CSBD) component~\cite{CSBD-IOT,CSBD-Education} enables formal verification that the system design satisfies them. CSBD provides evidence---not assumptions---that the implemented Technical Concepts of Operation (CONOPS) align with the operational commander or mission-related CONOPS and enforce complete mediation, ensuring that actions occur if and only if they are authorized and authenticated under the defined policy. This closes the loop between mission intent, system design, and verification, and delivers the kind of demonstrable trustworthiness and mission assurance required by NIST SP 800-160v1r1~\cite{nist_sp800_160v1}.
+
+By adopting STORM-AI, organizations can systematically address the full spectrum of trustworthiness concerns across organizational tiers and lifecycle phases. This methodology provides the disciplined, systems-level approach necessary to move beyond solution-first thinking toward mission-focused AI trustworthiness that can be demonstrated through evidence rather than assumed through algorithmic sophistication alone.
+
+Perhaps most importantly, STORM-AI does not just promise to build better AI systems; it also provides a unique opportunity to develop better users of AI systems. These users can leverage AI to attain a lasting, cost-effective competitive advantage in safeguarding America's freedom today and in the future!
+
